@@ -1,132 +1,1490 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.dark\:text-gray-500{--tw-text-opacity:1;color:#6b7280;color:rgba(107,114,128,var(--tw-text-opacity))}}}
-        </style>
-
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
+<html lang="en">
+  
+<!-- Mirrored from cartzilla.createx.studio/home-electronics-store.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Oct 2021 10:29:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <title>Cartzilla | Electronics Store</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Cartzilla - Bootstrap E-commerce Template">
+    <meta name="keywords" content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean">
+    <meta name="author" content="Createx Studio">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" media="screen" href="css/simplebar.min.css"/>
+    <link rel="stylesheet" media="screen" href="css/tiny-slider.css"/>
+    <link rel="stylesheet" media="screen" href="css/drift-basic.min.css"/>
+    <link rel="stylesheet" media="screen" href="css/lightgallery.min.css"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="css/theme.min.css">
+    <!-- Google Tag Manager-->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WKV3GT5');
+    </script>
+  </head>
+  <!-- Body-->
+  <body class="handheld-toolbar-enabled">
+    <!-- Sign in / sign up modal-->
+    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-secondary">
+            <ul class="nav nav-tabs card-header-tabs" role="tablist">
+              <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>Sign in</a></li>
+              <li class="nav-item"><a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab" role="tab" aria-selected="false"><i class="ci-user me-2 mt-n1"></i>Sign up</a></li>
+            </ul>
+            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body tab-content py-4">
+            <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
+              <div class="mb-3">
+                <label class="form-label" for="si-email">Email address</label>
+                <input class="form-control" type="email" id="si-email" placeholder="johndoe@example.com" required>
+                <div class="invalid-feedback">Please provide a valid email address.</div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="si-password">Password</label>
+                <div class="password-toggle">
+                  <input class="form-control" type="password" id="si-password" required>
+                  <label class="password-toggle-btn" aria-label="Show/hide password">
+                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                  </label>
                 </div>
-            @endif
-
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
-                        <g clip-path="url(#clip0)" fill="#EF3B2D">
-                            <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                        </g>
-                    </svg>
+              </div>
+              <div class="mb-3 d-flex flex-wrap justify-content-between">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="si-remember">
+                  <label class="form-check-label" for="si-remember">Remember me</label>
+                </div><a class="fs-sm" href="#">Forgot password?</a>
+              </div>
+              <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign in</button>
+            </form>
+            <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
+              <div class="mb-3">
+                <label class="form-label" for="su-name">Full name</label>
+                <input class="form-control" type="text" id="su-name" placeholder="John Doe" required>
+                <div class="invalid-feedback">Please fill in your name.</div>
+              </div>
+              <div class="mb-3">
+                <label for="su-email">Email address</label>
+                <input class="form-control" type="email" id="su-email" placeholder="johndoe@example.com" required>
+                <div class="invalid-feedback">Please provide a valid email address.</div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="su-password">Password</label>
+                <div class="password-toggle">
+                  <input class="form-control" type="password" id="su-password" required>
+                  <label class="password-toggle-btn" aria-label="Show/hide password">
+                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                  </label>
                 </div>
-
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="su-password-confirm">Confirm password</label>
+                <div class="password-toggle">
+                  <input class="form-control" type="password" id="su-password-confirm" required>
+                  <label class="password-toggle-btn" aria-label="Show/hide password">
+                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                  </label>
                 </div>
-
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">
-                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            </svg>
-
-                            <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                                Shop
-                            </a>
-
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-
-                            <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                                Sponsor
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                    </div>
-                </div>
-            </div>
+              </div>
+              <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign up</button>
+            </form>
+          </div>
         </div>
-    </body>
+      </div>
+    </div>
+    <main class="page-wrapper">
+      <!-- Quick View Modal-->
+      <div class="modal-quick-view modal fade" id="quick-view-electro" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title product-title"><a href="shop-single-v2.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Go to product page">Smartwatch Youth Edition<i class="ci-arrow-right fs-lg ms-2"></i></a></h4>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <!-- Product gallery-->
+                <div class="col-lg-7 pe-lg-0">
+                  <div class="product-gallery">
+                    <div class="product-gallery-preview order-sm-2">
+                      <div class="product-gallery-preview-item active" id="first"><img class="image-zoom" src="img/shop/single/gallery/05.jpg" data-zoom="img/shop/single/gallery/05.jpg" alt="Product image">
+                        <div class="image-zoom-pane"></div>
+                      </div>
+                      <div class="product-gallery-preview-item" id="second"><img class="image-zoom" src="img/shop/single/gallery/06.jpg" data-zoom="img/shop/single/gallery/06.jpg" alt="Product image">
+                        <div class="image-zoom-pane"></div>
+                      </div>
+                      <div class="product-gallery-preview-item" id="third"><img class="image-zoom" src="img/shop/single/gallery/07.jpg" data-zoom="img/shop/single/gallery/07.jpg" alt="Product image">
+                        <div class="image-zoom-pane"></div>
+                      </div>
+                      <div class="product-gallery-preview-item" id="fourth"><img class="image-zoom" src="img/shop/single/gallery/08.jpg" data-zoom="img/shop/single/gallery/08.jpg" alt="Product image">
+                        <div class="image-zoom-pane"></div>
+                      </div>
+                    </div>
+                    <div class="product-gallery-thumblist order-sm-1"><a class="product-gallery-thumblist-item active" href="#first"><img src="img/shop/single/gallery/th05.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#second"><img src="img/shop/single/gallery/th06.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#third"><img src="img/shop/single/gallery/th07.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#fourth"><img src="img/shop/single/gallery/th08.jpg" alt="Product thumb"></a></div>
+                  </div>
+                </div>
+                <!-- Product details-->
+                <div class="col-lg-5 pt-4 pt-lg-0 image-zoom-pane">
+                  <div class="product-details ms-auto pb-3">
+                    <div class="mb-2">
+                      <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
+                      </div><span class="d-inline-block fs-sm text-body align-middle mt-1 ms-1">74 Reviews</span>
+                    </div>
+                    <div class="h3 fw-normal text-accent mb-3 me-1">$124.<small>99</small></div>
+                    <div class="fs-sm mb-4"><span class="text-heading fw-medium me-1">Color:</span><span class="text-muted" id="colorOptionText">Dark blue/Orange</span></div>
+                    <div class="position-relative me-n4 mb-3">
+                      <div class="form-check form-option form-check-inline mb-2">
+                        <input class="form-check-input" type="radio" name="color" id="color1" data-bs-label="colorOptionText" value="Dark blue/Orange" checked>
+                        <label class="form-option-label rounded-circle" for="color1"><span class="form-option-color rounded-circle" style="background-color: #f25540;"></span></label>
+                      </div>
+                      <div class="form-check form-option form-check-inline mb-2">
+                        <input class="form-check-input" type="radio" name="color" id="color2" data-bs-label="colorOptionText" value="Dark gray/Green">
+                        <label class="form-option-label rounded-circle" for="color2"><span class="form-option-color rounded-circle" style="background-color: #65805b;"></span></label>
+                      </div>
+                      <div class="form-check form-option form-check-inline mb-2">
+                        <input class="form-check-input" type="radio" name="color" id="color3" data-bs-label="colorOptionText" value="White">
+                        <label class="form-option-label rounded-circle" for="color3"><span class="form-option-color rounded-circle" style="background-color: #f5f5f5;"></span></label>
+                      </div>
+                      <div class="form-check form-option form-check-inline mb-2">
+                        <input class="form-check-input" type="radio" name="color" id="color4" data-bs-label="colorOptionText" value="Black">
+                        <label class="form-option-label rounded-circle" for="color4"><span class="form-option-color rounded-circle" style="background-color: #333;"></span></label>
+                      </div>
+                      <div class="product-badge product-available mt-n1"><i class="ci-security-check"></i>Product available</div>
+                    </div>
+                    <div class="d-flex align-items-center pt-2 pb-4">
+                      <select class="form-select me-3" style="width: 5rem;">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                      <button class="btn btn-primary btn-shadow d-block w-100" type="button"><i class="ci-cart fs-lg me-2"></i>Add to Cart</button>
+                    </div>
+                    <div class="d-flex mb-4">
+                      <div class="w-100 me-3">
+                        <button class="btn btn-secondary d-block w-100" type="button"><i class="ci-heart fs-lg me-2"></i><span class='d-none d-sm-inline'>Add to </span>Wishlist</button>
+                      </div>
+                      <div class="w-100">
+                        <button class="btn btn-secondary d-block w-100" type="button"><i class="ci-compare fs-lg me-2"></i>Compare</button>
+                      </div>
+                    </div>
+                    <h5 class="h6 mb-3 py-2 border-bottom"><i class="ci-announcement text-muted fs-lg align-middle mt-n1 me-2"></i>Product info</h5>
+                    <h6 class="fs-sm mb-2">General</h6>
+                    <ul class="fs-sm pb-2">
+                      <li><span class="text-muted">Model: </span>Amazfit Smartwatch</li>
+                      <li><span class="text-muted">Gender: </span>Unisex</li>
+                      <li><span class="text-muted">OS campitibility: </span>Android / iOS</li>
+                    </ul>
+                    <h6 class="fs-sm mb-2">Physical specs</h6>
+                    <ul class="fs-sm pb-2">
+                      <li><span class="text-muted">Shape: </span>Rectangular</li>
+                      <li><span class="text-muted">Body material: </span>Plastics / Ceramics</li>
+                      <li><span class="text-muted">Band material: </span>Silicone</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Navbar Electronics Store-->
+      <header class="shadow-sm">
+        <!-- Topbar-->
+        <div class="topbar topbar-dark bg-dark">
+          <div class="container">
+            <div>
+              <div class="topbar-text text-nowrap d-none d-md-inline-block border-start border-light ps-3 ms-3"><span class="text-muted me-1">Available 24/7 at</span><a class="topbar-link" href="tel:00331697720">+212 661-641220 / 528-239180</a></div>
+            </div>
+          </div>
+        </div>
+        <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+        <div class="navbar-sticky bg-light">
+          <div class="navbar navbar-expand-lg navbar-light">
+            <div class="container"><a class="navbar-brand d-none d-sm-block me-3 flex-shrink-0" href="index.html"><img src="img/logo-dark.png" width="142" alt="Cartzilla"></a><a class="navbar-brand d-sm-none me-2" href="index.html"><img src="img/logo-icon.png" width="74" alt="Cartzilla"></a>
+              <!-- Search-->
+              <div class="input-group d-none d-lg-flex flex-nowrap mx-4"><i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                <input class="form-control rounded-start w-100" type="text" placeholder="Search for products">
+                <select class="form-select flex-shrink-0" style="width: 10.5rem;">
+                  <option>All categories</option>
+                  <option>Computers</option>
+                  <option>Smartphones</option>
+                  <option>TV, Video, Audio</option>
+                  <option>Cameras</option>
+                  <option>Headphones</option>
+                  <option>Wearables</option>
+                  <option>Printers</option>
+                  <option>Video Games</option>
+                  <option>Home Music</option>
+                  <option>Data Storage</option>
+                </select>
+              </div>
+              <!-- Toolbar-->
+              <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool navbar-stuck-toggler" href="#"><span class="navbar-tool-tooltip">Toggle menu</span>
+                  <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-menu"></i></div></a><a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="#signin-modal" data-bs-toggle="modal">
+                  <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div>
+                  <div class="navbar-tool-text ms-n3"><small>Hello, Sign in</small>My Account</div></a>
+                <div class="navbar-tool dropdown ms-3"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><span class="navbar-tool-label">4</span><i class="navbar-tool-icon ci-cart"></i></a><a class="navbar-tool-text" href="shop-cart.html"><small>My Cart</small>$1,247.00</a>
+                  <!-- Cart dropdown-->
+                  <div class="dropdown-menu dropdown-menu-end">
+                    <div class="widget widget-cart px-3 pt-2 pb-3" style="width: 20rem;">
+                      <div style="height: 15rem;" data-simplebar data-simplebar-auto-hide="false">
+                        <div class="widget-cart-item pb-2 border-bottom">
+                          <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+                          <div class="d-flex align-items-center"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="img/shop/cart/widget/05.jpg" width="64" alt="Product"></a>
+                            <div class="ps-2">
+                              <h6 class="widget-product-title"><a href="shop-single-v2.html">Bluetooth Headphones</a></h6>
+                              <div class="widget-product-meta"><span class="text-accent me-2">$259.<small>00</small></span><span class="text-muted">x 1</span></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="widget-cart-item py-2 border-bottom">
+                          <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+                          <div class="d-flex align-items-center"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="img/shop/cart/widget/06.jpg" width="64" alt="Product"></a>
+                            <div class="ps-2">
+                              <h6 class="widget-product-title"><a href="shop-single-v2.html">Cloud Security Camera</a></h6>
+                              <div class="widget-product-meta"><span class="text-accent me-2">$122.<small>00</small></span><span class="text-muted">x 1</span></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="widget-cart-item py-2 border-bottom">
+                          <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+                          <div class="d-flex align-items-center"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="img/shop/cart/widget/07.jpg" width="64" alt="Product"></a>
+                            <div class="ps-2">
+                              <h6 class="widget-product-title"><a href="shop-single-v2.html">Android Smartphone S10</a></h6>
+                              <div class="widget-product-meta"><span class="text-accent me-2">$799.<small>00</small></span><span class="text-muted">x 1</span></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="widget-cart-item py-2 border-bottom">
+                          <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+                          <div class="d-flex align-items-center"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="img/shop/cart/widget/08.jpg" width="64" alt="Product"></a>
+                            <div class="ps-2">
+                              <h6 class="widget-product-title"><a href="shop-single-v2.html">Android Smart TV Box</a></h6>
+                              <div class="widget-product-meta"><span class="text-accent me-2">$67.<small>00</small></span><span class="text-muted">x 1</span></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
+                        <div class="fs-sm me-2 py-2"><span class="text-muted">Subtotal:</span><span class="text-accent fs-base ms-1">$1,247.<small>00</small></span></div><a class="btn btn-outline-secondary btn-sm" href="shop-cart.html">Expand cart<i class="ci-arrow-right ms-1 me-n1"></i></a>
+                      </div><a class="btn btn-primary btn-sm d-block w-100" href="checkout-details.html"><i class="ci-card me-2 fs-base align-middle"></i>Checkout</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="navbar navbar-expand-lg navbar-light navbar-stuck-menu mt-n2 pt-0 pb-2">
+            <div class="container">
+              <div class="collapse navbar-collapse" id="navbarCollapse">
+                <!-- Search-->
+                <div class="input-group d-lg-none my-3"><i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+                  <input class="form-control rounded-start" type="text" placeholder="Search for products">
+                </div>
+                <!-- Departments menu-->
+                <ul class="navbar-nav navbar-mega-nav pe-lg-2 me-lg-2">
+                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle ps-lg-0" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside"><i class="ci-menu align-middle mt-n1 me-2"></i>Departments</a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown mega-dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="ci-laptop opacity-60 fs-lg mt-n1 me-2"></i>Computers &amp; Accessories</a>
+                        <div class="dropdown-menu p-0">
+                          <div class="d-flex flex-wrap flex-sm-nowrap px-2">
+                            <div class="mega-dropdown-column pt-4 pb-0 py-sm-4 px-3">
+                              <div class="widget widget-links">
+                                <h6 class="fs-base mb-3">Computers</h6>
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Laptops &amp; Tablets</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Desktop Computers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Computer External Components</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Computer Internal Components</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Networking Products (NAS)</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Single Board Computers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Desktop Barebones</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="mega-dropdown-column py-4 px-3">
+                              <div class="widget widget-links">
+                                <h6 class="fs-base mb-3">Accessories</h6>
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Monitors</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Bags, Cases &amp; Sleeves</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Batteries</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Charges &amp; Adapters</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Cooling Pads</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Mounts</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Replacement Screens</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Security Locks</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Stands</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="mega-dropdown-column d-none d-lg-block py-4 text-center"><a class="d-block mb-2" href="#"><img src="img/shop/departments/07.jpg" alt="Computers &amp; Accessories"></a>
+                              <div class="fs-sm mb-3">Starting from <span class='fw-medium'>$149.<small>80</small></span></div><a class="btn btn-primary btn-shadow btn-sm" href="#">See offers<i class="ci-arrow-right fs-xs ms-1"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="dropdown mega-dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="ci-mobile opacity-60 fs-lg mt-n1 me-2"></i>Smartphones &amp; Tablets</a>
+                        <div class="dropdown-menu p-0">
+                          <div class="d-flex flex-wrap flex-md-nowrap px-2">
+                            <div class="mega-dropdown-column pt-4 pb-0 py-sm-4 px-3">
+                              <div class="widget widget-links mb-3">
+                                <h6 class="fs-base mb-3">Smartphones</h6>
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Apple iPhone</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Android Smartphones</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Phablets</a></li>
+                                </ul>
+                              </div>
+                              <div class="widget widget-links">
+                                <h6 class="fs-base">Tablets</h6>
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Apple iPad</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Android Tablets</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Tablets with Keyboard</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="mega-dropdown-column py-4 px-3">
+                              <div class="widget widget-links">
+                                <h6 class="fs-base mb-3">Accessories</h6>
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Accessory Kits</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Batteries &amp; Battery Packs</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Cables</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Car Accessories</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Charges &amp; Power Adapters</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">FM Transmitters</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Lens Attachments</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Mounts &amp; Stands</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Repair Kits</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Replacement Parts</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Styluses</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="mega-dropdown-column d-none d-lg-block py-4 text-center"><a class="d-block mb-2" href="#"><img src="img/shop/departments/09.jpg" alt="Smartphones &amp; Tablets"></a>
+                              <div class="fs-sm mb-3">Starting from <span class='fw-medium'>$127.<small>00</small></span></div><a class="btn btn-primary btn-shadow btn-sm" href="#">See offers<i class="ci-arrow-right fs-xs ms-1"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="dropdown mega-dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="ci-monitor opacity-60 fs-lg mt-n1 me-2"></i>TV, Video &amp; Audio</a>
+                        <div class="dropdown-menu p-0">
+                          <div class="d-flex flex-wrap flex-md-nowrap px-2">
+                            <div class="mega-dropdown-column pt-4 pb-0 py-sm-4 px-3">
+                              <div class="widget widget-links">
+                                <h6 class="fs-base mb-3">Television &amp; Video</h6>
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">TV Sets</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Home Theater Systems</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">DVD Players &amp; Recorders</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Blue-ray Players &amp; Recorders</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">HD DVD Players &amp; Recorders</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">DVD-VCR Combos</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">DTV Converters</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">AV Receivers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">AV Amplifiers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Projectors</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Projection Screens</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Satelite Television</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="mega-dropdown-column pt-0 pb-4 py-sm-4 px-3">
+                              <div class="widget widget-links">
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">TV-DTD Combos</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Sound Systems</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Home Cinema Systems</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Streaming Media Players</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">VCRs</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Video Glasses</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Lens Attachments</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="mega-dropdown-column d-none d-lg-block py-4 text-center"><a class="d-block mb-2" href="#"><img src="img/shop/departments/08.jpg" alt="TV, Video &amp; Audio"></a>
+                              <div class="fs-sm mb-3">Starting from <span class='fw-medium'>$78.<small>00</small></span></div><a class="btn btn-primary btn-shadow btn-sm" href="#">See offers<i class="ci-arrow-right fs-xs ms-1"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="dropdown mega-dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="ci-camera opacity-60 fs-lg mt-n1 me-2"></i>Cameras, Photo &amp; Video</a>
+                        <div class="dropdown-menu p-0">
+                          <div class="d-flex flex-wrap flex-md-nowrap px-2">
+                            <div class="mega-dropdown-column pt-4 pb-0 py-sm-4 px-3">
+                              <div class="widget widget-links">
+                                <h6 class="fs-base mb-3">Cameras &amp; Lenses</h6>
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Point &amp; Shoot Digital Cameras</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">DSLR Cameras</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Mirrorless Cameras</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Body Mounted Cameras</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Camcorders</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Camcorder Lenses</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Camera Lenses</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Macro &amp; Ringlight Flashes</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Shoe Mount Flashes</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Tripods &amp; Monopods</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Video Studio</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="mega-dropdown-column py-4 px-3">
+                              <div class="widget widget-links">
+                                <h6 class="fs-base mb-3">Accessories</h6>
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Bags &amp; Cases</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Binoculars &amp; Scopes</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Batteries &amp; Chargers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Cables &amp; Cords</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Camcorder Accessories</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Cleaning Equipment</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Protector Foils</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Filters &amp; Accessories</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Remote Controls</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Rain Covers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Viewfinders</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="mega-dropdown-column d-none d-lg-block py-4 text-center"><a class="d-block mb-2" href="#"><img src="img/shop/departments/10.jpg" alt="Cameras, Photo &amp; Video"></a>
+                              <div class="fs-sm mb-3">Starting from <span class='fw-medium'>$210.<small>00</small></span></div><a class="btn btn-primary btn-shadow btn-sm" href="#">See offers<i class="ci-arrow-right fs-xs ms-1"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="dropdown mega-dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="ci-earphones opacity-60 fs-lg mt-n1 me-2"></i>Headphones</a>
+                        <div class="dropdown-menu p-0">
+                          <div class="d-flex flex-wrap flex-md-nowrap px-2">
+                            <div class="mega-dropdown-column pt-4 pb-0 py-sm-4 px-3">
+                              <div class="widget widget-links">
+                                <h6 class="fs-base mb-3">Headphones</h6>
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Earbud Headphones</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Over-Ear Headphones</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">On-Ear Headphones</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Bluetooth Headphones</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Sports &amp; Fitness Headphones</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Noise-Cancelling Headphones</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="mega-dropdown-column py-4 px-3">
+                              <div class="widget widget-links">
+                                <h6 class="fs-base mb-3">Accessories</h6>
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Cases &amp; Sleeves</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Cables &amp; Cords</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Ear Pads</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Repair Kits</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Cleaning Equipment</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="mega-dropdown-column d-none d-lg-block py-4 text-center"><a class="d-block mb-2" href="#"><img src="img/shop/departments/11.jpg" alt="Headphones"></a>
+                              <div class="fs-sm mb-3">Starting from <span class='fw-medium'>$35.<small>99</small></span></div><a class="btn btn-primary btn-shadow btn-sm" href="#">See offers<i class="ci-arrow-right fs-xs ms-1"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="dropdown mega-dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="ci-watch opacity-60 fs-lg mt-n1 me-2"></i>Wearable Electronics</a>
+                        <div class="dropdown-menu p-0">
+                          <div class="d-flex flex-wrap flex-md-nowrap px-2">
+                            <div class="mega-dropdown-column py-4 px-3">
+                              <div class="widget widget-links">
+                                <h6 class="fs-base mb-3">Gadgets</h6>
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Smartwatches</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Fitness Trackers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Smart Glasses</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Rings</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Virtual Reality</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Clips, Arm &amp; Wristbands</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Accessories</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="mega-dropdown-column d-none d-lg-block py-4 text-center"><a class="d-block mb-2" href="#"><img src="img/shop/departments/12.jpg" alt="Wearable Electronics"></a>
+                              <div class="fs-sm mb-3">Starting from <span class='fw-medium'>$79.<small>50</small></span></div><a class="btn btn-primary btn-shadow btn-sm" href="#">See offers<i class="ci-arrow-right fs-xs ms-1"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="dropdown mega-dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="ci-printer opacity-60 fs-lg mt-n1 me-2"></i>Printers &amp; Ink</a>
+                        <div class="dropdown-menu p-0">
+                          <div class="d-flex flex-wrap flex-md-nowrap px-2">
+                            <div class="mega-dropdown-column pt-4 pb-0 py-sm-4 px-3">
+                              <div class="widget widget-links mb-3">
+                                <h6 class="fs-base mb-3">By type</h6>
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">All-in-One</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Copying</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Faxing</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Photo Printing</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Printing Only</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Scanning</a></li>
+                                </ul>
+                              </div>
+                              <div class="widget widget-links">
+                                <h6 class="fs-base mb-3">Scanners</h6>
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Business Card Scanners</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Document Scanners</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Flatbed &amp; Photo Scanners</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Slide &amp; Negative Scanners</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="mega-dropdown-column py-4 px-3">
+                              <div class="widget widget-links">
+                                <h6 class="fs-base">Printers</h6>
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Dot Matrix Printers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Inkjet Printers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Label Printers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Laser Printers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Photo Printers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Wide Format Printers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Plotter Printers</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="mega-dropdown-column d-none d-lg-block py-4 text-center"><a class="d-block mb-2" href="#"><img src="img/shop/departments/13.jpg" alt="Printers &amp; Ink"></a>
+                              <div class="fs-sm mb-3">Starting from <span class='fw-medium'>$54.<small>00</small></span></div><a class="btn btn-primary btn-shadow btn-sm" href="#">See offers<i class="ci-arrow-right fs-xs ms-1"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="dropdown mega-dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="ci-joystick opacity-60 fs-lg mt-n1 me-2"></i>Video Games</a>
+                        <div class="dropdown-menu p-0">
+                          <div class="d-flex flex-wrap flex-md-nowrap px-2">
+                            <div class="mega-dropdown-column pt-4 pb-0 py-sm-4 px-3">
+                              <div class="widget widget-links">
+                                <h6 class="fs-base mb-3">Games &amp; Hardware</h6>
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Video Games</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">PlayStation 4</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">PlayStation 3</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Xbox One</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Xbox 360</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Nintendo Switch</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Wii U</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Wii</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">PC</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Mac</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Nintendo 3DS &amp; 2DS</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Nintendo DS</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="mega-dropdown-column pt-0 pb-4 py-sm-4 px-3">
+                              <div class="widget widget-links">
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">PlayStation Vita</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Sony PSP</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Retro Gaming</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Microconsoles</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Accessories</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Digital Games</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="mega-dropdown-column d-none d-lg-block py-4 text-center"><a class="d-block mb-2" href="#"><img src="img/shop/departments/14.jpg" alt="Video Games"></a>
+                              <div class="fs-sm mb-3">Starting from <span class='fw-medium'>$19.<small>00</small></span></div><a class="btn btn-primary btn-shadow btn-sm" href="#">See offers<i class="ci-arrow-right fs-xs ms-1"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="dropdown mega-dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="ci-speaker opacity-60 fs-lg mt-n1 me-2"></i>Speakers &amp; Home Music</a>
+                        <div class="dropdown-menu p-0">
+                          <div class="d-flex flex-wrap flex-md-nowrap px-2">
+                            <div class="mega-dropdown-column pt-4 pb-0 py-sm-4 px-3">
+                              <div class="widget widget-links">
+                                <h6 class="fs-base mb-3">Speakers</h6>
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Bluetooth Speakers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Bookshelf Speakers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Ceiling &amp; In-Wall Speakers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Center-Channel Speakers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Floorstanding Speakers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Outdoor Speakers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Satellite Speakers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Sound Bars</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Subwoofers</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Surround Sound Systems</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="mega-dropdown-column py-4 px-3">
+                              <div class="widget widget-links">
+                                <h6 class="fs-base mb-3">Home Audio</h6>
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Home Theater</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Wireless &amp; Streaming Audio</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Stereo System Components</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Compact Radios &amp; Stereos</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Home Audio Accessories</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="mega-dropdown-column d-none d-lg-block py-4 text-center"><a class="d-block mb-2" href="#"><img src="img/shop/departments/16.jpg" alt="Speakers &amp; Home Music"></a>
+                              <div class="fs-sm mb-3">Starting from <span class='fw-medium'>$43.<small>00</small></span></div><a class="btn btn-primary btn-shadow btn-sm" href="#">See offers<i class="ci-arrow-right fs-xs ms-1"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="dropdown mega-dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="ci-server opacity-60 fs-lg mt-n1 me-2"></i>HDD/SSD Data Storage</a>
+                        <div class="dropdown-menu p-0">
+                          <div class="d-flex flex-wrap flex-md-nowrap px-2">
+                            <div class="mega-dropdown-column py-4 px-3">
+                              <div class="widget widget-links">
+                                <h6 class="fs-base mb-3">Data Storage</h6>
+                                <ul class="widget-list">
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">External Hard Drives</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">External Solid State Drives</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">External Zip Drives</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Floppy &amp; Tape Drives</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Internal Hard Drives</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Internal Solid State Drives</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">Network Attached Storage</a></li>
+                                  <li class="widget-list-item pb-1"><a class="widget-list-link" href="#">USB Flash Drives</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            <div class="mega-dropdown-column d-none d-lg-block py-4 text-center"><a class="d-block mb-2" href="#"><img src="img/shop/departments/15.jpg" alt="HDD/SSD Data Storage"></a>
+                              <div class="fs-sm mb-3">Starting from <span class='fw-medium'>$21.<small>60</small></span></div><a class="btn btn-primary btn-shadow btn-sm" href="#">See offers<i class="ci-arrow-right fs-xs ms-1"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                <!-- Primary menu-->
+                <ul class="navbar-nav">
+                  <li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Home</a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown position-static mb-0"><a class="dropdown-item py-2 border-bottom" href="home-fashion-store-v1.html"><span class="d-block text-heading">Fashion Store v.1</span><small class="d-block text-muted">Classic shop layout</small></a>
+                        <div class="dropdown-menu h-100 animation-none mt-0 p-3"><a class="d-block" href="home-fashion-store-v1.html" style="width: 250px;"><img src="img/home/preview/th01.jpg" alt="Fashion Store v.1"></a></div>
+                      </li>
+                      <li class="dropdown position-static mb-0"><a class="dropdown-item py-2 border-bottom" href="home-electronics-store.html"><span class="d-block text-heading">Electronics Store</span><small class="d-block text-muted">Slider + Promo banners</small></a>
+                        <div class="dropdown-menu h-100 animation-none mt-0 p-3"><a class="d-block" href="home-electronics-store.html" style="width: 250px;"><img src="img/home/preview/th03.jpg" alt="Electronics Store"></a></div>
+                      </li>
+                      <li class="dropdown position-static mb-0"><a class="dropdown-item py-2 border-bottom" href="home-marketplace.html"><span class="d-block text-heading">Marketplace</span><small class="d-block text-muted">Multi-vendor, digital goods</small></a>
+                        <div class="dropdown-menu h-100 animation-none mt-0 p-3"><a class="d-block" href="home-marketplace.html" style="width: 250px;"><img src="img/home/preview/th04.jpg" alt="Marketplace"></a></div>
+                      </li>
+                      <li class="dropdown position-static mb-0"><a class="dropdown-item py-2 border-bottom" href="home-grocery-store.html"><span class="d-block text-heading">Grocery Store</span><small class="d-block text-muted">Full width + Side menu</small></a>
+                        <div class="dropdown-menu h-100 animation-none mt-0 p-3"><a class="d-block" href="home-grocery-store.html" style="width: 250px;"><img src="img/home/preview/th06.jpg" alt="Grocery Store"></a></div>
+                      </li>
+                      <li class="dropdown position-static mb-0"><a class="dropdown-item py-2 border-bottom" href="home-food-delivery.html"><span class="d-block text-heading">Food Delivery Service</span><small class="d-block text-muted">Food &amp; Beverages delivery</small></a>
+                        <div class="dropdown-menu h-100 animation-none mt-0 p-3"><a class="d-block" href="home-food-delivery.html" style="width: 250px;"><img src="img/home/preview/th07.jpg" alt="Food Delivery Service"></a></div>
+                      </li>
+                      <li class="dropdown position-static mb-0"><a class="dropdown-item py-2 border-bottom" href="home-fashion-store-v2.html"><span class="d-block text-heading">Fashion Store v.2</span><small class="d-block text-muted">Slider + Featured categories</small></a>
+                        <div class="dropdown-menu h-100 animation-none mt-0 p-3"><a class="d-block" href="home-fashion-store-v2.html" style="width: 250px;"><img src="img/home/preview/th02.jpg" alt="Fashion Store v.2"></a></div>
+                      </li>
+                      <li class="dropdown position-static mb-0"><a class="dropdown-item py-2" href="home-single-store.html"><span class="d-block text-heading">Single Product Store</span><small class="d-block text-muted">Single product / mono brand</small></a>
+                        <div class="dropdown-menu h-100 animation-none mt-0 p-3"><a class="d-block" href="home-single-store.html" style="width: 250px;"><img src="img/home/preview/th05.jpg" alt="Single Product / Brand Store"></a></div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Shop</a>
+                    <div class="dropdown-menu p-0">
+                      <div class="d-flex flex-wrap flex-sm-nowrap px-2">
+                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
+                          <div class="widget widget-links mb-4">
+                            <h6 class="fs-base mb-3">Shop layouts</h6>
+                            <ul class="widget-list">
+                              <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-ls.html">Shop Grid - Left Sidebar</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-rs.html">Shop Grid - Right Sidebar</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-ft.html">Shop Grid - Filters on Top</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="shop-list-ls.html">Shop List - Left Sidebar</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="shop-list-rs.html">Shop List - Right Sidebar</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="shop-list-ft.html">Shop List - Filters on Top</a></li>
+                            </ul>
+                          </div>
+                          <div class="widget widget-links">
+                            <h6 class="fs-base mb-3">Marketplace</h6>
+                            <ul class="widget-list">
+                              <li class="widget-list-item"><a class="widget-list-link" href="marketplace-category.html">Category Page</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="marketplace-single.html">Single Item Page</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="marketplace-vendor.html">Vendor Page</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="marketplace-cart.html">Cart</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="marketplace-checkout.html">Checkout</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
+                          <div class="widget widget-links">
+                            <h6 class="fs-base mb-3">Shop pages</h6>
+                            <ul class="widget-list">
+                              <li class="widget-list-item"><a class="widget-list-link" href="shop-categories.html">Shop Categories</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="shop-single-v1.html">Product Page v.1</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="shop-single-v2.html">Product Page v.2</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="shop-cart.html">Cart</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="checkout-details.html">Checkout - Details</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="checkout-shipping.html">Checkout - Shipping</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="checkout-payment.html">Checkout - Payment</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="checkout-review.html">Checkout - Review</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="checkout-complete.html">Checkout - Complete</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="order-tracking.html">Order Tracking</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="comparison.html">Product Comparison</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
+                          <div class="widget widget-links mb-4">
+                            <h6 class="fs-base mb-3">Grocery store</h6>
+                            <ul class="widget-list">
+                              <li class="widget-list-item"><a class="widget-list-link" href="grocery-catalog.html">Product Catalog</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="grocery-single.html">Single Product Page</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="grocery-checkout.html">Checkout</a></li>
+                            </ul>
+                          </div>
+                          <div class="widget widget-links">
+                            <h6 class="fs-base mb-3">Food Delivery</h6>
+                            <ul class="widget-list">
+                              <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-category.html">Category Page</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-single.html">Single Item (Restaurant)</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-cart.html">Cart (Your Order)</a></li>
+                              <li class="widget-list-item"><a class="widget-list-link" href="food-delivery-checkout.html">Checkout (Address &amp; Payment)</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Account</a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Shop User Account</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="account-orders.html">Orders History</a></li>
+                          <li><a class="dropdown-item" href="account-profile.html">Profile Settings</a></li>
+                          <li><a class="dropdown-item" href="account-address.html">Account Addresses</a></li>
+                          <li><a class="dropdown-item" href="account-payment.html">Payment Methods</a></li>
+                          <li><a class="dropdown-item" href="account-wishlist.html">Wishlist</a></li>
+                          <li><a class="dropdown-item" href="account-tickets.html">My Tickets</a></li>
+                          <li><a class="dropdown-item" href="account-single-ticket.html">Single Ticket</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Vendor Dashboard</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="dashboard-settings.html">Settings</a></li>
+                          <li><a class="dropdown-item" href="dashboard-purchases.html">Purchases</a></li>
+                          <li><a class="dropdown-item" href="dashboard-favorites.html">Favorites</a></li>
+                          <li><a class="dropdown-item" href="dashboard-sales.html">Sales</a></li>
+                          <li><a class="dropdown-item" href="dashboard-products.html">Products</a></li>
+                          <li><a class="dropdown-item" href="dashboard-add-new-product.html">Add New Product</a></li>
+                          <li><a class="dropdown-item" href="dashboard-payouts.html">Payouts</a></li>
+                        </ul>
+                      </li>
+                      <li><a class="dropdown-item" href="account-signin.html">Sign In / Sign Up</a></li>
+                      <li><a class="dropdown-item" href="account-password-recovery.html">Password Recovery</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Pages</a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Navbar Variants</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="navbar-1-level-light.html">1 Level Light</a></li>
+                          <li><a class="dropdown-item" href="navbar-1-level-dark.html">1 Level Dark</a></li>
+                          <li><a class="dropdown-item" href="navbar-2-level-light.html">2 Level Light</a></li>
+                          <li><a class="dropdown-item" href="navbar-2-level-dark.html">2 Level Dark</a></li>
+                          <li><a class="dropdown-item" href="navbar-3-level-light.html">3 Level Light</a></li>
+                          <li><a class="dropdown-item" href="navbar-3-level-dark.html">3 Level Dark</a></li>
+                          <li><a class="dropdown-item" href="home-electronics-store.html">Electronics Store</a></li>
+                          <li><a class="dropdown-item" href="home-marketplace.html">Marketplace</a></li>
+                          <li><a class="dropdown-item" href="home-grocery-store.html">Side Menu (Grocery)</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="about.html">About Us</a></li>
+                      <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>
+                      <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Help Center</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="help-topics.html">Help Topics</a></li>
+                          <li><a class="dropdown-item" href="help-single-topic.html">Single Topic</a></li>
+                          <li><a class="dropdown-item" href="help-submit-request.html">Submit a Request</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">404 Not Found</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="404-simple.html">404 - Simple Text</a></li>
+                          <li><a class="dropdown-item" href="404-illustration.html">404 - Illustration</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="sticky-footer.html">Sticky Footer Demo</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Blog</a>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Blog List Layouts</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="blog-list-sidebar.html">List with Sidebar</a></li>
+                          <li><a class="dropdown-item" href="blog-list.html">List no Sidebar</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Blog Grid Layouts</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="blog-grid-sidebar.html">Grid with Sidebar</a></li>
+                          <li><a class="dropdown-item" href="blog-grid.html">Grid no Sidebar</a></li>
+                        </ul>
+                      </li>
+                      <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Single Post Layouts</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="blog-single-sidebar.html">Article with Sidebar</a></li>
+                          <li><a class="dropdown-item" href="blog-single.html">Article no Sidebar</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Docs / Components</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="docs/dev-setup.html">
+                          <div class="d-flex">
+                            <div class="lead text-muted pt-1"><i class="ci-book"></i></div>
+                            <div class="ms-2"><span class="d-block text-heading">Documentation</span><small class="d-block text-muted">Kick-start customization</small></div>
+                          </div></a></li>
+                      <li class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="components/typography.html">
+                          <div class="d-flex">
+                            <div class="lead text-muted pt-1"><i class="ci-server"></i></div>
+                            <div class="ms-2"><span class="d-block text-heading">Components<span class="badge bg-info ms-2">40+</span></span><small class="d-block text-muted">Faster page building</small></div>
+                          </div></a></li>
+                      <li class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="docs/changelog.html">
+                          <div class="d-flex">
+                            <div class="lead text-muted pt-1"><i class="ci-edit"></i></div>
+                            <div class="ms-2"><span class="d-block text-heading">Changelog<span class="badge bg-success ms-2">v2.3.0</span></span><small class="d-block text-muted">Regular updates</small></div>
+                          </div></a></li>
+                      <li class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="mailto:support@createx.studio">
+                          <div class="d-flex">
+                            <div class="lead text-muted pt-1"><i class="ci-help"></i></div>
+                            <div class="ms-2"><span class="d-block text-heading">Support</span><small class="d-block text-muted">support@createx.studio</small></div>
+                          </div></a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Hero (Banners + Slider)-->
+      <section class="bg-secondary py-4 pt-md-5">
+        <div class="container py-xl-2">
+          <div class="row">
+            <!-- Slider     -->
+            <div class="col-xl-9 pt-xl-4 order-xl-2">
+              <div class="tns-carousel">
+                <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 1, &quot;controls&quot;: false, &quot;loop&quot;: false}">
+                  <div>
+                    <div class="row align-items-center">
+                      <div class="col-md-6 order-md-2"><img class="d-block mx-auto" src="img/home/hero-slider/05.jpg" alt="VR Collection"></div>
+                      <div class="col-lg-5 col-md-6 offset-lg-1 order-md-1 pt-4 pb-md-4 text-center text-md-start">
+                        <h2 class="fw-light pb-1 from-bottom">World of music with</h2>
+                        <h1 class="display-4 from-bottom delay-1">Headphones</h1>
+                        <h5 class="fw-light pb-3 from-bottom delay-2">Choose between top brands</h5>
+                        <div class="d-table scale-up delay-4 mx-auto mx-md-0"><a class="btn btn-primary btn-shadow" href="shop-grid-ls.html">Shop Now<i class="ci-arrow-right ms-2 me-n1"></i></a></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="row align-items-center">
+                      <div class="col-md-6 order-md-2"><img class="d-block mx-auto" src="img/home/hero-slider/04.jpg" alt="VR Collection"></div>
+                      <div class="col-lg-5 col-md-6 offset-lg-1 order-md-1 pt-4 pb-md-4 text-center text-md-start">
+                        <h2 class="fw-light pb-1 from-start">Explore the best</h2>
+                        <h1 class="display-4 from-start delay-1">VR Collection</h1>
+                        <h5 class="fw-light pb-3 from-start delay-2">on the market</h5>
+                        <div class="d-table scale-up delay-4 mx-auto mx-md-0"><a class="btn btn-primary btn-shadow" href="shop-grid-ls.html">Shop Now<i class="ci-arrow-right ms-2 me-n1"></i></a></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="row align-items-center">
+                      <div class="col-md-6 order-md-2"><img class="d-block mx-auto" src="img/home/hero-slider/06.jpg" alt="VR Collection"></div>
+                      <div class="col-lg-5 col-md-6 offset-lg-1 order-md-1 pt-4 pb-md-4 text-center text-md-start">
+                        <h2 class="fw-light pb-1 scale-up">Check our huge</h2>
+                        <h1 class="display-4 scale-up delay-1">Smartphones</h1>
+                        <h5 class="fw-light pb-3 scale-up delay-2">&amp; Accessories collection</h5>
+                        <div class="d-table scale-up delay-4 mx-auto mx-md-0"><a class="btn btn-primary btn-shadow" href="shop-grid-ls.html">Shop Now<i class="ci-arrow-right ms-2 me-n1"></i></a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Banner group-->
+            <div class="col-xl-3 order-xl-1 pt-4 mt-3 mt-xl-0 pt-xl-0">
+              <div class="table-responsive" data-simplebar>
+                <div class="d-flex d-xl-block"><a class="d-flex align-items-center bg-faded-info rounded-3 pt-2 ps-2 mb-4 me-4 me-xl-0" href="#" style="min-width: 16rem;"><img src="img/home/banners/banner-sm01.png" width="125" alt="Banner">
+                    <div class="py-4 px-2">
+                      <h5 class="mb-2"><span class="fw-light">Next Gen</span><br>Video <span class="fw-light">with</span><br>360 Cam</h5>
+                      <div class="text-info fs-sm">Shop now<i class="ci-arrow-right fs-xs ms-1"></i></div>
+                    </div></a><a class="d-flex align-items-center bg-faded-warning rounded-3 pt-2 ps-2 mb-4 me-4 me-xl-0" href="#" style="min-width: 16rem;"><img src="img/home/banners/banner-sm02.png" width="125" alt="Banner">
+                    <div class="py-4 px-2">
+                      <h5 class="mb-2"><span class="fw-light">Top Rated</span><br>Gadgets<br><span class="fw-light">are on </span>Sale</h5>
+                      <div class="text-warning fs-sm">Shop now<i class="ci-arrow-right fs-xs ms-1"></i></div>
+                    </div></a><a class="d-flex align-items-center bg-faded-success rounded-3 pt-2 ps-2 mb-4" href="#" style="min-width: 16rem;"><img src="img/home/banners/banner-sm03.png" width="125" alt="Banner">
+                    <div class="py-4 px-2">
+                      <h5 class="mb-2"><span class="fw-light">Catch Big</span><br>Deals <span class="fw-light">on</span><br>Earbuds</h5>
+                      <div class="text-success fs-sm">Shop now<i class="ci-arrow-right fs-xs ms-1"></i></div>
+                    </div></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Products grid (Trending products)-->
+      <section class="container pt-5">
+        <!-- Heading-->
+        <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-4 mb-4">
+          <h2 class="h3 mb-0 pt-3 me-2">Trending products</h2>
+          <div class="pt-3"><a class="btn btn-outline-accent btn-sm" href="shop-grid-ls.html">More products<i class="ci-arrow-right ms-1 me-n1"></i></a></div>
+        </div>
+        <!-- Grid-->
+        <div class="row pt-2 mx-n2">
+          <!-- Product-->
+          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
+            <div class="card product-card">
+              <div class="product-card-actions d-flex align-items-center"><a class="btn-action nav-link-style me-2" href="#"><i class="ci-compare me-1"></i>Compare</a>
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button>
+              </div><a class="card-img-top d-block overflow-hidden" href="shop-single-v2.html"><img src="img/shop/catalog/58.jpg" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Headphones</a>
+                <h3 class="product-title fs-sm"><a href="shop-single-v2.html">Wireless Bluetooth Headphones</a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price"><span class="text-accent">$198.<small>00</small></span></div>
+                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body card-body-hidden">
+                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view-electro" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
+              </div>
+            </div>
+            <hr class="d-sm-none">
+          </div>
+          <!-- Product-->
+          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
+            <div class="card product-card"><span class="badge bg-danger badge-shadow">Sale</span>
+              <div class="product-card-actions d-flex align-items-center"><a class="btn-action nav-link-style me-2" href="#"><i class="ci-compare me-1"></i>Compare</a>
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button>
+              </div><a class="card-img-top d-block overflow-hidden" href="shop-single-v2.html"><img src="img/shop/catalog/59.jpg" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Computers</a>
+                <h3 class="product-title fs-sm"><a href="shop-single-v2.html">AirPort Extreme Base Station</a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price"><span class="text-accent">$98.<small>50</small></span>
+                    <del class="fs-sm text-muted">$149.<small>99</small></del>
+                  </div>
+                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body card-body-hidden">
+                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view-electro" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
+              </div>
+            </div>
+            <hr class="d-sm-none">
+          </div>
+          <!-- Product-->
+          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
+            <div class="card product-card">
+              <div class="product-card-actions d-flex align-items-center"><a class="btn-action nav-link-style me-2" href="#"><i class="ci-compare me-1"></i>Compare</a>
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button>
+              </div><a class="card-img-top d-block overflow-hidden" href="shop-single-v2.html"><img src="img/shop/catalog/60.jpg" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">TV, Video &amp; Audio</a>
+                <h3 class="product-title fs-sm"><a href="shop-single-v2.html">Smart TV LED 49’’ Ultra HD</a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price"><span class="text-muted fs-sm">Out of stock</span></div>
+                </div>
+              </div>
+              <div class="card-body card-body-hidden"><a class="btn btn-secondary btn-sm d-block w-100 mb-2" href="shop-single-v2.html">View details</a>
+                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view-electro" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
+              </div>
+            </div>
+            <hr class="d-sm-none">
+          </div>
+          <!-- Product-->
+          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
+            <div class="card product-card">
+              <div class="product-card-actions d-flex align-items-center"><a class="btn-action nav-link-style me-2" href="#"><i class="ci-compare me-1"></i>Compare</a>
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button>
+              </div><a class="card-img-top d-block overflow-hidden" href="shop-single-v2.html"><img src="img/shop/catalog/61.jpg" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Smart Home</a>
+                <h3 class="product-title fs-sm"><a href="shop-single-v2.html">Smart Speaker with Voice Control</a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price"><span class="text-accent">$49.<small>99</small></span></div>
+                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body card-body-hidden">
+                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view-electro" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
+              </div>
+            </div>
+            <hr class="d-sm-none">
+          </div>
+          <!-- Product-->
+          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
+            <div class="card product-card">
+              <div class="product-card-actions d-flex align-items-center"><a class="btn-action nav-link-style me-2" href="#"><i class="ci-compare me-1"></i>Compare</a>
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button>
+              </div><a class="card-img-top d-block overflow-hidden" href="shop-single-v2.html"><img src="img/shop/catalog/62.jpg" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Wearable Electronics</a>
+                <h3 class="product-title fs-sm"><a href="shop-single-v2.html">Fitness GPS Smart Watch</a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price"><span class="text-accent">$317.<small>40</small></span></div>
+                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i><i class="star-rating-icon ci-star"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body card-body-hidden">
+                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view-electro" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
+              </div>
+            </div>
+            <hr class="d-sm-none">
+          </div>
+          <!-- Product-->
+          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
+            <div class="card product-card">
+              <div class="product-card-actions d-flex align-items-center"><a class="btn-action nav-link-style me-2" href="#"><i class="ci-compare me-1"></i>Compare</a>
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button>
+              </div><a class="card-img-top d-block overflow-hidden" href="shop-single-v2.html"><img src="img/shop/catalog/63.jpg" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Smartphones</a>
+                <h3 class="product-title fs-sm"><a href="shop-single-v2.html">Popular Smartphone 128GB</a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price"><span class="text-accent">$965.<small>00</small></span></div>
+                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body card-body-hidden">
+                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view-electro" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
+              </div>
+            </div>
+            <hr class="d-sm-none">
+          </div>
+          <!-- Product-->
+          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
+            <div class="card product-card"><span class="badge bg-info badge-shadow">New</span>
+              <div class="product-card-actions d-flex align-items-center"><a class="btn-action nav-link-style me-2" href="#"><i class="ci-compare me-1"></i>Compare</a>
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button>
+              </div><a class="card-img-top d-block overflow-hidden" href="shop-single-v2.html"><img src="img/shop/catalog/64.jpg" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Wearable Electronics</a>
+                <h3 class="product-title fs-sm"><a href="shop-single-v2.html">Smart Watch Series 5, Aluminium</a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price"><span class="text-accent">$349.<small>99</small></span></div>
+                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body card-body-hidden">
+                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view-electro" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
+              </div>
+            </div>
+            <hr class="d-sm-none">
+          </div>
+          <!-- Product-->
+          <div class="col-lg-3 col-md-4 col-sm-6 px-2">
+            <div class="card product-card">
+              <div class="product-card-actions d-flex align-items-center"><a class="btn-action nav-link-style me-2" href="#"><i class="ci-compare me-1"></i>Compare</a>
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button>
+              </div><a class="card-img-top d-block overflow-hidden" href="shop-single-v2.html"><img src="img/shop/catalog/65.jpg" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Computers</a>
+                <h3 class="product-title fs-sm"><a href="shop-single-v2.html">Convertible 2-in-1 HD Laptop</a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price"><span class="text-accent">$412.<small>00</small></span></div>
+                </div>
+              </div>
+              <div class="card-body card-body-hidden">
+                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view-electro" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Promo banner-->
+      <section class="container mt-4 mb-grid-gutter">
+        <div class="bg-faded-info rounded-3 py-4">
+          <div class="row align-items-center">
+            <div class="col-md-5">
+              <div class="px-4 pe-sm-0 ps-sm-5"><span class="badge bg-danger">Limited Offer</span>
+                <h3 class="mt-4 mb-1 text-body fw-light">All new</h3>
+                <h2 class="mb-1">Last Gen iPad Pro</h2>
+                <p class="h5 text-body fw-light">at discounted price. Hurry up!</p>
+                <div class="countdown py-2 h4" data-countdown="07/01/2021 07:00:00 PM">
+                  <div class="countdown-days"><span class="countdown-value"></span><span class="countdown-label text-muted">d</span></div>
+                  <div class="countdown-hours"><span class="countdown-value"></span><span class="countdown-label text-muted">h</span></div>
+                  <div class="countdown-minutes"><span class="countdown-value"></span><span class="countdown-label text-muted">m</span></div>
+                  <div class="countdown-seconds"><span class="countdown-value"></span><span class="countdown-label text-muted">s</span></div>
+                </div><a class="btn btn-accent" href="#">View offers<i class="ci-arrow-right fs-ms ms-1"></i></a>
+              </div>
+            </div>
+            <div class="col-md-7"><img src="img/home/banners/offer.jpg" alt="iPad Pro Offer"></div>
+          </div>
+        </div>
+      </section>
+      <!-- Brands carousel-->
+      <section class="container mb-5">
+        <div class="tns-carousel border-end">
+          <div class="tns-carousel-inner" data-carousel-options="{ &quot;nav&quot;: false, &quot;controls&quot;: false, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 4000, &quot;loop&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;360&quot;:{&quot;items&quot;:2},&quot;600&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
+            <div><a class="d-block bg-white border py-4 py-sm-5 px-2" href="#" style="margin-right: -.0625rem;"><img class="d-block mx-auto" src="img/shop/brands/13.png" style="width: 165px;" alt="Brand"></a></div>
+            <div><a class="d-block bg-white border py-4 py-sm-5 px-2" href="#" style="margin-right: -.0625rem;"><img class="d-block mx-auto" src="img/shop/brands/14.png" style="width: 165px;" alt="Brand"></a></div>
+            <div><a class="d-block bg-white border py-4 py-sm-5 px-2" href="#" style="margin-right: -.0625rem;"><img class="d-block mx-auto" src="img/shop/brands/17.png" style="width: 165px;" alt="Brand"></a></div>
+            <div><a class="d-block bg-white border py-4 py-sm-5 px-2" href="#" style="margin-right: -.0625rem;"><img class="d-block mx-auto" src="img/shop/brands/16.png" style="width: 165px;" alt="Brand"></a></div>
+            <div><a class="d-block bg-white border py-4 py-sm-5 px-2" href="#" style="margin-right: -.0625rem;"><img class="d-block mx-auto" src="img/shop/brands/15.png" style="width: 165px;" alt="Brand"></a></div>
+            <div><a class="d-block bg-white border py-4 py-sm-5 px-2" href="#" style="margin-right: -.0625rem;"><img class="d-block mx-auto" src="img/shop/brands/18.png" style="width: 165px;" alt="Brand"></a></div>
+            <div><a class="d-block bg-white border py-4 py-sm-5 px-2" href="#" style="margin-right: -.0625rem;"><img class="d-block mx-auto" src="img/shop/brands/19.png" style="width: 165px;" alt="Brand"></a></div>
+            <div><a class="d-block bg-white border py-4 py-sm-5 px-2" href="#" style="margin-right: -.0625rem;"><img class="d-block mx-auto" src="img/shop/brands/20.png" style="width: 165px;" alt="Brand"></a></div>
+          </div>
+        </div>
+      </section>
+      <!-- Product widgets-->
+      <section class="container pb-4 pb-md-5">
+        <div class="row">
+          <!-- Bestsellers-->
+          <div class="col-md-4 col-sm-6 mb-2 py-3">
+            <div class="widget">
+              <h3 class="widget-title">Bestsellers</h3>
+              <div class="d-flex align-items-center pb-2 border-bottom"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="img/shop/cart/widget/05.jpg" width="64" alt="Product"></a>
+                <div class="ps-2">
+                  <h6 class="widget-product-title"><a href="shop-single-v2.html">Wireless Bluetooth Headphones</a></h6>
+                  <div class="widget-product-meta"><span class="text-accent">$259.<small>00</small></span></div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center py-2 border-bottom"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="img/shop/cart/widget/06.jpg" width="64" alt="Product"></a>
+                <div class="ps-2">
+                  <h6 class="widget-product-title"><a href="shop-single-v2.html">Cloud Security Camera</a></h6>
+                  <div class="widget-product-meta"><span class="text-accent">$122.<small>00</small></span></div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center py-2 border-bottom"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="img/shop/cart/widget/07.jpg" width="64" alt="Product"></a>
+                <div class="ps-2">
+                  <h6 class="widget-product-title"><a href="shop-single-v2.html">Android Smartphone S10</a></h6>
+                  <div class="widget-product-meta"><span class="text-accent">$799.<small>00</small></span></div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center py-2"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="img/shop/cart/widget/08.jpg" width="64" alt="Product"></a>
+                <div class="ps-2">
+                  <h6 class="widget-product-title"><a href="shop-single-v2.html">Android Smart TV Box</a></h6>
+                  <div class="widget-product-meta"><span class="text-accent">$67.<small>00</small></span>
+                    <del class="text-muted fs-xs">$90.<small>43</small></del>
+                  </div>
+                </div>
+              </div>
+              <p class="mb-0">...</p><a class="fs-sm" href="shop-grid-ls.html">View more<i class="ci-arrow-right fs-xs ms-1"></i></a>
+            </div>
+          </div>
+          <!-- New arrivals-->
+          <div class="col-md-4 col-sm-6 mb-2 py-3">
+            <div class="widget">
+              <h3 class="widget-title">New arrivals</h3>
+              <div class="d-flex align-items-center pb-2 border-bottom"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="img/shop/widget/06.jpg" width="64" alt="Product"></a>
+                <div class="ps-2">
+                  <h6 class="widget-product-title"><a href="shop-single-v2.html">Monoblock Desktop PC</a></h6>
+                  <div class="widget-product-meta"><span class="text-accent">$1,949.<small>00</small></span></div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center py-2 border-bottom"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="img/shop/widget/07.jpg" width="64" alt="Product"></a>
+                <div class="ps-2">
+                  <h6 class="widget-product-title"><a href="shop-single-v2.html">Laserjet Printer All-in-One</a></h6>
+                  <div class="widget-product-meta"><span class="text-accent">$428.<small>60</small></span></div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center py-2 border-bottom"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="img/shop/widget/08.jpg" width="64" alt="Product"></a>
+                <div class="ps-2">
+                  <h6 class="widget-product-title"><a href="shop-single-v2.html">Console Controller Charger</a></h6>
+                  <div class="widget-product-meta"><span class="text-accent">$14.<small>97</small></span>
+                    <del class="text-muted fs-xs">$16.<small>47</small></del>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center py-2"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="img/shop/widget/09.jpg" width="64" alt="Product"></a>
+                <div class="ps-2">
+                  <h6 class="widget-product-title"><a href="shop-single-v2.html">Smart Watch Series 5, Aluminium</a></h6>
+                  <div class="widget-product-meta"><span class="text-accent">$349.<small>99</small></span></div>
+                </div>
+              </div>
+              <p class="mb-0">...</p><a class="fs-sm" href="shop-grid-ls.html">View more<i class="ci-arrow-right fs-xs ms-1"></i></a>
+            </div>
+          </div>
+          <!-- Top rated-->
+          <div class="col-md-4 col-sm-6 mb-2 py-3">
+            <div class="widget">
+              <h3 class="widget-title">Top rated</h3>
+              <div class="d-flex align-items-center pb-2 border-bottom"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="img/shop/widget/10.jpg" width="64" alt="Product"></a>
+                <div class="ps-2">
+                  <h6 class="widget-product-title"><a href="shop-single-v2.html">Android Smartphone S9</a></h6>
+                  <div class="widget-product-meta"><span class="text-accent">$749.<small>99</small></span>
+                    <del class="text-muted fs-xs">$859.<small>99</small></del>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center py-2 border-bottom"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="img/shop/widget/11.jpg" width="64" alt="Product"></a>
+                <div class="ps-2">
+                  <h6 class="widget-product-title"><a href="shop-single-v2.html">Wireless Bluetooth Headphones</a></h6>
+                  <div class="widget-product-meta"><span class="text-accent">$428.<small>60</small></span></div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center py-2 border-bottom"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="img/shop/widget/12.jpg" width="64" alt="Product"></a>
+                <div class="ps-2">
+                  <h6 class="widget-product-title"><a href="shop-single-v2.html">360 Degrees Camera</a></h6>
+                  <div class="widget-product-meta"><span class="text-accent">$98.<small>75</small></span></div>
+                </div>
+              </div>
+              <div class="d-flex align-items-center py-2"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="img/shop/widget/13.jpg" width="64" alt="Product"></a>
+                <div class="ps-2">
+                  <h6 class="widget-product-title"><a href="shop-single-v2.html">Digital Camera 40MP</a></h6>
+                  <div class="widget-product-meta"><span class="text-accent">$210.<small>00</small></span>
+                    <del class="text-muted fs-xs">$249.<small>00</small></del>
+                  </div>
+                </div>
+              </div>
+              <p class="mb-0">...</p><a class="fs-sm" href="shop-grid-ls.html">View more<i class="ci-arrow-right fs-xs ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- YouTube feed-->
+      <section class="container pb-5 mb-md-3">
+        <div class="border rounded-3 p-3">
+          <div class="row">
+            <div class="col-md-4 mb-3 mb-md-0">
+              <div class="bg-secondary p-5 text-center"><img class="d-block mb-4 mx-auto" src="img/home/yt-logo.png" width="120" alt="YouTube">
+                <div class="d-flex justify-content-center align-items-center mb-4"><img class="me-2" src="img/home/yt-subscribers.png" width="126" alt="YouTube Subscribers"><span class="fs-sm">250k+</span></div><a class="btn btn-primary border-0 btn-sm mb-3" href="#" style="background-color: #ff0000;"><i class="ci-add-user me-2"></i>Subscribe*</a>
+                <p class="fs-sm mb-0">*View latest gadgets reviews available for purchase in our store.</p>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="d-flex flex-wrap justify-content-between align-items-center pt-3 pb-2">
+                <h2 class="h4 mb-3">Latest videos from Cartzilla channel</h2><a class="btn btn-outline-accent btn-sm mb-3" href="#">More videos<i class="ci-arrow-right fs-xs ms-1 me-n1"></i></a>
+              </div>
+              <div class="row g-0">
+                <div class="col-lg-4 col-6 mb-3"><a class="d-block text-decoration-0 px-2" href="https://www.youtube.com/embed/vS93u75NnPo" data-bs-toggle="video">
+                    <div class="position-relative mb-2"><span class="badge bg-dark position-absolute bottom-0 end-0 mb-2 me-2">6:16</span><img class="w-100" src="img/home/video/cover01.jpg" alt="Video cover"></div>
+                    <h6 class="fs-sm pt-1">5 New Cool Gadgets You Must See on Cartzilla - Cheap Budget</h6></a></div>
+                <div class="col-lg-4 col-6 mb-3"><a class="d-block text-decoration-0 px-2" href="https://www.youtube.com/embed/B6LaYgGogf0" data-bs-toggle="video">
+                    <div class="position-relative mb-2"><span class="badge bg-dark position-absolute bottom-0 end-0 mb-2 me-2">7:27</span><img class="w-100" src="img/home/video/cover02.jpg" alt="Video cover"></div>
+                    <h6 class="fs-sm pt-1">5 Super Useful Gadgets on Cartzilla You Must Have in 2020</h6></a></div>
+                <div class="col-lg-4 col-6 mb-3"><a class="d-block text-decoration-0 px-2" href="https://www.youtube.com/embed/kB-ROfRS9V4" data-bs-toggle="video">
+                    <div class="position-relative mb-2"><span class="badge bg-dark position-absolute bottom-0 end-0 mb-2 me-2">6:20</span><img class="w-100" src="img/home/video/cover03.jpg" alt="Video cover"></div>
+                    <h6 class="fs-sm pt-1">Top 5 New Amazing Gadgets on Cartzilla You Must See</h6></a></div>
+                <div class="col-lg-4 col-6 mb-3 d-lg-none"><a class="d-block text-decoration-0 px-2" href="https://www.youtube.com/embed/sJK67XXE_Rg" data-bs-toggle="video">
+                    <div class="position-relative mb-2"><span class="badge bg-dark position-absolute bottom-0 end-0 mb-2 me-2">6:11</span><img class="w-100" src="img/home/video/cover04.jpg" alt="Video cover"></div>
+                    <h6 class="fs-sm fw-bold pt-1">5 Amazing Construction Inventions and Working Tools Available...</h6></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Blog + Instagram info cards-->
+      <section class="container-fluid px-0">
+        <div class="row g-0">
+          <div class="col-md-6"><a class="card border-0 rounded-0 text-decoration-none py-md-4 bg-faded-primary" href="blog-list-sidebar.html">
+              <div class="card-body text-center"><i class="ci-edit h3 mt-2 mb-4 text-primary"></i>
+                <h3 class="h5 mb-1">Read the blog</h3>
+                <p class="text-muted fs-sm">Latest store, fashion news and trends</p>
+              </div></a></div>
+          <div class="col-md-6"><a class="card border-0 rounded-0 text-decoration-none py-md-4 bg-faded-accent" href="#">
+              <div class="card-body text-center"><i class="ci-instagram h3 mt-2 mb-4 text-accent"></i>
+                <h3 class="h5 mb-1">Follow on Instagram</h3>
+                <p class="text-muted fs-sm">#ShopWithCartzilla</p>
+              </div></a></div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer-->
+    <footer class="footer bg-dark pt-5">
+      <div class="container">
+        <div class="row pb-2">
+          <div class="col-md-4 col-sm-6">
+            <div class="widget widget-links widget-light pb-2 mb-4">
+              <h3 class="widget-title text-light">Shop departments</h3>
+              <ul class="widget-list">
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Sneakers &amp; Athletic</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Athletic Apparel</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Sandals</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Jeans</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Shirts &amp; Tops</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Shorts</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">T-Shirts</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Swimwear</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Clogs &amp; Mules</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Bags &amp; Wallets</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Accessories</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Sunglasses &amp; Eyewear</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Watches</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="widget widget-links widget-light pb-2 mb-4">
+              <h3 class="widget-title text-light">Account &amp; shipping info</h3>
+              <ul class="widget-list">
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Your account</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Shipping rates &amp; policies</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Refunds &amp; replacements</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Order tracking</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Delivery info</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Taxes &amp; fees</a></li>
+              </ul>
+            </div>
+            <div class="widget widget-links widget-light pb-2 mb-4">
+              <h3 class="widget-title text-light">About us</h3>
+              <ul class="widget-list">
+                <li class="widget-list-item"><a class="widget-list-link" href="#">About company</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Our team</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">Careers</a></li>
+                <li class="widget-list-item"><a class="widget-list-link" href="#">News</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="widget pb-2 mb-4">
+              <h3 class="widget-title text-light pb-1">Stay informed</h3>
+              <form class="subscription-form validate" action="https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <div class="input-group flex-nowrap"><i class="ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
+                  <input class="form-control rounded-start" type="email" name="EMAIL" placeholder="Your email" required>
+                  <button class="btn btn-primary" type="submit" name="subscribe">Subscribe*</button>
+                </div>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                  <input class="subscription-form-antispam" type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
+                </div>
+                <div class="form-text text-light opacity-50">*Subscribe to our newsletter to receive early discount offers, updates and new products info.</div>
+                <div class="subscription-status"></div>
+              </form>
+            </div>
+            <div class="widget pb-2 mb-4">
+              <h3 class="widget-title text-light pb-1">Download our app</h3>
+              <div class="d-flex flex-wrap">
+                <div class="me-2 mb-2"><a class="btn-market btn-apple" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">App Store</span></a></div>
+                <div class="mb-2"><a class="btn-market btn-google" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">Google Play</span></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-5 bg-darker">
+        <div class="container">
+          <div class="row pb-3">
+            <div class="col-md-3 col-sm-6 mb-4">
+              <div class="d-flex"><i class="ci-rocket text-primary" style="font-size: 2.25rem;"></i>
+                <div class="ps-3">
+                  <h6 class="fs-base text-light mb-1">Fast and free delivery</h6>
+                  <p class="mb-0 fs-ms text-light opacity-50">Free delivery for all orders over $200</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+              <div class="d-flex"><i class="ci-currency-exchange text-primary" style="font-size: 2.25rem;"></i>
+                <div class="ps-3">
+                  <h6 class="fs-base text-light mb-1">Money back guarantee</h6>
+                  <p class="mb-0 fs-ms text-light opacity-50">We return money within 30 days</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+              <div class="d-flex"><i class="ci-support text-primary" style="font-size: 2.25rem;"></i>
+                <div class="ps-3">
+                  <h6 class="fs-base text-light mb-1">24/7 customer support</h6>
+                  <p class="mb-0 fs-ms text-light opacity-50">Friendly 24/7 customer support</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+              <div class="d-flex"><i class="ci-card text-primary" style="font-size: 2.25rem;"></i>
+                <div class="ps-3">
+                  <h6 class="fs-base text-light mb-1">Secure online payment</h6>
+                  <p class="mb-0 fs-ms text-light opacity-50">We possess SSL / Secure сertificate</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="hr-light mb-5">
+          <div class="row pb-2">
+            <div class="col-md-6 text-center text-md-start mb-4">
+              <div class="text-nowrap mb-4"><a class="d-inline-block align-middle mt-n1 me-3" href="#"><img class="d-block" src="img/footer-logo-light.png" width="117" alt="Cartzilla"></a>
+                <div class="btn-group dropdown disable-autohide">
+                  <button class="btn btn-outline-light border-light btn-sm dropdown-toggle px-2" type="button" data-bs-toggle="dropdown"><img class="me-2" src="img/flags/en.png" width="20" alt="English">Eng / $</button>
+                  <ul class="dropdown-menu my-1">
+                    <li class="dropdown-item">
+                      <select class="form-select form-select-sm">
+                        <option value="usd">$ USD</option>
+                        <option value="eur">€ EUR</option>
+                        <option value="ukp">£ UKP</option>
+                        <option value="jpy">¥ JPY</option>
+                      </select>
+                    </li>
+                    <li><a class="dropdown-item pb-1" href="#"><img class="me-2" src="img/flags/fr.png" width="20" alt="Français">Français</a></li>
+                    <li><a class="dropdown-item pb-1" href="#"><img class="me-2" src="img/flags/de.png" width="20" alt="Deutsch">Deutsch</a></li>
+                    <li><a class="dropdown-item" href="#"><img class="me-2" src="img/flags/it.png" width="20" alt="Italiano">Italiano</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="widget widget-links widget-light">
+                <ul class="widget-list d-flex flex-wrap justify-content-center justify-content-md-start">
+                  <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Outlets</a></li>
+                  <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Affiliates</a></li>
+                  <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Support</a></li>
+                  <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Privacy</a></li>
+                  <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Terms of use</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6 text-center text-md-end mb-4">
+              <div class="mb-3"><a class="btn-social bs-light bs-twitter ms-2 mb-2" href="#"><i class="ci-twitter"></i></a><a class="btn-social bs-light bs-facebook ms-2 mb-2" href="#"><i class="ci-facebook"></i></a><a class="btn-social bs-light bs-instagram ms-2 mb-2" href="#"><i class="ci-instagram"></i></a><a class="btn-social bs-light bs-pinterest ms-2 mb-2" href="#"><i class="ci-pinterest"></i></a><a class="btn-social bs-light bs-youtube ms-2 mb-2" href="#"><i class="ci-youtube"></i></a></div><img class="d-inline-block" src="img/cards-alt.png" width="187" alt="Payment methods">
+            </div>
+          </div>
+          <div class="pb-4 fs-xs text-light opacity-50 text-center text-md-start">© All rights reserved. Made by <a class="text-light" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></div>
+        </div>
+      </div>
+    </footer>
+    <!-- Toolbar for handheld devices (Default)-->
+    <div class="handheld-toolbar">
+      <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="account-wishlist.html"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">Wishlist</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" href="shop-cart.html"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">4</span></span><span class="handheld-toolbar-label">$265.00</span></a></div>
+    </div>
+    <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/simplebar.min.js"></script>
+    <script src="js/tiny-slider.js"></script>
+    <script src="js/smooth-scroll.polyfills.min.js"></script>
+    <script src="js/Drift.min.js"></script>
+    <script src="js/lightgallery.min.js"></script>
+    <script src="js/lg-video.min.js"></script>
+    <!-- Main theme script-->
+    <script src="js/theme.min.js"></script>
+  </body>
+
+<!-- Mirrored from cartzilla.createx.studio/home-electronics-store.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Oct 2021 10:30:42 GMT -->
 </html>
