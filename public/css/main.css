@@ -1,0 +1,10 @@
+.logo-pic{
+    max-width: 60%;
+}
+.needs-validation .btn-primary{
+    background-color: #c382fa !important;
+    border-color: #c382fa !important;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link{
+    color: #8150fa !important;
+}
