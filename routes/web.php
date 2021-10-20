@@ -16,3 +16,27 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/products', function () {
+    return view('products');
+});
+
+Route::get('/product', function () {
+    return view('product');
+});
+
+Route::get('/cart', function () {
+    return view('cart');
+});
+
+Route::get('/checkout-details', function () {
+    return view('checkout-details');
+});
+
+Route::get('/checkout-payment', function () {
+    return view('checkout-payment');
+});
+
+Route::get('/checkout-complete', function () {
+    return view('checkout-complete');
+});

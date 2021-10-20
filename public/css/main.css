@@ -8,3 +8,28 @@
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link{
     color: #8150fa !important;
 }
+.me-xl-0{
+    background-color: #f6f9fc !important;
+}
+.align-items-center{
+    justify-content: center;
+}
+.order-md-2{
+    width: 100% !important;
+}
+.pt-5 .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.social{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.btn-social{
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 8px !important;
+}
