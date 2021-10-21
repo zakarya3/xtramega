@@ -40,3 +40,11 @@ Route::get('/checkout-payment', function () {
 Route::get('/checkout-complete', function () {
     return view('checkout-complete');
 });
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/brand', function () {
+    return view('brand');
+});
