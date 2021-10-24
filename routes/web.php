@@ -48,3 +48,6 @@ Route::get('/contact', function () {
 Route::get('/brand', function () {
     return view('brand');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
