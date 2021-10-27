@@ -23,6 +23,6 @@ class CategoryController extends Controller
 
         $category->category_name = $request->input('name');
         $category->save();
-        return redirect('/dashboard')->with('status'," Category Added Successfully");
+        return redirect('/categories')->with('status'," Category Added Successfully");
     }
 }
