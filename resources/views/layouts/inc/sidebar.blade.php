@@ -33,20 +33,20 @@
             <span class="nav-link-text ms-1">Ajouter une categorie</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-white " href="{{ 'types' }}">
+                <li class="nav-item">
+          <a class="nav-link text-white  {{ Request::is('products') ? 'active':'' }} " href="{{ url('products-item') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">category</i>
+              <i class="material-icons opacity-10">article</i>
             </div>
-            <span class="nav-link-text ms-1">Types</span>
+            <span class="nav-link-text ms-1">Products</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="add-type">
+          <a class="nav-link text-white  {{ Request::is('add-product') ? 'active':'' }} " href="{{ url('add-product') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">add</i>
             </div>
-            <span class="nav-link-text ms-1">Ajouter un type</span>
+            <span class="nav-link-text ms-1">Ajouter une product</span>
           </a>
         </li>
         <li class="nav-item">
