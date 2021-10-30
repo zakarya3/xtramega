@@ -38,6 +38,12 @@
 <script src="{{ asset('admin/js/perfect-scrollbar.min.js') }}"></script>
 <script src="{{ asset('admin/js/smooth-scrollbar.min.js') }}"></script>
 <script src="{{ asset('admin/js/chartjs.min.js') }}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@if (session('status'))
+    <script>
+        swal("{{ session('status') }}");
+    </script>
+@endif
 @yield('scripts')
 </body>
 </html>
