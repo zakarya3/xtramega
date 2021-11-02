@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('cate_id');
             $table->string('product_name');
             $table->string('product_fullname');
-            $table->string('product_description');
+            $table->text('product_description');
             $table->string('product_brand');
             $table->string('image');
             $table->string('qty');
