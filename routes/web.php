@@ -66,8 +66,11 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::put('update-category/{id}', [CategoryController::class,'update']);
     Route::get('delete-category/{id}', [CategoryController::class,'destroy']);
 
+
     Route::get('products-item', [ProductController::class,'index']);
     Route::get('add-product', [ProductController::class,'add']);
     Route::post('insert-product', [ProductController::class,'insert']);
-
+    Route::get('edit-prd/{id}', [ProductController::class,'edit']);
+    Route::get('delete-prd/{id}', [ProductController::class,'destroy']);
+    Route::put('update-product/{id}',[ProductController::class,'update'] );
 }) ;

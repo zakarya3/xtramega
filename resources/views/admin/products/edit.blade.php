@@ -3,59 +3,61 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h4>Add Product</h4>
+            <h4>Update Product</h4>
         </div>
       <div class="card-body">
-        <form action="{{ url('insert-product') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ url('update-product/'.$products->id) }}" method="post" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <label for="">Categories</label>
-                    <select class="form-select" name="cate_id">
-                        <option value="">Select a Category</option>
-                        @foreach ($category as $item)
-                        <option value="{{ $item->id }}">{{ $item->category_name }}</option>
-                        @endforeach
+                    <select class="form-select">
+                        <option value="">{{ $products->category->category_name }}</option>
                     </select>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Nom de produit</label>
-                    <input type="text" class="form-control" name="name" id="">
+                    <input type="text" class="form-control" value="{{ $products->product_fullname }}" name="name" id="">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Titre de produit</label>
-                    <input type="text" class="form-control" name="title" id="">
+                    <input type="text" class="form-control" value="{{ $products->product_name }}" name="title" id="">
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="">Descriprion</label>
-                    <textarea name="description" rows="10" class="form-control"></textarea>
+                    <textarea name="description" rows="10" class="form-control">{{ $products->product_description }}</textarea>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Quantité</label>
-                    <input type="number" class="form-control" name="qty" id="">
+                    <input type="number" class="form-control" value="{{ $products->qty }}" name="qty" id="">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Tax</label>
-                    <input type="number" class="form-control" name="tax" id="">
+                    <input type="number" class="form-control" value="{{ $products->tax }}" name="tax" id="">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Prix</label>
-                    <input type="number" class="form-control" name="price" id="">
+                    <input type="number" class="form-control" value="{{ $products->tax }}" name="price" id="">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Réference</label>
-                    <input type="text" class="form-control" name="ref" id="">
+                    <input type="text" class="form-control" value="{{ $products->product_reference }}" name="ref" id="">
                 </div>
+                @if ($products->image)
+                    <img src="{{ asset('assets/uploads/products/images/'.$products->image) }}" alt="">
+                @endif
                 <div class="col-md-12">
-                    <label for="">Image du produit</label>
                     <input type="file" class="form-control" name="image" id="">
                 </div>
+                @if ($products->product_brand)
+                    <img src="{{ asset('assets/uploads/products/brands/'.$products->product_brand) }}" alt="">
+                @endif
                 <div class="col-md-12">
-                    <label for="">La marque du produit</label>
                     <input type="file" class="form-control" name="brand" id="">
                 </div>
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                    <button type="submit" class="btn btn-primary">Modifier</button>
                 </div>
             </div>
         </form>
