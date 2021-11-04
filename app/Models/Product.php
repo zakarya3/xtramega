@@ -15,7 +15,7 @@ class Product extends Model
         'product_name',
         'product_fullname',
         'product_description',
-        'product_brand',
+        'brand_id',
         'image',
         'qty',
         'tax',
@@ -26,5 +26,9 @@ class Product extends Model
     public function category()
     {
         return $this->belongsto(Category::class, 'cate_id', 'id');
+    }
+    public function brand()
+    {
+        return $this->belongsto(Brand::class, 'brand_id', 'id');
     }
 }

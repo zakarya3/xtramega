@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CategController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\BrandController;
 
 
 /*
@@ -65,6 +66,13 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('edit-cat/{id}', [CategoryController::class,'edit']);
     Route::put('update-category/{id}', [CategoryController::class,'update']);
     Route::get('delete-category/{id}', [CategoryController::class,'destroy']);
+
+    Route::get('brands', 'Admin\BrandController@index');
+    Route::get('add-brand', 'Admin\BrandController@add');
+    Route::post('insert-brand', 'Admin\BrandController@insert');
+    Route::get('edit-brand/{id}', [BrandController::class,'edit']);
+    Route::put('update-brand/{id}', [BrandController::class,'update']);
+    Route::get('delete-brand/{id}', [BrandController::class,'destroy']);
 
 
     Route::get('products-item', [ProductController::class,'index']);

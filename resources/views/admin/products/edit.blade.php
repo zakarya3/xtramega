@@ -16,6 +16,12 @@
                         <option value="">{{ $products->category->category_name }}</option>
                     </select>
                 </div>
+                <div class="col-md-12 mb-3">
+                    <label for="">Marque</label>
+                    <select class="form-select">
+                        <option value="">{{ $products->brand->brand_name }}</option>
+                    </select>
+                </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Nom de produit</label>
                     <input type="text" class="form-control" value="{{ $products->product_fullname }}" name="name" id="">
@@ -49,12 +55,6 @@
                 @endif
                 <div class="col-md-12">
                     <input type="file" class="form-control" name="image" id="">
-                </div>
-                @if ($products->product_brand)
-                    <img src="{{ asset('assets/uploads/products/brands/'.$products->product_brand) }}" alt="">
-                @endif
-                <div class="col-md-12">
-                    <input type="file" class="form-control" name="brand" id="">
                 </div>
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary">Modifier</button>

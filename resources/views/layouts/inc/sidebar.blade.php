@@ -33,6 +33,22 @@
             <span class="nav-link-text ms-1">Ajouter une categorie</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link text-white  {{ Request::is('brands') ? 'active':'' }} " href="{{ url('brands') }}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">branding_watermark</i>
+            </div>
+            <span class="nav-link-text ms-1">Brands</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white  {{ Request::is('add-brand') ? 'active':'' }} " href="{{ url('add-brand') }}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">add</i>
+            </div>
+            <span class="nav-link-text ms-1">Ajouter une marque</span>
+          </a>
+        </li>
                 <li class="nav-item">
           <a class="nav-link text-white  {{ Request::is('products') ? 'active':'' }} " href="{{ url('products-item') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">

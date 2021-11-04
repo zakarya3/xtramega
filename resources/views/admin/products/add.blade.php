@@ -18,6 +18,15 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="col-md-12 mb-3">
+                    <label for="">La marque</label>
+                    <select class="form-select" name="brand">
+                        <option value="">Select a brand</option>
+                        @foreach ($brand as $item)
+                        <option value="{{ $item->id }}">{{ $item->brand_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Nom de produit</label>
                     <input type="text" class="form-control" name="name" id="">
@@ -49,10 +58,6 @@
                 <div class="col-md-12">
                     <label for="">Image du produit</label>
                     <input type="file" class="form-control" name="image" id="">
-                </div>
-                <div class="col-md-12">
-                    <label for="">La marque du produit</label>
-                    <input type="file" class="form-control" name="brand" id="">
                 </div>
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary">Ajouter</button>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Brand;
 use Illuminate\Support\Facades\File;
 
 
@@ -19,7 +20,8 @@ class ProductController extends Controller
     public function add()
     {
         $category = Category::all();
-        return view('admin.products.add', compact('category'));
+        $brand = Brand::all();
+        return view('admin.products.add', compact('category', 'brand'));
     }
     public function insert(Request $request)
     {
@@ -31,14 +33,8 @@ class ProductController extends Controller
             $file->move('assets/uploads/products/images/',$filename);
             $products->image = $filename;
         }
-        if ($request->hasFile('brand')) {
-            $file = $request->file('brand');
-            $ext = $file->getClientOriginalExtension();
-            $filename = time().'.'.$ext;
-            $file->move('assets/uploads/products/brands/',$filename);
-            $products->product_brand = $filename;
-        }
         $products->cate_id = $request->input('cate_id');
+        $products->brand_id = $request->input('brand');
         $products->product_name = $request->input('title');
         $products->product_fullname = $request->input('name');
         $products->product_description = $request->input('description');

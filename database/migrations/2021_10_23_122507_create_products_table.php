@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('product_name');
             $table->string('product_fullname');
             $table->text('product_description');
-            $table->string('product_brand');
+            $table->bigInteger('brand_id');
             $table->string('image');
             $table->string('qty');
             $table->string('tax');
