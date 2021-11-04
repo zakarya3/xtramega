@@ -24,7 +24,7 @@ class Product extends Model
 
     public function type()
     {
-        return $this->belongsto(Type::class, 'categ_id', 'id');
+        return $this->belongsto(Type::class, 'cate_id', 'id');
     }
     public function brand()
     {

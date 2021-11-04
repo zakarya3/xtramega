@@ -16,6 +16,6 @@ class Type extends Model
 
     public function category()
     {
-        return $this->belongsto(Category::class, 'categ_id', 'id');
+        return $this->belongsto(Category::class, 'categ_id', 'id'); 
     }
 }

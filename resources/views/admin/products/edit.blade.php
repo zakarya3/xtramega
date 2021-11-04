@@ -13,7 +13,7 @@
                 <div class="col-md-12 mb-3">
                     <label for="">Categories</label>
                     <select class="form-select">
-                        <option value="">{{ $products->category->category_name }}</option>
+                        <option value="">{{ $products->type->name }}</option>
                     </select>
                 </div>
                 <div class="col-md-12 mb-3">
