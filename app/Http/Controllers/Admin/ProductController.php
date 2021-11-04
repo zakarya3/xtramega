@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\Category;
+use App\Models\Type;
 use App\Models\Brand;
 use Illuminate\Support\Facades\File;
 
@@ -19,9 +19,9 @@ class ProductController extends Controller
     }
     public function add()
     {
-        $category = Category::all();
+        $type = Type::all();
         $brand = Brand::all();
-        return view('admin.products.add', compact('category', 'brand'));
+        return view('admin.products.add', compact('type', 'brand'));
     }
     public function insert(Request $request)
     {

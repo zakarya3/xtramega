@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CategController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\TypeController;
 
 
 /*
@@ -66,6 +67,13 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('edit-cat/{id}', [CategoryController::class,'edit']);
     Route::put('update-category/{id}', [CategoryController::class,'update']);
     Route::get('delete-category/{id}', [CategoryController::class,'destroy']);
+
+    Route::get('types', 'Admin\TypeController@index');
+    Route::get('add-type', 'Admin\TypeController@add');
+    Route::post('insert-type', 'Admin\TypeController@insert');
+    Route::get('edit-type/{id}', [TypeController::class,'edit']);
+    Route::put('update-type/{id}', [TypeController::class,'update']);
+    Route::get('delete-type/{id}', [TypeController::class,'destroy']);
 
     Route::get('brands', 'Admin\BrandController@index');
     Route::get('add-brand', 'Admin\BrandController@add');

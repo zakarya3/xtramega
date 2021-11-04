@@ -8,9 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Type extends Model
 {
     use HasFactory;
-    protected $table = 'categs';
+    protected $table = 'type';
     protected $fillable = [
-        'categs_name',
-        'her_cats'
+        'name',
+        'categ_id'
     ];
+
+    public function category()
+    {
+        return $this->belongsto(Category::class, 'categ_id', 'id');
+    }
 }
