@@ -7,7 +7,6 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\TypeController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes

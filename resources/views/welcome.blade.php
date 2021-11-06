@@ -7,22 +7,16 @@
           <div class="row">
             <!-- Slider     -->
             <div class="col-xl-9 pt-xl-4 order-xl-2">
-              <div class="tns-carousel">
-                <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 1, &quot;controls&quot;: false, &quot;loop&quot;: false}">
-                  <div>
-                    <div class="row align-items-center">
-                      <div class="col-md-6 order-md-2"><img class="d-block mx-auto" src="img/impression.png" alt="VR Collection"></div>
-                    </div>
+              <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active" data-bs-interval="2000">
+                    <img src="img/impression.png" class="d-block w-100" alt="">
                   </div>
-                  <div>
-                    <div class="row align-items-center">
-                      <div class="col-md-6 order-md-2"><img class="d-block mx-auto" src="img/experience.jpg" alt="VR Collection"></div>
-                    </div>
+                  <div class="carousel-item" data-bs-interval="2000">
+                    <img src="img/façon.png" class="d-block w-100" alt="">
                   </div>
-                  <div>
-                    <div class="row align-items-center">
-                      <div class="col-md-6 order-md-2"><img class="d-block mx-auto" src="img/façon.png" alt="VR Collection"></div>
-                    </div>
+                  <div class="carousel-item">
+                    <img src="img/experience.jpg" class="d-block w-100" alt="">
                   </div>
                 </div>
               </div>
