@@ -18,6 +18,8 @@ class Product extends Model
         'image',
         'qty',
         'tax',
+        'trending',
+        'status',
         'product_reference',
         'price',
     ];

@@ -50,11 +50,19 @@
                 <div class="col-md-6 mb-3">
                     <label for="">Prix</label>
                     <input type="number" class="form-control" name="price" id="">
-                </div>
+                </div>               
                 <div class="col-md-6 mb-3">
                     <label for="">Réference</label>
                     <input type="text" class="form-control" name="ref" id="">
                 </div>
+                <div class="col-md-6 mb-3">
+                    <label for="">status</label>
+                    <input type="checkbox" name="status" id="">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="">Trendig</label>
+                    <input type="checkbox" name="trending" id="">
+                </div> 
                 <div class="col-md-12">
                     <label for="">Image du produit</label>
                     <input type="file" class="form-control" name="image" id="">

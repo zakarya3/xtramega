@@ -50,6 +50,14 @@
                     <label for="">Réference</label>
                     <input type="text" class="form-control" value="{{ $products->product_reference }}" name="ref" id="">
                 </div>
+                <div class="col-md-6 mb-3">
+                    <label for="">status</label>
+                    <input type="checkbox" {{ $products->status == "1" ? 'checked' : '' }} name="status" id="">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="">Trendig</label>
+                    <input type="checkbox" {{ $products->trending == "1" ? 'checked' : '' }} name="trending" id="">
+                </div> 
                 @if ($products->image)
                     <img src="{{ asset('assets/uploads/products/images/'.$products->image) }}" alt="">
                 @endif

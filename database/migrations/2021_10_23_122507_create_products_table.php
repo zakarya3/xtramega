@@ -23,6 +23,8 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->string('qty');
             $table->string('tax');
+            $table->tinyInteger('trending');
+            $table->tinyInteger('status');
             $table->string('product_reference');
             $table->float('price');
             $table->timestamps();

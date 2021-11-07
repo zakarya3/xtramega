@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\TypeController;
+use App\Http\Controllers\Frontend\FrontController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,7 @@ use App\Http\Controllers\Admin\TypeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [FrontController::class,'index']);
 
 Route::get('/products', function () {
     return view('products');
