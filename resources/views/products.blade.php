@@ -22,6 +22,35 @@
         </div>
       </div>
       <div class="container pb-5 mb-2 mb-md-4">
+        <!-- Toolbar-->
+        <div class="bg-light shadow-lg rounded-3 p-4 mt-n5 mb-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="dropdown me-2"><a class="btn btn-outline-secondary dropdown-toggle" href="#shop-filters" data-bs-toggle="collapse"><i class="ci-filter me-2"></i>Filters</a></div>
+          </div>
+          <!-- Toolbar with expandable filters-->
+          <div class="collapse" id="shop-filters">
+            <div class="row pt-4">
+              <div class="col-lg-4 col-sm-6">
+                <!-- Categories-->
+                <div class="card mb-grid-gutter">
+                  <div class="card-body px-4">
+                    <div class="widget widget-categories">
+                      <h3 class="widget-title">Categories</h3>
+                      <div class="accordion mt-n1" id="shop-categories">
+                        <!-- Shoes-->
+                        <div class="accordion-item">
+                          @foreach ($type as $tp)
+                          <h3><a class="accordion-button collapsed" href="#shoes">{{ $tp->name }}</a></h3>
+                          @endforeach
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- Products grid-->
         <div class="row pt-3 mx-n2">
           <!-- Product-->

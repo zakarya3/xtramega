@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\CategController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\TypeController;
@@ -21,9 +20,8 @@ use App\Http\Controllers\Frontend\FrontController;
 
 Route::get('/', [FrontController::class,'index']);
 
-Route::get('/products', function () {
-    return view('products');
-});
+Route::get('/products/{name}', [FrontController::class,'products']);
+// Route::get('/products/{name}', [FrontController::class,'type']);
 
 Route::get('/product', function () {
     return view('product');

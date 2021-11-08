@@ -226,16 +226,9 @@
                 <input class="form-control rounded-start w-100" type="text" placeholder="Rechercher des produits">
                 <select class="form-select flex-shrink-0" style="width: 10.5rem;">
                   <option>Toutes catégories</option>
-                  <option>Computers</option>
-                  <option>Smartphones</option>
-                  <option>TV, Video, Audio</option>
-                  <option>Cameras</option>
-                  <option>Headphones</option>
-                  <option>Wearables</option>
-                  <option>Printers</option>
-                  <option>Video Games</option>
-                  <option>Home Music</option>
-                  <option>Data Storage</option>
+                  @foreach ($category as $cate)
+                    <option>{{ $cate->category_name }}</option>
+                  @endforeach
                 </select>
               </div>
               <!-- Toolbar-->
@@ -278,68 +271,11 @@
                 <ul class="navbar-nav navbar-mega-nav pe-lg-2 me-lg-2"></ul>
                 <!-- Primary menu-->
                 <ul class="navbar-nav">
-                  <li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Accueil</a></li>
-                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Ordinateur</a>
-                    <div class="dropdown-menu p-0">
-                      <div class="d-flex flex-wrap flex-sm-nowrap px-2">
-                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
-                            <ul class="widget-list">
-                              <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-ls.html">Pc Portable</a></li>
-                            </ul>
-                        </div>
-                      </div>
-                    </div>
+                  <li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" href="{{ url('/') }}">Accueil</a></li>
+                  @foreach ($category as $cate)
+                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="{{ url('products/'.$cate->category_name) }}">{{ $cate->category_name }}</a>
                   </li>
-                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">Impression</a>
-                    <ul class="dropdown-menu">
-                      <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Imprimante</a>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="account-orders.html">Orders History</a></li>
-                          <li><a class="dropdown-item" href="account-profile.html">Profile Settings</a></li>
-                        </ul>
-                      </li>
-                      <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">Consommable</a>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="dashboard-settings.html">Settings</a></li>
-                          <li><a class="dropdown-item" href="dashboard-purchases.html">Purchases</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Image & Son</a>
-                    <div class="dropdown-menu p-0">
-                      <div class="d-flex flex-wrap flex-sm-nowrap px-2">
-                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
-                            <ul class="widget-list">
-                              <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-ls.html">Scanner</a></li>
-                            </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Périphérique</a>
-                    <div class="dropdown-menu p-0">
-                      <div class="d-flex flex-wrap flex-sm-nowrap px-2">
-                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
-                            <ul class="widget-list">
-                              <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-ls.html">Disque Dur</a></li>
-                            </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Réseaux</a>
-                    <div class="dropdown-menu p-0">
-                      <div class="d-flex flex-wrap flex-sm-nowrap px-2">
-                        <div class="mega-dropdown-column pt-1 pt-lg-4 pb-4 px-2 px-lg-3">
-                            <ul class="widget-list">
-                              <li class="widget-list-item"><a class="widget-list-link" href="shop-grid-ls.html">Switch</a></li>
-                            </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Logicel</a></li>
+                  @endforeach
                 </ul>
               </div>
             </div>
