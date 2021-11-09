@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('/js/app.js') }}" defer></script>
 
     <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -33,18 +33,18 @@
 
 <!-- script-->
 
-<script src="{{ asset('admin/js/popper.min.js') }}"></script>
-<script src="{{ asset('admin/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('admin/js/perfect-scrollbar.min.js') }}"></script>
-<script src="{{ asset('admin/js/smooth-scrollbar.min.js') }}"></script>
-<script src="{{ asset('admin/js/chartjs.min.js') }}"></script>
+<script src="{{ asset('/admin/js/popper.min.js') }}"></script>
+<script src="{{ asset('/admin/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('/admin/js/perfect-scrollbar.min.js') }}"></script>
+<script src="{{ asset('/admin/js/smooth-scrollbar.min.js') }}"></script>
+<script src="{{ asset('/admin/js/chartjs.min.js') }}"></script>
 
-<script src="{{ asset('admin/js/bootstrap-notify.js') }}"></script>
-<script src="{{ asset('admin/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('admin/js/Chart.extension.js') }}"></script>
-<script src="{{ asset('admin/js/material-dashboard.js') }}"></script>
-<script src="{{ asset('admin/js/material-dashboard.min.js') }}"></script>
-<script src="{{ asset('admin/js/world.js') }}"></script>
+<script src="{{ asset('/admin/js/bootstrap-notify.js') }}"></script>
+<script src="{{ asset('/admin/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('/admin/js/Chart.extension.js') }}"></script>
+<script src="{{ asset('/admin/js/material-dashboard.js') }}"></script>
+<script src="{{ asset('/admin/js/material-dashboard.min.js') }}"></script>
+<script src="{{ asset('/admin/js/world.js') }}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @if (session('status'))
     <script>

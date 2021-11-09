@@ -28,7 +28,7 @@
         </div>
         <!-- Item-->
         <div class="d-sm-flex justify-content-between align-items-center my-2 pb-3 border-bottom">
-          <div class="d-block d-sm-flex align-items-center text-center text-sm-start"><a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="shop-single-v1.html"><img src="img/shop/cart/04.jpg" width="160" alt="Product"></a>
+          <div class="d-block d-sm-flex align-items-center text-center text-sm-start"><a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="shop-single-v1.html"><img src="/img/shop/cart/04.jpg" width="160" alt="Product"></a>
             <div class="pt-2">
               <h3 class="product-title fs-base mb-2"><a href="shop-single-v1.html">Cotton Polo Regular Fit</a></h3>
               <div class="fs-lg text-accent pt-2">$9.<small>00</small></div>

@@ -28,20 +28,20 @@
               <div class="col-lg-7 pe-lg-0 pt-lg-4">
                 <div class="product-gallery">
                   <div class="product-gallery-preview order-sm-2">
-                    <div class="product-gallery-preview-item active" id="first"><img class="image-zoom" src="img/shop/single/gallery/01.jpg" data-zoom="img/shop/single/gallery/01.jpg" alt="Product image">
+                    <div class="product-gallery-preview-item active" id="first"><img class="image-zoom" src="/img/shop/single/gallery/01.jpg" data-zoom="img/shop/single/gallery/01.jpg" alt="Product image">
                       <div class="image-zoom-pane"></div>
                     </div>
-                    <div class="product-gallery-preview-item" id="second"><img class="image-zoom" src="img/shop/single/gallery/02.jpg" data-zoom="img/shop/single/gallery/02.jpg" alt="Product image">
+                    <div class="product-gallery-preview-item" id="second"><img class="image-zoom" src="/img/shop/single/gallery/02.jpg" data-zoom="img/shop/single/gallery/02.jpg" alt="Product image">
                       <div class="image-zoom-pane"></div>
                     </div>
-                    <div class="product-gallery-preview-item" id="third"><img class="image-zoom" src="img/shop/single/gallery/03.jpg" data-zoom="img/shop/single/gallery/03.jpg" alt="Product image">
+                    <div class="product-gallery-preview-item" id="third"><img class="image-zoom" src="/img/shop/single/gallery/03.jpg" data-zoom="img/shop/single/gallery/03.jpg" alt="Product image">
                       <div class="image-zoom-pane"></div>
                     </div>
-                    <div class="product-gallery-preview-item" id="fourth"><img class="image-zoom" src="img/shop/single/gallery/04.jpg" data-zoom="img/shop/single/gallery/04.jpg" alt="Product image">
+                    <div class="product-gallery-preview-item" id="fourth"><img class="image-zoom" src="/img/shop/single/gallery/04.jpg" data-zoom="img/shop/single/gallery/04.jpg" alt="Product image">
                       <div class="image-zoom-pane"></div>
                     </div>
                   </div>
-                  <div class="product-gallery-thumblist order-sm-1"><a class="product-gallery-thumblist-item active" href="#first"><img src="img/shop/single/gallery/th01.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#second"><img src="img/shop/single/gallery/th02.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#third"><img src="img/shop/single/gallery/th03.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#fourth"><img src="img/shop/single/gallery/th04.jpg" alt="Product thumb"></a></div>
+                  <div class="product-gallery-thumblist order-sm-1"><a class="product-gallery-thumblist-item active" href="#first"><img src="/img/shop/single/gallery/th01.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#second"><img src="/img/shop/single/gallery/th02.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#third"><img src="/img/shop/single/gallery/th03.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#fourth"><img src="/img/shop/single/gallery/th04.jpg" alt="Product thumb"></a></div>
                 </div>
               </div>
               <!-- Product details-->
@@ -88,7 +88,7 @@
                         <div class="accordion-collapse collapse" id="details" data-bs-parent="#productPanels">
                           <div class="accordion-body fs-sm">
                             <div class="d-flex justify-content-between border-bottom py-2">
-                              <img src="img/1.jpg" alt="">
+                              <img src="/img/1.jpg" alt="">
                             </div>
                             <div class="d-flex justify-content-between border-bottom py-2">
                               <div>
@@ -124,7 +124,7 @@
             <!-- Product-->
             <div>
               <div class="card product-card card-static">
-                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/14.jpg" alt="Product"></a>
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="/img/shop/catalog/14.jpg" alt="Product"></a>
                 <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s Jeans</a>
                   <h3 class="product-title fs-sm"><a href="#">Slim Taper Fit Jeans</a></h3>
                   <div class="d-flex justify-content-between">
@@ -138,7 +138,7 @@
             <!-- Product-->
             <div>
               <div class="card product-card card-static"><span class="badge bg-danger badge-shadow">Sale</span>
-                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/17.jpg" alt="Product"></a>
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="/img/shop/catalog/17.jpg" alt="Product"></a>
                 <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s T-shirts</a>
                   <h3 class="product-title fs-sm"><a href="#">Cotton T-shirt Regular Fit</a></h3>
                   <div class="d-flex justify-content-between">
@@ -154,7 +154,7 @@
             <!-- Product-->
             <div>
               <div class="card product-card card-static">
-                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/18.jpg" alt="Product"></a>
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="/img/shop/catalog/18.jpg" alt="Product"></a>
                 <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s Shoes</a>
                   <h3 class="product-title fs-sm"><a href="#">Men’s Leather Keds</a></h3>
                   <div class="d-flex justify-content-between">
@@ -168,7 +168,7 @@
             <!-- Product-->
             <div>
               <div class="card product-card card-static">
-                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/19.jpg" alt="Product"></a>
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="/img/shop/catalog/19.jpg" alt="Product"></a>
                 <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s T-shirts</a>
                   <h3 class="product-title fs-sm"><a href="#">3 Color Collection of T-shirts</a></h3>
                   <div class="d-flex justify-content-between">
@@ -182,7 +182,7 @@
             <!-- Product-->
             <div>
               <div class="card product-card card-static">
-                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/13.jpg" alt="Product"></a>
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="/img/shop/catalog/13.jpg" alt="Product"></a>
                 <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s T-shirts</a>
                   <h3 class="product-title fs-sm"><a href="#">Cotton Polo Regular Fit</a></h3>
                   <div class="d-flex justify-content-between">
@@ -204,7 +204,7 @@
             <!-- Product-->
             <div>
               <div class="card product-card card-static">
-                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/20.jpg" alt="Product"></a>
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="/img/shop/catalog/20.jpg" alt="Product"></a>
                 <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s Hoodie</a>
                   <h3 class="product-title fs-sm"><a href="#">Block-colored Hooded Top</a></h3>
                   <div class="d-flex justify-content-between">
@@ -218,7 +218,7 @@
             <!-- Product-->
             <div>
               <div class="card product-card card-static">
-                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/21.jpg" alt="Product"></a>
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="/img/shop/catalog/21.jpg" alt="Product"></a>
                 <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s Hoodie</a>
                   <h3 class="product-title fs-sm"><a href="#">Block-colored Hooded Top</a></h3>
                   <div class="d-flex justify-content-between">
@@ -232,7 +232,7 @@
             <!-- Product-->
             <div>
               <div class="card product-card card-static">
-                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/22.jpg" alt="Product"></a>
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="/img/shop/catalog/22.jpg" alt="Product"></a>
                 <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s Hoodie</a>
                   <h3 class="product-title fs-sm"><a href="#">Block-colored Hooded Top</a></h3>
                   <div class="d-flex justify-content-between">
@@ -246,7 +246,7 @@
             <!-- Product-->
             <div>
               <div class="card product-card card-static">
-                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/23.jpg" alt="Product"></a>
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="/img/shop/catalog/23.jpg" alt="Product"></a>
                 <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s Hoodie</a>
                   <h3 class="product-title fs-sm"><a href="#">Block-colored Hooded Top</a></h3>
                   <div class="d-flex justify-content-between">
@@ -260,7 +260,7 @@
             <!-- Product-->
             <div>
               <div class="card product-card card-static">
-                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/24.jpg" alt="Product"></a>
+                <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="/img/shop/catalog/24.jpg" alt="Product"></a>
                 <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s Hoodie</a>
                   <h3 class="product-title fs-sm"><a href="#">Block-colored Hooded Top</a></h3>
                   <div class="d-flex justify-content-between">

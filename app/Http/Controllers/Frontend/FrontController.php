@@ -29,16 +29,5 @@ class FrontController extends Controller
             return redirect('/')->with('status',"Category doesnot exists");
         }
     }
-    // public function type($name)
-    // {
-    //     if (Category::where('category_name',$name)->exists()) {
-    //         $category = Category::where('category_name',$name)->first();
-    //         $id = $category->id;
-    //         $type = Type::where('categ_id',$id)->get();
-    //         return view('products',compact('type'));
-    //     }
-    //     else {
-    //         return redirect('/')->with('status',"Category doesnot exists");
-    //     }
-    // }
+
 }

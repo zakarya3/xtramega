@@ -28,7 +28,7 @@
                   <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-grid-gutter">
                     <div class="card product-card-alt">
                       <div class="product-thumb">
-                          <a class="product-thumb-overlay" href="marketplace-single.html"></a><img src="img/marketplace/products/12.jpg" alt="Product">
+                          <a class="product-thumb-overlay" href="marketplace-single.html"></a><img src="/img/marketplace/products/12.jpg" alt="Product">
                       </div>
                       <div class="card-body">
                         <h3 class="product-title fs-sm mb-2"><a href="marketplace-single.html">Corporate Branding Mockup (PSD)</a></h3>

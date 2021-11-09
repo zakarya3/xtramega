@@ -22,19 +22,19 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
     <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
-    <link rel="stylesheet" media="screen" href="css/simplebar.min.css"/>
-    <link rel="stylesheet" media="screen" href="css/tiny-slider.css"/>
-    <link rel="stylesheet" media="screen" href="css/drift-basic.min.css"/>
-    <link rel="stylesheet" media="screen" href="css/lightgallery.min.css"/>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" media="screen" href="/css/simplebar.min.css"/>
+    <link rel="stylesheet" media="screen" href="/css/tiny-slider.css"/>
+    <link rel="stylesheet" media="screen" href="/css/drift-basic.min.css"/>
+    <link rel="stylesheet" media="screen" href="/css/lightgallery.min.css"/>
+    <link rel="stylesheet" href="/css/main.css">
     <!-- Main Theme Styles + Bootstrap-->
-    <link rel="stylesheet" media="screen" href="css/theme.min.css">
+    <link rel="stylesheet" media="screen" href="/css/theme.min.css">
     <!-- Google Tag Manager-->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+/      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-WKV3GT5');
     </script>
   </head>
@@ -125,20 +125,20 @@
                 <div class="col-lg-7 pe-lg-0">
                   <div class="product-gallery">
                     <div class="product-gallery-preview order-sm-2">
-                      <div class="product-gallery-preview-item active" id="first"><img class="image-zoom" src="img/shop/single/gallery/05.jpg" data-zoom="img/shop/single/gallery/05.jpg" alt="Product image">
+                      <div class="product-gallery-preview-item active" id="first"><img class="image-zoom" src="/img/shop/single/gallery/05.jpg" data-zoom="img/shop/single/gallery/05.jpg" alt="Product image">
                         <div class="image-zoom-pane"></div>
                       </div>
-                      <div class="product-gallery-preview-item" id="second"><img class="image-zoom" src="img/shop/single/gallery/06.jpg" data-zoom="img/shop/single/gallery/06.jpg" alt="Product image">
+                      <div class="product-gallery-preview-item" id="second"><img class="image-zoom" src="/img/shop/single/gallery/06.jpg" data-zoom="img/shop/single/gallery/06.jpg" alt="Product image">
                         <div class="image-zoom-pane"></div>
                       </div>
-                      <div class="product-gallery-preview-item" id="third"><img class="image-zoom" src="img/shop/single/gallery/07.jpg" data-zoom="img/shop/single/gallery/07.jpg" alt="Product image">
+                      <div class="product-gallery-preview-item" id="third"><img class="image-zoom" src="/img/shop/single/gallery/07.jpg" data-zoom="img/shop/single/gallery/07.jpg" alt="Product image">
                         <div class="image-zoom-pane"></div>
                       </div>
-                      <div class="product-gallery-preview-item" id="fourth"><img class="image-zoom" src="img/shop/single/gallery/08.jpg" data-zoom="img/shop/single/gallery/08.jpg" alt="Product image">
+                      <div class="product-gallery-preview-item" id="fourth"><img class="image-zoom" src="/img/shop/single/gallery/08.jpg" data-zoom="img/shop/single/gallery/08.jpg" alt="Product image">
                         <div class="image-zoom-pane"></div>
                       </div>
                     </div>
-                    <div class="product-gallery-thumblist order-sm-1"><a class="product-gallery-thumblist-item active" href="#first"><img src="img/shop/single/gallery/th05.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#second"><img src="img/shop/single/gallery/th06.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#third"><img src="img/shop/single/gallery/th07.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#fourth"><img src="img/shop/single/gallery/th08.jpg" alt="Product thumb"></a></div>
+                    <div class="product-gallery-thumblist order-sm-1"><a class="product-gallery-thumblist-item active" href="#first"><img src="/img/shop/single/gallery/th05.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#second"><img src="/img/shop/single/gallery/th06.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#third"><img src="/img/shop/single/gallery/th07.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#fourth"><img src="/img/shop/single/gallery/th08.jpg" alt="Product thumb"></a></div>
                   </div>
                 </div>
                 <!-- Product details-->
@@ -220,7 +220,7 @@
         <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
         <div class="navbar-sticky bg-light">
           <div class="navbar navbar-expand-lg navbar-light">
-            <div class="container"><a class="navbar-brand d-none d-sm-block me-3 flex-shrink-0" href="/"><img class="logo-pic" src="img/logoXtra.jpeg" width="250" alt="Cartzilla"></a><a class="navbar-brand d-sm-none me-2" href="index.html"><img src="img/logo-icon.png" width="74" alt="Cartzilla"></a>
+            <div class="container"><a class="navbar-brand d-none d-sm-block me-3 flex-shrink-0" href="/"><img class="logo-pic" src="/img/logoXtra.jpeg" width="250" alt="Cartzilla"></a><a class="navbar-brand d-sm-none me-2" href="index.html"><img src="/img/logo-icon.png" width="74" alt="Cartzilla"></a>
               <!-- Search-->
               <div class="input-group d-none d-lg-flex flex-nowrap mx-4"><i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
                 <input class="form-control rounded-start w-100" type="text" placeholder="Rechercher des produits">
@@ -244,7 +244,7 @@
                       <div style="height: 15rem;" data-simplebar data-simplebar-auto-hide="false">
                         <div class="widget-cart-item py-2 border-bottom">
                           <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
-                          <div class="d-flex align-items-center"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="img/shop/cart/widget/08.jpg" width="64" alt="Product"></a>
+                          <div class="d-flex align-items-center"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="/img/shop/cart/widget/08.jpg" width="64" alt="Product"></a>
                             <div class="ps-2">
                               <h6 class="widget-product-title"><a href="shop-single-v2.html">Android Smart TV Box</a></h6>
                               <div class="widget-product-meta"><span class="text-accent me-2">$67.<small>00</small></span><span class="text-muted">x 1</span></div>
@@ -342,15 +342,15 @@
       </div>
       <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
       <!-- Vendor scrits: js libraries and plugins-->
-      <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="js/simplebar.min.js"></script>
-      <script src="js/tiny-slider.js"></script>
-      <script src="js/smooth-scroll.polyfills.min.js"></script>
-      <script src="js/Drift.min.js"></script>
-      <script src="js/lightgallery.min.js"></script>
-      <script src="js/lg-video.min.js"></script>
+      <script src="/js/bootstrap.bundle.min.js"></script>
+      <script src="/js/simplebar.min.js"></script>
+      <script src="/js/tiny-slider.js"></script>
+      <script src="/js/smooth-scroll.polyfills.min.js"></script>
+      <script src="/js/Drift.min.js"></script>
+      <script src="/js/lightgallery.min.js"></script>
+      <script src="/js/lg-video.min.js"></script>
       <!-- Main theme script-->
-      <script src="js/theme.min.js"></script>
+      <script src="/js/theme.min.js"></script>
 
     </body>
 
