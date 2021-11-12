@@ -32,5 +32,38 @@ class FrontController extends Controller
             return redirect('/')->with('status',"Category doesnot exists");
         }
     }
+    public function type($name, $typeName)
+    {
+        if (Category::where('category_name',$name)->exists()) {
+            $category = Category::all();
+            $category1 = Category::where('category_name',$name)->first();
+            $id = $category1->id;
+            $type = Type::where('categ_id',$id)->get();
+            $type_name = Type::where('name',$typeName)->first();
+            $id_type = $type_name->id;
+            $product = Product::where('cate_id',$id_type)->get();
+            return view('products',compact('type','category','product'));
+
+        }
+        else {
+            return redirect('/')->with('status',"Category doesnot exists");
+        }
+    }
+    public function product($type, $name)
+    {
+        if (Type::where('name',$type)->exists()) {
+            if (Product::where('product_name',$name)->exists()) {
+                $category = Category::all();
+                $product = Product::where('product_name',$name)->first();
+                return view('product', compact('category','product'));
+            }
+            else {
+                return redirect('/')->with('status',"Product doesnot exists");
+            }
+        }
+        else {
+            return redirect('/')->with('status',"Category doesnot exists");
+        }
+    }
 
 }

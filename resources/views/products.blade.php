@@ -57,9 +57,9 @@
           @foreach ($product as $prd)
           <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
             <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img src="{{ asset('assets/uploads/products/images/'.$prd->image) }}" alt="Product"></a>
+              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="{{ url('product/'.$prd->type->name.'/'.$prd->product_name) }}"><img src="{{ asset('assets/uploads/products/images/'.$prd->image) }}" alt="Product"></a>
               <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">{{ $prd->type->name }}</a>
-                <h3 class="product-title fs-sm"><a href="shop-single-v1.html">{{ $prd->product_name }}</a></h3>
+                <h3 class="product-title fs-sm"><a href="{{ url('product/'.$prd->type->name.'/'.$prd->product_name) }}">{{ $prd->product_name }}</a></h3>
                 <div class="d-flex justify-content-between">
                   <div class="product-price"><span class="text-accent">{{ $prd->price }}.<small>00 DH</small></span></div>
                   <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i>

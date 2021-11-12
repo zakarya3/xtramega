@@ -21,11 +21,9 @@ use App\Http\Controllers\Frontend\FrontController;
 Route::get('/', [FrontController::class,'index']);
 
 Route::get('/products/{name}', [FrontController::class,'products']);
-// Route::get('/products/{name}', [FrontController::class,'type']);
+Route::get('/products/{name}/{typeName}', [FrontController::class,'type']);
 
-Route::get('/product', function () {
-    return view('product');
-});
+Route::get('/product/{type}/{name}', [FrontController::class,'product']);
 
 Route::get('/cart', function () {
     return view('cart');
