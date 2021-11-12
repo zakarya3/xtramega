@@ -8,7 +8,7 @@
             <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
-                  <li class="breadcrumb-item"><a class="text-nowrap" href="index.html"><i class="ci-home"></i>Home</a></li>
+                  <li class="breadcrumb-item"><a class="text-nowrap" href="index.html"><i class="ci-home"></i>Accueil</a></li>
                   <li class="breadcrumb-item text-nowrap"><a href="#">Shop</a>
                   </li>
                   <li class="breadcrumb-item text-nowrap active" aria-current="page">Grid filters on top</li>
@@ -40,7 +40,7 @@
                         <!-- Shoes-->
                         <div class="accordion-item">
                           @foreach ($type as $tp)
-                          <h3><a class="accordion-button collapsed" href="">{{ $tp->name }}</a></h3>
+                          <h3><a class="accordion-button collapsed" href="{{ url('/products/'.$tp->category->category_name.'/'.$tp->name) }}">{{ $tp->name }}</a></h3>
                           @endforeach
                         </div>
                       </div>
@@ -54,13 +54,14 @@
         <!-- Products grid-->
         <div class="row pt-3 mx-n2">
           <!-- Product-->
+          @foreach ($product as $prd)
           <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
             <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img src="/img/shop/catalog/08.jpg" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Kid's Toys</a>
-                <h3 class="product-title fs-sm"><a href="shop-single-v1.html">Soft Panda Teddy Bear</a></h3>
+              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img src="{{ asset('assets/uploads/products/images/'.$prd->image) }}" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">{{ $prd->type->name }}</a>
+                <h3 class="product-title fs-sm"><a href="shop-single-v1.html">{{ $prd->product_name }}</a></h3>
                 <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">$14.<small>99</small></span></div>
+                  <div class="product-price"><span class="text-accent">{{ $prd->price }}.<small>00 DH</small></span></div>
                   <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i>
                   </div>
                 </div>
@@ -72,6 +73,7 @@
             </div>
             <hr class="d-sm-none">
           </div>
+          @endforeach
         </div>
         <!-- Banners-->
         <!-- Products grid-->

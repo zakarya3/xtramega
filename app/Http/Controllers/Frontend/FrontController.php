@@ -23,7 +23,10 @@ class FrontController extends Controller
             $category1 = Category::where('category_name',$name)->first();
             $id = $category1->id;
             $type = Type::where('categ_id',$id)->get();
-            return view('products',compact('type','category'));
+            $id_type = Type::where('categ_id',$id)->pluck('id');
+            $product = Product::whereIn('cate_id',$id_type)->get();
+            return view('products',compact('type','category','product'));
+
         }
         else {
             return redirect('/')->with('status',"Category doesnot exists");
