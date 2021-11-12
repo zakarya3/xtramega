@@ -55,7 +55,10 @@ class FrontController extends Controller
             if (Product::where('product_name',$name)->exists()) {
                 $category = Category::all();
                 $product = Product::where('product_name',$name)->first();
-                return view('product', compact('category','product'));
+                $type_name = Type::where('name',$type)->first();
+                $id_type = $type_name->id;
+                $products = Product::where('cate_id',$id_type)->get()->take(8);
+                return view('product', compact('category','product','products'));
             }
             else {
                 return redirect('/')->with('status',"Product doesnot exists");
