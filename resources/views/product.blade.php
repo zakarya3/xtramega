@@ -21,7 +21,7 @@
       </div>
       <div class="container">
         <!-- Gallery + details-->
-        <div class="bg-light shadow-lg rounded-3 px-4 py-3 mb-5">
+        <div class="bg-light shadow-lg rounded-3 px-4 py-3 mb-5 product_data">
           <div class="px-lg-3">
             <div class="row">
               <!-- Product gallery-->
@@ -47,23 +47,30 @@
                     <button class="btn-wishlist me-0 me-lg-n3" type="button" data-bs-toggle="tooltip" title="Add to wishlist"><i class="ci-heart"></i></button>
                   </div>
                   <div class="mb-3"><span class="h3 fw-normal text-accent me-1">{{ $product->price }}.<small>00 MAD</small></span></div>
-                  <form class="mb-grid-gutter" method="post">
-                    <div class="mb-3 d-flex align-items-center">
-                      @if ($product->qty > 0)
-                      <select class="form-select me-3" style="width: 5rem;">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                      </select>
-                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit"><i class="ci-cart fs-lg me-2"></i>Add to Cart</button>
-                      @else
-                        <label for="" class="badge bg-danger">Out of stock</label>
-                      @endif
-                      
+                  @if ($product->qty > 0)
+                  <label for="" class="badge bg-success">In stock</label>
+                  <input type="hidden" value="{{ $product->id }}" class="prod_id">
+                  <div class="row mt-2">
+                    <div class="input-group quantity" style="width: 160px !important; margin-bottom: 1em">
+                      <div class="input-group-prepend decrement-btn" style="cursor: pointer">
+                          <span class="input-group-text">-</span>
+                      </div>
+                      <input type="text" class="qty-input form-control" maxlength="2" max="10" value="1">
+                      <div class="input-group-append increment-btn" style="cursor: pointer">
+                          <span class="input-group-text">+</span>
+                      </div>
                     </div>
-                  </form>
+                    <div class="col-md-9" style="width: 100% !important">
+                      @if (Auth::check())
+                        <button class="btn btn-primary btn-shadow addToCartBtn d-block w-100" type="submit"><i class="ci-cart fs-lg me-2"></i>Add to Cart</button>
+                      @else
+                        <a class="btn btn-primary btn-shadow " href="/login">Connexion</a>
+                      @endif
+                    </div>
+                  </div>
+                  @else
+                      <label for="" class="badge bg-danger">Out of stock</label>
+                  @endif
                   <!-- Product panels-->
                   <div class="accordion mb-4" id="productPanels">
                     <div class="accordion-item">
@@ -140,4 +147,8 @@
         </div>
       </div>
     </main>
+    @endsection
+
+    @section('scripts')
+     
     @endsection

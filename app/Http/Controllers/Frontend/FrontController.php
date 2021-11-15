@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Type;
+use App\Models\Cart;
 
 class FrontController extends Controller
 {
@@ -14,7 +16,9 @@ class FrontController extends Controller
     {
         $featured_products = Product::where('trending','1')->take(8)->get();
         $category = Category::all();
-        return view('welcome', compact('featured_products', 'category'));
+        $count = Cart::where('user_id',Auth::id())->get()->count();
+        $cartitems = Cart::where('user_id', Auth::id())->get();
+        return view('welcome', compact('featured_products', 'category','count','cartitems'));
     }
     public function products($name)
     {
@@ -25,7 +29,9 @@ class FrontController extends Controller
             $type = Type::where('categ_id',$id)->get();
             $id_type = Type::where('categ_id',$id)->pluck('id');
             $product = Product::whereIn('cate_id',$id_type)->get();
-            return view('products',compact('type','category','product'));
+            $count = Cart::where('user_id',Auth::id())->get()->count();
+            $cartitems = Cart::where('user_id', Auth::id())->get();
+            return view('products',compact('type','category','product','count','cartitems'));
 
         }
         else {
@@ -42,7 +48,9 @@ class FrontController extends Controller
             $type_name = Type::where('name',$typeName)->first();
             $id_type = $type_name->id;
             $product = Product::where('cate_id',$id_type)->get();
-            return view('products',compact('type','category','product'));
+            $count = Cart::where('user_id',Auth::id())->get()->count();
+            $cartitems = Cart::where('user_id', Auth::id())->get();
+            return view('products',compact('type','category','product','count','cartitems'));
 
         }
         else {
@@ -58,7 +66,9 @@ class FrontController extends Controller
                 $type_name = Type::where('name',$type)->first();
                 $id_type = $type_name->id;
                 $products = Product::where('cate_id',$id_type)->get()->take(8);
-                return view('product', compact('category','product','products'));
+                $count = Cart::where('user_id',Auth::id())->get()->count();
+                $cartitems = Cart::where('user_id', Auth::id())->get();
+                return view('product', compact('category','product','products','count','cartitems'));
             }
             else {
                 return redirect('/')->with('status',"Product doesnot exists");

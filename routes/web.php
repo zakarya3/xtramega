@@ -6,6 +6,9 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Frontend\FrontController;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,22 +28,6 @@ Route::get('/products/{name}/{typeName}', [FrontController::class,'type']);
 
 Route::get('/product/{type}/{name}', [FrontController::class,'product']);
 
-Route::get('/cart', function () {
-    return view('cart');
-});
-
-Route::get('/checkout-details', function () {
-    return view('checkout-details');
-});
-
-Route::get('/checkout-payment', function () {
-    return view('checkout-payment');
-});
-
-Route::get('/checkout-complete', function () {
-    return view('checkout-complete');
-});
-
 Route::get('/contact', function () {
     return view('contact');
 });
@@ -49,6 +36,20 @@ Route::get('/brand', function () {
     return view('brand');
 });
 Auth::routes();
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('add-to-cart', [CartController::class, 'addProduct']);
+    Route::get('cart', [CartController::class, 'viewcart']);
+    Route::post('delete-cart-item', [CartController::class, 'deleteProduct']);
+    Route::get('checkout', [CheckoutController::class, 'index']);
+    Route::post('place-order', [CheckoutController::class, 'placeorder']);
+    Route::get('checkout-payment', [CheckoutController::class, 'index_pay']);
+    Route::get('checkout-complete', [CheckoutController::class, 'index_comp']);
+    Route::get('myorders', [UserController::class, 'index']);
+    Route::get('view-order/{id}', [UserController::class, 'view']);
+});
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

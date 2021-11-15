@@ -12,6 +12,7 @@
     <meta name="author" content="Createx Studio">
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <!-- Favicon and Touch Icons-->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -30,13 +31,13 @@
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="/css/theme.min.css">
     <!-- Google Tag Manager-->
-    <script>
+    {{-- <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-/      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='/../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-WKV3GT5');
-    </script>
+    </script> --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   </head>
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
@@ -111,102 +112,6 @@
       </div>
     </div>
     <main class="page-wrapper">
-      <!-- Quick View Modal-->
-      <div class="modal-quick-view modal fade" id="quick-view-electro" tabindex="-1">
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title product-title"><a href="shop-single-v2.html" data-bs-toggle="tooltip" data-bs-placement="right" title="Go to product page">Smartwatch Youth Edition<i class="ci-arrow-right fs-lg ms-2"></i></a></h4>
-              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <!-- Product gallery-->
-                <div class="col-lg-7 pe-lg-0">
-                  <div class="product-gallery">
-                    <div class="product-gallery-preview order-sm-2">
-                      <div class="product-gallery-preview-item active" id="first"><img class="image-zoom" src="/img/shop/single/gallery/05.jpg" data-zoom="img/shop/single/gallery/05.jpg" alt="Product image">
-                        <div class="image-zoom-pane"></div>
-                      </div>
-                      <div class="product-gallery-preview-item" id="second"><img class="image-zoom" src="/img/shop/single/gallery/06.jpg" data-zoom="img/shop/single/gallery/06.jpg" alt="Product image">
-                        <div class="image-zoom-pane"></div>
-                      </div>
-                      <div class="product-gallery-preview-item" id="third"><img class="image-zoom" src="/img/shop/single/gallery/07.jpg" data-zoom="img/shop/single/gallery/07.jpg" alt="Product image">
-                        <div class="image-zoom-pane"></div>
-                      </div>
-                      <div class="product-gallery-preview-item" id="fourth"><img class="image-zoom" src="/img/shop/single/gallery/08.jpg" data-zoom="img/shop/single/gallery/08.jpg" alt="Product image">
-                        <div class="image-zoom-pane"></div>
-                      </div>
-                    </div>
-                    <div class="product-gallery-thumblist order-sm-1"><a class="product-gallery-thumblist-item active" href="#first"><img src="/img/shop/single/gallery/th05.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#second"><img src="/img/shop/single/gallery/th06.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#third"><img src="/img/shop/single/gallery/th07.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#fourth"><img src="/img/shop/single/gallery/th08.jpg" alt="Product thumb"></a></div>
-                  </div>
-                </div>
-                <!-- Product details-->
-                <div class="col-lg-5 pt-4 pt-lg-0 image-zoom-pane">
-                  <div class="product-details ms-auto pb-3">
-                    <div class="mb-2">
-                      <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                      </div><span class="d-inline-block fs-sm text-body align-middle mt-1 ms-1">74 Reviews</span>
-                    </div>
-                    <div class="h3 fw-normal text-accent mb-3 me-1">$124.<small>99</small></div>
-                    <div class="fs-sm mb-4"><span class="text-heading fw-medium me-1">Color:</span><span class="text-muted" id="colorOptionText">Dark blue/Orange</span></div>
-                    <div class="position-relative me-n4 mb-3">
-                      <div class="form-check form-option form-check-inline mb-2">
-                        <input class="form-check-input" type="radio" name="color" id="color1" data-bs-label="colorOptionText" value="Dark blue/Orange" checked>
-                        <label class="form-option-label rounded-circle" for="color1"><span class="form-option-color rounded-circle" style="background-color: #f25540;"></span></label>
-                      </div>
-                      <div class="form-check form-option form-check-inline mb-2">
-                        <input class="form-check-input" type="radio" name="color" id="color2" data-bs-label="colorOptionText" value="Dark gray/Green">
-                        <label class="form-option-label rounded-circle" for="color2"><span class="form-option-color rounded-circle" style="background-color: #65805b;"></span></label>
-                      </div>
-                      <div class="form-check form-option form-check-inline mb-2">
-                        <input class="form-check-input" type="radio" name="color" id="color3" data-bs-label="colorOptionText" value="White">
-                        <label class="form-option-label rounded-circle" for="color3"><span class="form-option-color rounded-circle" style="background-color: #f5f5f5;"></span></label>
-                      </div>
-                      <div class="form-check form-option form-check-inline mb-2">
-                        <input class="form-check-input" type="radio" name="color" id="color4" data-bs-label="colorOptionText" value="Black">
-                        <label class="form-option-label rounded-circle" for="color4"><span class="form-option-color rounded-circle" style="background-color: #333;"></span></label>
-                      </div>
-                      <div class="product-badge product-available mt-n1"><i class="ci-security-check"></i>Product available</div>
-                    </div>
-                    <div class="d-flex align-items-center pt-2 pb-4">
-                      <select class="form-select me-3" style="width: 5rem;">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                      </select>
-                      <button class="btn btn-primary btn-shadow d-block w-100" type="button"><i class="ci-cart fs-lg me-2"></i>Add to Cart</button>
-                    </div>
-                    <div class="d-flex mb-4">
-                      <div class="w-100 me-3">
-                        <button class="btn btn-secondary d-block w-100" type="button"><i class="ci-heart fs-lg me-2"></i><span class='d-none d-sm-inline'>Add to </span>Wishlist</button>
-                      </div>
-                      <div class="w-100">
-                        <button class="btn btn-secondary d-block w-100" type="button"><i class="ci-compare fs-lg me-2"></i>Compare</button>
-                      </div>
-                    </div>
-                    <h5 class="h6 mb-3 py-2 border-bottom"><i class="ci-announcement text-muted fs-lg align-middle mt-n1 me-2"></i>Product info</h5>
-                    <h6 class="fs-sm mb-2">General</h6>
-                    <ul class="fs-sm pb-2">
-                      <li><span class="text-muted">Model: </span>Amazfit Smartwatch</li>
-                      <li><span class="text-muted">Gender: </span>Unisex</li>
-                      <li><span class="text-muted">OS campitibility: </span>Android / iOS</li>
-                    </ul>
-                    <h6 class="fs-sm mb-2">Physical specs</h6>
-                    <ul class="fs-sm pb-2">
-                      <li><span class="text-muted">Shape: </span>Rectangular</li>
-                      <li><span class="text-muted">Body material: </span>Plastics / Ceramics</li>
-                      <li><span class="text-muted">Band material: </span>Silicone</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <!-- Navbar Electronics Store-->
       <header class="shadow-sm">
         <!-- Topbar-->
@@ -237,23 +142,26 @@
                   <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-menu"></i></div></a><a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="#signin-modal" data-bs-toggle="modal">
                   <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div>
                   <div class="navbar-tool-text ms-n3"><small>Hello, Sign in</small>My Account</div></a>
-                <div class="navbar-tool dropdown ms-3"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><span class="navbar-tool-label">4</span><i class="navbar-tool-icon ci-cart"></i></a><a class="navbar-tool-text" href="shop-cart.html"><small>My Cart</small>$1,247.00</a>
+                <div class="navbar-tool dropdown ms-3"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{ url('cart') }}"><span class="navbar-tool-label">{{ $count }}</span><i class="navbar-tool-icon ci-cart"></i></a><a class="navbar-tool-text" href="{{ url('cart') }}"></a>
                   <!-- Cart dropdown-->
                   <div class="dropdown-menu dropdown-menu-end">
                     <div class="widget widget-cart px-3 pt-2 pb-3" style="width: 20rem;">
                       <div style="height: 15rem;" data-simplebar data-simplebar-auto-hide="false">
-                        <div class="widget-cart-item py-2 border-bottom">
-                          <button class="btn-close text-danger" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
-                          <div class="d-flex align-items-center"><a class="d-block flex-shrink-0" href="shop-single-v2.html"><img src="/img/shop/cart/widget/08.jpg" width="64" alt="Product"></a>
+                        @foreach ($cartitems as $item)
+                        <div class="widget-cart-item py-2 border-bottom product_data">
+                          <input type="hidden" value="{{ $item->product->id }}" class="prod_id">
+                          <button class="btn-close text-danger delete-cart-item" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
+                          <div class="d-flex align-items-center"><a class="d-block flex-shrink-0" href="{{ url('cart') }}"><img src="{{ asset('assets/uploads/products/images/'.$item->product->image) }}" width="64" alt="Product"></a>
                             <div class="ps-2">
-                              <h6 class="widget-product-title"><a href="shop-single-v2.html">Android Smart TV Box</a></h6>
-                              <div class="widget-product-meta"><span class="text-accent me-2">$67.<small>00</small></span><span class="text-muted">x 1</span></div>
+                              <h6 class="widget-product-title"><a href="{{ url('cart') }}">{{ $item->product->product_name }}</a></h6>
+                              <div class="widget-product-meta"><span class="text-accent me-2">{{ $item->product->price }}.<small>00 MAD</small></span><span class="text-muted">x {{ $item->prod_qty }}</span></div>
                             </div>
                           </div>
                         </div>
+                        @endforeach
                       </div>
                       <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
-                      </div><a class="btn btn-primary btn-sm d-block w-100" href="checkout-details.html"><i class="ci-card me-2 fs-base align-middle"></i>Checkout</a>
+                      </div><a class="btn btn-primary btn-sm d-block w-100" href="{{ url('cart') }}"><i class="ci-card me-2 fs-base align-middle"></i>Checkout</a>
                     </div>
                   </div>
                 </div>
@@ -338,7 +246,7 @@
       </footer>
       <!-- Toolbar for handheld devices (Default)-->
       <div class="handheld-toolbar">
-        <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="account-wishlist.html"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">Wishlist</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" href="shop-cart.html"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">4</span></span><span class="handheld-toolbar-label">$265.00</span></a></div>
+        <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="account-wishlist.html"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">Wishlist</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" href="{{ url('cart') }}"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">4</span></span><span class="handheld-toolbar-label">$265.00</span></a></div>
       </div>
       <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
       <!-- Vendor scrits: js libraries and plugins-->
@@ -351,6 +259,7 @@
       <script src="/js/lg-video.min.js"></script>
       <!-- Main theme script-->
       <script src="/js/theme.min.js"></script>
+      <script src="/js/custom.js"></script>
 
     </body>
 
