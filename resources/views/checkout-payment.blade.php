@@ -46,7 +46,7 @@
                         <table class="table table-bordered">
                             <tr>
                               <th>Montant</th>
-                              <th>5 316,00 DH/TTC TTC</th>
+                              <th>{{ $total }} DH/TTC TTC</th>
 
                             </tr>
                           </thead>

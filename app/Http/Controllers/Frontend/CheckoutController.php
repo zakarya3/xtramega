@@ -26,7 +26,12 @@ class CheckoutController extends Controller
             }
         }
         $cartitems = Cart::where('user_id',Auth::id())->get();
-        return view('checkout',compact('category','cartitems','count'));
+       if ($cartitems->isNotEmpty()) {
+         return view('checkout',compact('category','cartitems','count'));
+       }
+       else {
+        return redirect('/cart')->with('status'," Votre panier et vide!!!");
+       }
         
     }
     public function placeorder(Request $request)
@@ -38,7 +43,7 @@ class CheckoutController extends Controller
         $total = 0;
         $cartitems_total = Cart::where('user_id', Auth::id())->get();
         foreach ($cartitems_total as $prod) {
-            $total += $prod->product->price;
+            $total += $prod->product->price * $prod->prod_qty;
         }
         $order->total_price = $total;
         $order->fname = $request->input('fname');
@@ -72,16 +77,16 @@ class CheckoutController extends Controller
             $user->update();
         }
         Cart::destroy($cartitems);
-        return view('checkout-payment',compact('category','cartitems','count'));
+        return view('checkout-payment',compact('category','cartitems','count','total'));
     }
-    public function index_pay(Type $var = null)
+    public function index_pay()
     {
         $category = Category::all();
         $count = Cart::where('user_id',Auth::id())->get()->count();
         $cartitems = Cart::where('user_id',Auth::id())->get();
         return view('checkout-payment',compact('category','cartitems','count'));
     }
-    public function index_comp(Type $var = null)
+    public function index_comp()
     {
         $category = Category::all();
         $count = Cart::where('user_id',Auth::id())->get()->count();
