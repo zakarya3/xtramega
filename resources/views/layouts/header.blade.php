@@ -191,12 +191,6 @@
       <script src="/js/smooth-scroll.polyfills.min.js"></script>
       <script src="/js/Drift.min.js"></script>
       <script src="/js/lightgallery.min.js"></script>
-      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-      @if (session('status'))
-        <script>
-          swal("{{ session('status') }}");
-        </script>
-      @endif
       <script src="/js/lg-video.min.js"></script>
       <!-- Main theme script-->
       <script src="/js/theme.min.js"></script>

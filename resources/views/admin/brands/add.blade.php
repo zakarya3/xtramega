@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="">Nom de la marque</label>
-                    <input type="text" class="form-control" name="name" id="">
+                    <input type="text" class="form-control" required name="name" id="">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Image</label>

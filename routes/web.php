@@ -9,6 +9,8 @@ use App\Http\Controllers\Frontend\FrontController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +34,6 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/brand', function () {
-    return view('brand');
-});
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
@@ -84,4 +83,11 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('edit-prd/{id}', [ProductController::class,'edit']);
     Route::get('delete-prd/{id}', [ProductController::class,'destroy']);
     Route::put('update-product/{id}',[ProductController::class,'update'] );
+
+    Route::get('orders', [OrderController::class, 'index']);
+    Route::get('admin/view-order/{id}', [OrderController::class, 'view']);
+    Route::put('update-order/{id}', [OrderController::class, 'updateorder']);
+    Route::get('order-history', [OrderController::class, 'orderhistory']);
+    Route::get('users', [DashboardController::class, 'users']);
+    Route::get('view-users/{id}', [DashboardController::class, 'viewusers']);
 }) ;

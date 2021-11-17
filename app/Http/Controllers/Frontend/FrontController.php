@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Type;
 use App\Models\Cart;
+use App\Models\Brand;
 
 class FrontController extends Controller
 {
@@ -16,9 +17,13 @@ class FrontController extends Controller
     {
         $featured_products = Product::where('trending','1')->take(8)->get();
         $category = Category::all();
+        $brands = Brand::all();
         $count = Cart::where('user_id',Auth::id())->get()->count();
         $cartitems = Cart::where('user_id', Auth::id())->get();
-        return view('welcome', compact('featured_products', 'category','count','cartitems'));
+        $new = Product::where('status','1')->take(4)->get();
+        $qty = Product::where('qty','<=','10')->take(4)->get();
+        $random = Product::all()->random(4);
+        return view('welcome', compact('featured_products', 'category','count','cartitems','brands','new','qty','random'));
     }
     public function products($name)
     {
@@ -28,7 +33,7 @@ class FrontController extends Controller
             $id = $category1->id;
             $type = Type::where('categ_id',$id)->get();
             $id_type = Type::where('categ_id',$id)->pluck('id');
-            $product = Product::whereIn('cate_id',$id_type)->get();
+            $product = Product::whereIn('cate_id',$id_type)->paginate(16);
             $count = Cart::where('user_id',Auth::id())->get()->count();
             $cartitems = Cart::where('user_id', Auth::id())->get();
             return view('products',compact('type','category','product','count','cartitems'));
@@ -47,7 +52,7 @@ class FrontController extends Controller
             $type = Type::where('categ_id',$id)->get();
             $type_name = Type::where('name',$typeName)->first();
             $id_type = $type_name->id;
-            $product = Product::where('cate_id',$id_type)->get();
+            $product = Product::where('cate_id',$id_type)->paginate(16);
             $count = Cart::where('user_id',Auth::id())->get()->count();
             $cartitems = Cart::where('user_id', Auth::id())->get();
             return view('products',compact('type','category','product','count','cartitems'));

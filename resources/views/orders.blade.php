@@ -31,6 +31,7 @@
                 <table class="table">
                   <thead>
                     <tr>
+                      <th>Date</th>
                       <th>Numéro de suivi</th>
                       <th>Prix total</th>
                       <th>Status</th>
@@ -40,9 +41,10 @@
                   <tbody>
                     @foreach ($orders as $item)
                       <tr>
+                        <td>{{ $item->created_at }}</td>
                         <td>{{ $item->tracking_no }}</td>
                         <td>{{ $item->total_price }}</td>
-                        <td>{{ $item->status == '0' ? 'pending' : 'completed' }}</td>
+                        <td>{{ $item->status == '0' ? 'en attendant' : 'complété' }}</td>
                         <td>
                             <a href="{{ url('view-order/'.$item->id) }}" class="btn btn-primary">Vue</a>
                         </td>

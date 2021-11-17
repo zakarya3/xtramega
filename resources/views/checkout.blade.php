@@ -40,13 +40,13 @@
                   <div class="col-sm-6">
                     <div class="mb-3">
                       <label class="form-label" for="checkout-fn">Nom</label>
-                      <input class="form-control" name="fname" value="{{ Auth::user()->fname }}" type="text" id="checkout-fn">
+                      <input class="form-control" required name="fname" value="{{ Auth::user()->fname }}" type="text" id="checkout-fn">
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="mb-3">
                       <label class="form-label" for="checkout-ln">Prénom</label>
-                      <input class="form-control" name="lname" value="{{ Auth::user()->lname }}" type="text" id="checkout-ln">
+                      <input class="form-control" required name="lname" value="{{ Auth::user()->lname }}" type="text" id="checkout-ln">
                     </div>
                   </div>
                 </div>
@@ -54,13 +54,13 @@
                   <div class="col-sm-6">
                     <div class="mb-3">
                       <label class="form-label" for="checkout-email">Adresse e-mail</label>
-                      <input class="form-control" name="email" value="{{ Auth::user()->email }}" type="email" id="checkout-email">
+                      <input class="form-control" required name="email" value="{{ Auth::user()->email }}" type="email" id="checkout-email">
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="mb-3">
                       <label class="form-label" for="checkout-phone">Numéro de téléphone</label>
-                      <input class="form-control" name="phone" value="{{ Auth::user()->phone }}" type="text" id="checkout-phone">
+                      <input class="form-control" required name="phone" value="{{ Auth::user()->phone }}" type="text" id="checkout-phone">
                     </div>
                   </div>
                 </div>
@@ -68,13 +68,13 @@
                   <div class="col-sm-6">
                     <div class="mb-3">
                       <label class="form-label" for="checkout-city">Pays</label>
-                      <input class="form-control" name="country" value="{{ Auth::user()->country }}" type="text" id="checkout-address-1">
+                      <input class="form-control" required name="country" value="{{ Auth::user()->country }}" type="text" id="checkout-address-1">
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="mb-3">
                         <label class="form-label" for="checkout-address-1">Adresse</label>
-                        <input class="form-control" name="address" value="{{ Auth::user()->address }}" type="text" id="checkout-address-1">
+                        <input class="form-control" required name="address" value="{{ Auth::user()->address }}" type="text" id="checkout-address-1">
                       </div>
                   </div>
                 </div>
