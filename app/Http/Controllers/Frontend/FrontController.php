@@ -39,9 +39,6 @@ class FrontController extends Controller
             return view('products',compact('type','category','product','count','cartitems'));
 
         }
-        else {
-            return redirect('/')->with('status',"Category doesnot exists");
-        }
     }
     public function type($name, $typeName)
     {
@@ -58,9 +55,6 @@ class FrontController extends Controller
             return view('products',compact('type','category','product','count','cartitems'));
 
         }
-        else {
-            return redirect('/')->with('status',"Category doesnot exists");
-        }
     }
     public function product($type, $name)
     {
@@ -75,12 +69,6 @@ class FrontController extends Controller
                 $cartitems = Cart::where('user_id', Auth::id())->get();
                 return view('product', compact('category','product','products','count','cartitems'));
             }
-            else {
-                return redirect('/')->with('status',"Product doesnot exists");
-            }
-        }
-        else {
-            return redirect('/')->with('status',"Category doesnot exists");
         }
     }
 

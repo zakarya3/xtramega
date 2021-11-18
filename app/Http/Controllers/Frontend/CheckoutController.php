@@ -9,6 +9,8 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\Cart;
 use App\Models\Category;
+use Notification;
+use App\Notifications\SendEmailNotification;
 use App\Models\Order;
 use App\Models\OrderItem;
 
@@ -19,18 +21,12 @@ class CheckoutController extends Controller
         $category = Category::all();
         $old_cartitems = Cart::where('user_id', Auth::id())->get();
         $count = Cart::where('user_id',Auth::id())->get()->count();
-        foreach ($old_cartitems as $item) {
-            if (!Product::where('id',$item->prod_id)->where('qty','>=',$item->prod_qty)->exists()) {
-                $removeItem = Cart::where('user_id',Auth::id())->where('prod_id',$item->prod_id)->first();
-                $removeItem->delete();
-            }
-        }
         $cartitems = Cart::where('user_id',Auth::id())->get();
        if ($cartitems->isNotEmpty()) {
          return view('checkout',compact('category','cartitems','count'));
        }
        else {
-        return redirect('/cart')->with('status'," Votre panier et vide!!!");
+        return redirect('/cart')->with('status'," Votre panier est vide!!!");
        }
         
     }
@@ -77,7 +73,88 @@ class CheckoutController extends Controller
             $user->update();
         }
         Cart::destroy($cartitems);
-        return view('checkout-payment',compact('category','cartitems','count','total'));
+        return view('checkout-payment',compact('category','cartitems','count','total','order'));
+    }
+    public function paymentmethod(Request $request, $id)
+    {
+        $category = Category::all();
+        $count = Cart::where('user_id',Auth::id())->get()->count();
+        $cartitems = Cart::where('user_id',Auth::id())->get();
+        $orders = Order::find($id);
+        $orders->choice = $request->input('order_choice');
+
+        $user = User::where('id', Auth::id())->first();
+        if ($orders->choice == "0") {
+            $details = [
+                'greeting' => 'Bonjour '.$user->name.', Merci d avoir effectué vos achats sur Xtramega Maroc!',
+                'body' => 'Identifiant de commande '.$orders->tracking_no.' - En attente de paiement',
+                'body1' => 'Votre commande ayant pour référence '.$orders->tracking_no.' a bien été prise en compte, elle sera expédiée dès réception de votre paiement.',
+                'body2' => 'Moyen de paiement : Payer par virement bancaire',
+                'body3' => 'Vous avez choisi de régler par virement bancaire. Voici les informations requises pour votre virement :',
+                'body4' => 'Montant : '.$orders->total_price.' DH/TTC',
+                'body5' => 'Titulaire du compte : logicatel',
+                'body6' => 'Détails du compte : 022010000276001001685825',
+                'body7' => 'Adresse de la banque : Société général à Agadir',
+                'actiontext' => 'Plus de détails',
+                'actionurl' => 'http://127.0.0.1:8000/view-order/'.$orders->id,
+                'lastline' => 'Veuillez préciser votre numéro de commande dans la description du virement.',
+            ];
+        }
+        elseif ($orders->choice == "1") {
+            $details = [
+                'greeting' => 'Bonjour '.$user->name.', Merci d avoir effectué vos achats sur Xtramega Maroc!',
+                'body' => 'Identifiant de commande '.$orders->tracking_no.' - En attente de paiement',
+                'body1' => 'Votre commande ayant pour référence '.$orders->tracking_no.' a bien été prise en compte, elle sera expédiée dès réception de votre paiement.',
+                'body2' => 'Moyen de paiement : Payer par virement bancaire',
+                'body3' => 'Vous avez choisi de régler par virement bancaire. Voici les informations requises pour votre virement :',
+                'body4' => 'Montant : '.$orders->total_price.' DH/TTC',
+                'body5' => 'Titulaire du compte : logicatel',
+                'body6' => 'Détails du compte : 022010000276001001685825',
+                'body7' => 'Adresse de la banque : Société général à Agadir',
+                'actiontext' => 'Plus de détails',
+                'actionurl' => 'http://127.0.0.1:8000/view-order/'.$orders->id,
+                'lastline' => 'Veuillez préciser votre numéro de commande dans la description du virement.',
+            ];
+        }
+        elseif ($orders->choice == "2") {
+            $details = [
+                'greeting' => 'Bonjour '.$user->name.', Merci d avoir effectué vos achats sur Xtramega Maroc!',
+                'body' => 'Identifiant de commande '.$orders->tracking_no,
+                'body1' => 'Votre commande ayant pour référence '.$orders->tracking_no.' a bien été prise en compte. Vous payez lors de la livraison de votre commande.',
+                'body2' => 'Moyen de paiement : Payer comptant à la livraison',
+                'body3' => 'Nous vous contacterons bientôt',
+                'body4' => '',
+                'body5' => '',
+                'body6' => '',
+                'body7' => '',
+                'actiontext' => 'Plus de détails',
+                'actionurl' => 'http://127.0.0.1:8000/view-order/'.$orders->id,
+                'lastline' => 'Xtramega vous remercie!!',
+            ];
+        }
+        $admin = User::where('role_as','1')->first();
+        $details_admin=[
+            'greeting' => 'Bonjour '.$admin->name.', vous avez une commande',
+            'body' => 'Identifiant de commande '.$orders->tracking_no,
+            'body1' => 'Nom et prénom : '.$user->fname.' '.$user->lname,
+            'body2' => 'Email : '.$user->email,
+            'body3' => 'Téléphone : '.$user->phone,
+            'body4' => 'Adresse : '.$user->address,
+            'body5' => 'Pays : '.$user->country,
+            'body6' => '',
+            'body7' => '',
+            'actiontext' => 'Plus de détails',
+            'actionurl' => 'http://127.0.0.1:8000/admin/view-order/'.$orders->id,
+            'lastline' => 'Xtramega vous remercie!!',
+        ];
+
+
+        Notification::send($user, new SendEmailNotification($details));
+        Notification::send($admin, new SendEmailNotification($details_admin));
+
+
+        $orders->update();
+        return view('checkout-complete',compact('category','cartitems','count','orders'));
     }
     public function index_pay()
     {

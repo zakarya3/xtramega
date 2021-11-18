@@ -19,8 +19,11 @@ $(document).ready(function () {
           'product_qty' : product_qty,
         },
         success: function (response) {
-          window.location.reload();
-          alert(response.status);
+          swal(response.status);
+          
+          setTimeout(() => {
+            window.location.reload();  
+          }, 2000);
         }
       });
       
@@ -65,8 +68,11 @@ $(document).ready(function () {
                 'prod_id' : prod_id,
             },
             success: function (response) {
-                window.location.reload();
                 swal("Deleted",response.status,"success");
+                
+                setTimeout(() => {
+                  window.location.reload();  
+                }, 2000);
             }
         });
     });

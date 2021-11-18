@@ -195,7 +195,12 @@
       <!-- Main theme script-->
       <script src="/js/theme.min.js"></script>
       <script src="/js/custom.js"></script>
-
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      @if (session('status'))
+          <script>
+              swal("{{ session('status') }}");
+          </script>
+      @endif
     </body>
 
     <!-- Mirrored from cartzilla.createx.studio/home-electronics-store.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Oct 2021 10:30:42 GMT -->

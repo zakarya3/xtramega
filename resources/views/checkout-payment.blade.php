@@ -84,22 +84,19 @@
                 </div>
               </div>
             </div>
-            <!-- Navigation (desktop)-->
-            <div class="d-none d-lg-flex pt-4">
-              <div class="w-50 pe-3"><a class="btn btn-secondary d-block w-100" href="{{ url('cart') }}"><i class="ci-arrow-left mt-sm-0 me-1"></i><span class="d-none d-sm-inline">Retour au panier</span><span class="d-inline d-sm-none">Back</span></a></div>
-              <div class="w-50 ps-2"><a class="btn btn-primary d-block w-100" href="{{ url('checkout-complete') }}"><span class="d-none d-sm-inline">Terminé</span><span class="d-inline d-sm-none">Terminé</span><i class="ci-arrow-right mt-sm-0 ms-1"></i></a></div>
-            </div>
-          </section>
-        </div>
-        <!-- Navigation (mobile)-->
-        <div class="row d-lg-none">
-          <div class="col-lg-8">
-            <div class="d-flex pt-4 mt-3">
-              <div class="w-50 pe-3"><a class="btn btn-secondary d-block w-100" href="{{ url('cart') }}"><i class="ci-arrow-left mt-sm-0 me-1"></i><span class="d-none d-sm-inline">Retour au panier</span><span class="d-inline d-sm-none">Back</span></a></div>
-              <div class="w-50 ps-2"><a class="btn btn-primary d-block w-100" href="{{ url('checkout-complete') }}"><span class="d-none d-sm-inline">Terminé</span><span class="d-inline d-sm-none">Next</span><i class="ci-arrow-right mt-sm-0 ms-1"></i></a></div>
-            </div>
+            <div class="mt-3 px-2">
+              <label for="">Sélectionnez le mode de paiement</label>
+              <form action="{{ url('payment-method/'.$order->id) }}" method="post">
+                  @csrf
+                  @method('PUT')
+                  <select class="form-select" name="order_choice">
+                      <option {{ $order->choice == '0' ? 'selected':'' }} value="0" >Payer par chèque</option>
+                      <option {{ $order->choice == '1' ? 'selected':'' }} value="1" >Payer par virement bancaire</option>
+                      <option {{ $order->choice == '2' ? 'selected':'' }} value="2" >Payer comptant à la livraison</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary mt-3">Confirmer</button>
+              </form>
           </div>
-        </div>
       </div>
     </main>
 

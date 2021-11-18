@@ -24,6 +24,7 @@ class CreateOrdersTable extends Migration
             $table->string('address');
             $table->string('country');
             $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('choice')->default(0);
             $table->string('message')->nullable();
             $table->string('tracking_no');
             $table->timestamps();

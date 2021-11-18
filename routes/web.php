@@ -11,6 +11,7 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('checkout-complete', [CheckoutController::class, 'index_comp']);
     Route::get('myorders', [UserController::class, 'index']);
     Route::get('view-order/{id}', [UserController::class, 'view']);
+    Route::get('send', [HomeController::class,"sendnotification"]);
+    Route::put('payment-method/{id}', [CheckoutController::class, 'paymentmethod']);
 });
 
 
