@@ -71,5 +71,21 @@ class FrontController extends Controller
             }
         }
     }
+    public function brand()
+    {
+        $category = Category::all();
+        $brands = Brand::all();
+        $count = Cart::where('user_id',Auth::id())->get()->count();
+        $cartitems = Cart::where('user_id', Auth::id())->get();
+        return view('brand', compact('category','count','cartitems','brands'));
+    }
 
+    public function contact()
+    {
+        $category = Category::all();
+        $brands = Brand::all();
+        $count = Cart::where('user_id',Auth::id())->get()->count();
+        $cartitems = Cart::where('user_id', Auth::id())->get();
+        return view('contact', compact('category','count','cartitems','brands'));
+    }
 }

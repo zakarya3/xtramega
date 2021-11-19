@@ -31,9 +31,9 @@ Route::get('/products/{name}/{typeName}', [FrontController::class,'type']);
 
 Route::get('/product/{type}/{name}', [FrontController::class,'product']);
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::get('/brand', [FrontController::class, 'brand']);
+
+Route::get('/contact', [FrontController::class, 'contact']);
 
 Auth::routes();
 
