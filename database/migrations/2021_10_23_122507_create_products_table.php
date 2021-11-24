@@ -22,7 +22,6 @@ class CreateProductsTable extends Migration
             $table->bigInteger('brand_id');
             $table->string('image');
             $table->string('qty');
-            $table->string('tax');
             $table->tinyInteger('trending');
             $table->tinyInteger('status');
             $table->string('product_reference');

@@ -44,10 +44,6 @@
                     <input type="number" class="form-control" required name="qty" id="">
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="">Tax</label>
-                    <input type="number" class="form-control" required name="tax" id="">
-                </div>
-                <div class="col-md-6 mb-3">
                     <label for="">Prix</label>
                     <input type="number" class="form-control" required name="price" id="">
                 </div>               

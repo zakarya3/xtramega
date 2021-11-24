@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Frontend\FrontController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\FilterController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -28,6 +29,7 @@ Route::get('/', [FrontController::class,'index']);
 
 Route::get('/products/{name}', [FrontController::class,'products']);
 Route::get('/products/{name}/{typeName}', [FrontController::class,'type']);
+Route::get('/products/order-by-brand/{name}/{id_brand}', [FilterController::class,'brand_filter']);
 
 Route::get('/product/{type}/{name}', [FrontController::class,'product']);
 

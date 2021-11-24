@@ -33,10 +33,11 @@ class FrontController extends Controller
             $id = $category1->id;
             $type = Type::where('categ_id',$id)->get();
             $id_type = Type::where('categ_id',$id)->pluck('id');
+            $brands = Brand::all();
             $product = Product::whereIn('cate_id',$id_type)->paginate(16);
             $count = Cart::where('user_id',Auth::id())->get()->count();
             $cartitems = Cart::where('user_id', Auth::id())->get();
-            return view('products',compact('type','category','product','count','cartitems'));
+            return view('products',compact('type','category','product','count','cartitems','brands'));
 
         }
     }
@@ -51,11 +52,13 @@ class FrontController extends Controller
             $id_type = $type_name->id;
             $product = Product::where('cate_id',$id_type)->paginate(16);
             $count = Cart::where('user_id',Auth::id())->get()->count();
+            $brands = Brand::all();
             $cartitems = Cart::where('user_id', Auth::id())->get();
-            return view('products',compact('type','category','product','count','cartitems'));
+            return view('products',compact('type','category','product','count','cartitems','brands'));
 
         }
     }
+
     public function product($type, $name)
     {
         if (Type::where('name',$type)->exists()) {

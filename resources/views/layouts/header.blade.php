@@ -116,6 +116,11 @@
                   <li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" href="{{ url('/') }}">Accueil</a></li>
                   @foreach ($category as $cate)
                   <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="{{ url('products/'.$cate->category_name) }}">{{ $cate->category_name }}</a>
+                    <ul class="dropdown-menu">
+                      @foreach ($cate->type as $item)
+                        <li><a class="dropdown-item" href="{{ url('/products/'.$cate->category_name.'/'.$item->name) }}">{{ $item->name }}</a></li>
+                      @endforeach
+                    </ul>
                   </li>
                   @endforeach
                   <li class="nav-item dropdown active"><a class="nav-link dropdown-toggle" href="{{ url('myorders') }}">Mes commandes</a></li>

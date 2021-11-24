@@ -39,7 +39,6 @@ class ProductController extends Controller
         $products->product_fullname = $request->input('name');
         $products->product_description = $request->input('description');
         $products->qty = $request->input('qty');
-        $products->tax = $request->input('tax');
         $products->status = $request->input('status') == TRUE ? '1':'0';
         $products->trending = $request->input('trending') == TRUE ? '1':'0';
         $products->product_reference = $request->input('ref');
@@ -83,7 +82,6 @@ class ProductController extends Controller
         $products->product_fullname = $request->input('name');
         $products->product_description = $request->input('description');
         $products->qty = $request->input('qty');
-        $products->tax = $request->input('tax');
         $products->product_reference = $request->input('ref');
         $products->price = $request->input('price');
         $products->status = $request->input('status') == TRUE ? '1':'0';

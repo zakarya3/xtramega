@@ -48,6 +48,24 @@
                   </div>
                 </div>
               </div>
+              <div class="col-lg-4 col-sm-6">
+                <!-- Filter by Size-->
+                <div class="card mb-grid-gutter">
+                  <div class="card-body px-4">
+                    <div class="widget widget-categories">
+                      <h3 class="widget-title">Marque</h3>
+                      <div class="accordion mt-n1" id="shop-categories">
+                        <!-- Shoes-->
+                        <div class="accordion-item">
+                          @foreach ($brands as $item)
+                          <h3 style="display: flex; justify-content: center; align-items: center"><a class="accordion-button collapsed" href="{{ url('/products/order-by-brand/'.$tp->category->category_name.'/'.$item->id) }}">{{ $item->brand_name }}</a><img src="{{ asset('assets/uploads/products/brands/'.$item->image) }}" width="50" alt=""></h3>
+                          @endforeach
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
