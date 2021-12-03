@@ -9,7 +9,10 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Type;
 use App\Models\Cart;
+use App\Notifications\SendEmailNotification;
+use Notification;
 use App\Models\Brand;
+use App\Models\User;
 
 class FrontController extends Controller
 {
@@ -17,12 +20,10 @@ class FrontController extends Controller
     {
         $featured_products = Product::where('trending','1')->take(8)->get();
         $brands = Brand::all();
-        $count = Cart::where('user_id',Auth::id())->get()->count();
-        $cartitems = Cart::where('user_id', Auth::id())->get();
         $new = Product::where('status','1')->take(4)->get();
         $qty = Product::where('qty','<=','10')->take(4)->get();
         $random = Product::all()->random(4);
-        return view('welcome', compact('featured_products','count','cartitems','brands','new','qty','random'));
+        return view('welcome', compact('featured_products','brands','new','qty','random'));
     }
     public function products($name)
     {
@@ -34,9 +35,7 @@ class FrontController extends Controller
             $id_type = Type::where('categ_id',$id)->pluck('id');
             $brands = Brand::all();
             $product = Product::whereIn('cate_id',$id_type)->paginate(16);
-            $count = Cart::where('user_id',Auth::id())->get()->count();
-            $cartitems = Cart::where('user_id', Auth::id())->get();
-            return view('products',compact('type','product','count','cartitems','brands'));
+            return view('products',compact('type','name','product','brands'));
 
         }
     }
@@ -50,10 +49,8 @@ class FrontController extends Controller
             $type_name = Type::where('name',$typeName)->first();
             $id_type = $type_name->id;
             $product = Product::where('cate_id',$id_type)->paginate(16);
-            $count = Cart::where('user_id',Auth::id())->get()->count();
             $brands = Brand::all();
-            $cartitems = Cart::where('user_id', Auth::id())->get();
-            return view('products',compact('type','product','count','cartitems','brands'));
+            return view('products',compact('type','name','product','brands'));
 
         }
     }
@@ -66,26 +63,41 @@ class FrontController extends Controller
                 $product = Product::where('product_name',$name)->first();
                 $type_name = Type::where('name',$type)->first();
                 $id_type = $type_name->id;
-                $products = Product::where('cate_id',$id_type)->get()->take(8);
-                $count = Cart::where('user_id',Auth::id())->get()->count();
-                $cartitems = Cart::where('user_id', Auth::id())->get();
-                return view('product', compact('product','products','count','cartitems'));
+                $products = Product::where('cate_id',$id_type)->get()->take(8);    
+                return view('product', compact('product','products'));
             }
         }
     }
     public function brand()
     {
         $brands = Brand::all();
-        $count = Cart::where('user_id',Auth::id())->get()->count();
-        $cartitems = Cart::where('user_id', Auth::id())->get();
-        return view('brand', compact('count','cartitems','brands'));
+        return view('brand', compact('brands'));
     }
 
     public function contact()
     {
         $brands = Brand::all();
-        $count = Cart::where('user_id',Auth::id())->get()->count();
-        $cartitems = Cart::where('user_id', Auth::id())->get();
-        return view('contact', compact('count','cartitems','brands'));
+        return view('contact', compact('brands'));
+    }
+
+    public function message(Request $request)
+    {
+        $admin = User::where('role_as','1')->first();
+        $details = [
+            'greeting' => 'Message du client : '.$request->name,
+            'body' => 'Client: '.$request->name,
+            'body1' => 'Adresse email: '.$request->email,
+            'body2' => 'Téléphone: '.$request->phone,
+            'body3' => 'Sujet: '.$request->subject,
+            'body4' => 'Message: '.$request->message,
+            'body5' => '',
+            'body6' => '',
+            'body7' => '',
+            'actiontext' => '',
+            'actionurl' => '',
+            'lastline' => '',
+        ];
+        Notification::send($admin, new SendEmailNotification($details));
+        return redirect()->back();
     }
 }

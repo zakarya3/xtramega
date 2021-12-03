@@ -9,14 +9,14 @@
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
                   <li class="breadcrumb-item"><a class="text-nowrap" href="index.html"><i class="ci-home"></i>Accueil</a></li>
-                  <li class="breadcrumb-item text-nowrap"><a href="#">Shop</a>
+                  <li class="breadcrumb-item text-nowrap"><a href="#">Produits</a>
                   </li>
-                  <li class="breadcrumb-item text-nowrap active" aria-current="page">Grid filters on top</li>
+                  <li class="breadcrumb-item text-nowrap active" aria-current="page">{{ $name }}</li>
                 </ol>
               </nav>
             </div>
             <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
-              <h1 class="h3 text-light mb-0">Shop grid filters on top</h1>
+              <h1 class="h3 text-light mb-0">{{ $name }}</h1>
             </div>
           </div>
         </div>

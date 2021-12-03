@@ -24,54 +24,10 @@ class CheckoutController extends Controller
         return view('checkout', compact('cartItems'));
         
     }
-    // public function placeorder(Request $request)
-    // {
-    //     $count = Cart::where('user_id',Auth::id())->get()->count();
-    //     $order = new Order();
-    //     $order->user_id = Auth::id();
-    //     $total = 0;
-    //     $cartitems_total = Cart::where('user_id', Auth::id())->get();
-    //     foreach ($cartitems_total as $prod) {
-    //         $total += $prod->product->price * $prod->prod_qty;
-    //     }
-    //     $order->total_price = $total;
-    //     $order->fname = $request->input('fname');
-    //     $order->lname = $request->input('lname');
-    //     $order->email = $request->input('email');
-    //     $order->phone = $request->input('phone');
-    //     $order->address = $request->input('address');
-    //     $order->country = $request->input('country');
-    //     $order->tracking_no = 'Xtra'.rand(1111,9999);
-    //     $order->save();
-    //     $cartitems= Cart::where('user_id',Auth::id())->get();
-    //     foreach ($cartitems as $item) {
-    //         OrderItem::create([
-    //             'order_id' => $order->id,
-    //             'prod_id' => $item->prod_id,
-    //             'qty' => $item->prod_qty,
-    //             'price' => $item->product->price,
-    //         ]);
-    //         $prod = Product::where('id',$item->prod_id)->first();
-    //         $prod->qty = $prod->qty - $item->prod_qty;
-    //         $prod->update();
-    //     }
-    //     if (Auth::user()->address == NULL) {
-    //         $user = User::where('id', Auth::id())->first();
-    //         $user->fname = $request->input('fname');
-    //         $user->lname = $request->input('lname');
-    //         $user->email = $request->input('email');
-    //         $user->phone = $request->input('phone');
-    //         $user->address = $request->input('address');
-    //         $user->country = $request->input('country');
-    //         $user->update();
-    //     }
-    //     Cart::destroy($cartitems);
-    //     return view('checkout-payment',compact('cartitems','count','total','order'));
-    // }
     public function paymentmethod(Request $request)
     {
         $user = User::where('name',$request->session()->get('name'))->first();
-        $order = Order::where('user_id',$user->id)->first();
+        $order = Order::where('user_id',$user->id)->latest('created_at','desc')->first();
         if ($request->order_choice == "0") {
             $details = [
                 'greeting' => 'Bonjour '.$user->name.', Merci d avoir effectué vos achats sur Xtramega Maroc!',

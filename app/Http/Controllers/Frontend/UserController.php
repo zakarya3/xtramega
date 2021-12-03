@@ -17,9 +17,13 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $user = User::where('name',$request->session()->get('name'))->first();
-        $orders = Order::where('user_id',$user->id)->get();      
-        return view('orders',compact('orders'));
+        if ($request->session()->has('name')) {
+            $user = User::where('name',$request->session()->get('name'))->first();
+            $orders = Order::where('user_id',$user->id)->get();      
+            return view('orders',compact('orders'));
+        }else {
+            return redirect()->back();
+        }
     }
     public function view(Request $request, $id)
     {

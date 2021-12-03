@@ -22,7 +22,6 @@ class FilterController extends Controller
             $brands = Brand::all(); 
             $product = Product::where('brand_id',$id_brand)->paginate(16);
             $count = Cart::where('user_id',Auth::id())->get()->count();
-            $cartitems = Cart::where('user_id', Auth::id())->get();
             return view('products',compact('type','product','count','cartitems','brands'));
 
         }

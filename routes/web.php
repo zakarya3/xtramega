@@ -8,7 +8,6 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Cart\CartPController;
 use App\Http\Controllers\Frontend\FrontController;
-use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FilterController;
 use App\Http\Controllers\Frontend\UserController;
@@ -48,9 +47,6 @@ Route::get('/contact', [FrontController::class, 'contact']);
 
 Auth::routes();
 
-// Route::post('add-to-cart', [CartController::class, 'addProduct']);
-// Route::get('cart', [CartController::class, 'viewcart']);
-// Route::post('delete-cart-item', [CartController::class, 'deleteProduct']);
 Route::get('checkout', [CheckoutController::class, 'index'])->name('check.list');
 Route::post('payment', [CartPController::class, 'addUser']);
 Route::post('place-order', [CheckoutController::class, 'placeorder']);
@@ -60,6 +56,7 @@ Route::get('myorders', [UserController::class, 'index']);
 Route::get('view-order/{id}', [UserController::class, 'view']);
 Route::get('send', [HomeController::class,"sendnotification"]);
 Route::put('payment-method', [CheckoutController::class, 'paymentmethod']);
+Route::put('contact-message', [FrontController::class, 'message']);
 
 
 

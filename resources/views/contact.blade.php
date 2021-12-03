@@ -67,30 +67,32 @@
                   </div>
                   <div class="col-lg-6 px-4 px-xl-5 py-5 border-top">
                     <h2 class="h4 mb-4">Écrivez-nous</h2>
-                    <form class="needs-validation mb-3" novalidate>
+                    <form class="needs-validation mb-3" action="{{ url('contact-message') }}" method="POST" novalidate>
+                      @csrf
+                      @method('PUT')
                       <div class="row g-3">
                         <div class="col-sm-6">
                           <label class="form-label" for="cf-name">Votre nom:&nbsp;<span class="text-danger">*</span></label>
-                          <input class="form-control" type="text" id="cf-name" required>
+                          <input class="form-control" name="name" type="text" id="cf-name" required>
                           <div class="invalid-feedback">Please fill in you name!</div>
                         </div>
                         <div class="col-sm-6">
                           <label class="form-label" for="cf-email">Adresse email:&nbsp;<span class="text-danger">*</span></label>
-                          <input class="form-control" type="email" id="cf-email" required>
+                          <input class="form-control" name="email" type="email" id="cf-email" required>
                           <div class="invalid-feedback">Please provide valid email address!</div>
                         </div>
                         <div class="col-sm-6">
                           <label class="form-label" for="cf-phone">Téléphone:&nbsp;<span class="text-danger">*</span></label>
-                          <input class="form-control" type="text" id="cf-phone" required>
+                          <input class="form-control" name="phone" type="text" id="cf-phone" required>
                           <div class="invalid-feedback">Please provide valid phone number!</div>
                         </div>
                         <div class="col-sm-6">
                           <label class="form-label" for="cf-subject">Sujet:</label>
-                          <input class="form-control" type="text" id="cf-subject">
+                          <input class="form-control" name="subject" type="text" id="cf-subject">
                         </div>
                         <div class="col-12">
                           <label class="form-label" for="cf-message">Message:&nbsp;<span class="text-danger">*</span></label>
-                          <textarea class="form-control" id="cf-message" rows="6" required></textarea>
+                          <textarea class="form-control" name="message" id="cf-message" rows="6" required></textarea>
                           <div class="invalid-feedback">Please write a message!</div>
                           <button class="btn btn-primary mt-4" type="submit">Envoyer</button>
                         </div>
