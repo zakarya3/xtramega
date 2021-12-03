@@ -17,15 +17,10 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('user_id');
             $table->string('total_price');
-            $table->string('fname');
-            $table->string('lname');
             $table->string('email');
             $table->string('phone');
             $table->string('address');
-            $table->string('country');
             $table->tinyInteger('status')->default(0);
-            $table->tinyInteger('choice')->default(0);
-            $table->string('message')->nullable();
             $table->string('tracking_no');
             $table->timestamps();
         });

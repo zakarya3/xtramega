@@ -72,26 +72,25 @@
                   <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-menu"></i></div></a>
                 <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" data-bs-toggle="modal">
                   <a href="{{ url('/login') }}"><div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div></a>
-                  <a href="{{ url('/login') }}"><div class="navbar-tool-text ms-n3">@if (Auth::check())
-                    <small>{{ Auth::user()->name }}</small>
-                  @endif Account</div></a>
+                  <a href="{{ url('/login') }}"><div class="navbar-tool-text ms-n3">
+                    <small>{{ Session::get('name') }}</small></div></a>
                 </a>
-                <div class="navbar-tool dropdown ms-3"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{ url('cart') }}"><span class="navbar-tool-label">{{ $count }}</span><i class="navbar-tool-icon ci-cart"></i></a><a class="navbar-tool-text" href="{{ url('cart') }}"></a>
+                <div class="navbar-tool dropdown ms-3"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{ url('cart') }}"><span class="navbar-tool-label">{{ Cart::getTotalQuantity()}}</span><i class="navbar-tool-icon ci-cart"></i></a><a class="navbar-tool-text" href="{{ url('cart') }}"></a>
                   <!-- Cart dropdown-->
                   <div class="dropdown-menu dropdown-menu-end">
                     <div class="widget widget-cart px-3 pt-2 pb-3" style="width: 20rem;">
                       <div style="height: 15rem;" data-simplebar data-simplebar-auto-hide="false">
-                        @foreach ($cartitems as $item)
-                        <div class="widget-cart-item py-2 border-bottom product_data">
-                          <input type="hidden" value="{{ $item->product->id }}" class="prod_id">
-                          <button class="btn-close text-danger delete-cart-item" type="button" aria-label="Remove"><span aria-hidden="true">&times;</span></button>
-                          <div class="d-flex align-items-center"><a class="d-block flex-shrink-0" href="{{ url('cart') }}"><img src="{{ asset('assets/uploads/products/images/'.$item->product->image) }}" width="64" alt="Product"></a>
-                            <div class="ps-2">
-                              <h6 class="widget-product-title"><a href="{{ url('cart') }}">{{ $item->product->product_name }}</a></h6>
-                              <div class="widget-product-meta"><span class="text-accent me-2">{{ $item->product->price }}.<small>00 MAD</small></span><span class="text-muted">x {{ $item->prod_qty }}</span></div>
+                        @foreach ($cartItems as $item)
+                          <div class="widget-cart-item py-2 border-bottom product_data">
+                            <input type="hidden" value="{{ $item->id }}" class="prod_id">
+                          <form action="{{ route('cart.remove') }}" method="post">@csrf <input type="hidden" value="{{ $item->id }}" name="id"> <button class="btn-close text-danger" type="submit" aria-label="Remove"><span aria-hidden="true">&times;</span></button></form>
+                            <div class="d-flex align-items-center"><a class="d-block flex-shrink-0" href="{{ url('cart') }}"><img src="{{ asset('assets/uploads/products/images/'.$item->attributes->image) }}" width="64" alt="Product"></a>
+                              <div class="ps-2">
+                                <h6 class="widget-product-title"><a href="{{ url('cart') }}">{{ $item->name }}</a></h6>
+                                <div class="widget-product-meta"><span class="text-accent me-2">{{ $item->price }}.<small>00 MAD</small></span><span class="text-muted">x {{ $item->quantity }}</span></div>
+                              </div>
                             </div>
                           </div>
-                        </div>
                         @endforeach
                       </div>
                       <div class="d-flex flex-wrap justify-content-between align-items-center py-3">

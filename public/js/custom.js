@@ -1,35 +1,4 @@
 $(document).ready(function () {
-    $('.addToCartBtn').click(function (e) { 
-      e.preventDefault();
-
-      var product_id = $(this).closest('.product_data').find('.prod_id').val();
-      var product_qty = $(this).closest('.product_data').find('.qty-input').val();
-
-      $.ajaxSetup({
-       headers: {
-         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-       }
-     });
-
-      $.ajax({
-       method: "POST",
-        url: "/add-to-cart",
-        data: {
-          'product_id' : product_id,
-          'product_qty' : product_qty,
-        },
-        success: function (response) {
-          swal(response.status);
-          
-          setTimeout(() => {
-            window.location.reload();  
-          }, 2000);
-        }
-      });
-      
-    });
-
-
     $('.increment-btn').click(function (e) {
         e.preventDefault();
         var incre_value = $(this).closest('.product_data').find('.qty-input').val();
@@ -37,9 +6,16 @@ $(document).ready(function () {
         value = isNaN(value) ? 0 : value;
         if(value<10){
             value++;
-            $(this).closest('.product_data').find('.qty-input').val(value);
+            var quantity = $(this).closest('.product_data').find('.qty-input').val(value);
+            $.ajax({
+              method: "POST",
+               url: "/cart",
+               data: {
+                 'quantity' : quantity,
+               },
+             });
         }
-
+ 
     });
 
     $('.decrement-btn').click(function (e) {
@@ -53,28 +29,15 @@ $(document).ready(function () {
         }
     });
 
-    $('.delete-cart-item').click(function (e) { 
-        e.preventDefault();
-        $.ajaxSetup({
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-          });
-        var prod_id = $(this).closest('.product_data').find('.prod_id').val();
-        $.ajax({
-            method: "POST",
-            url: "delete-cart-item",
-            data: {
-                'prod_id' : prod_id,
-            },
-            success: function (response) {
-                swal("Deleted",response.status,"success");
-                
-                setTimeout(() => {
-                  window.location.reload();  
-                }, 2000);
-            }
-        });
-    });
+    $('.order_choice').change(function() {
+      var order_choice = $(".order_choice option:selected").val(value);
+      $.ajax({
+        method: "POST",
+         url: "/payment-method",
+         data: {
+           'order_choice' : order_choice,
+         },
+       });
+    })
 
   });

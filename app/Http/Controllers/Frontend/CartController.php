@@ -39,27 +39,4 @@ class CartController extends Controller
         }
     }
 
-    public function viewcart()
-    {
-        $category = Category::all();
-        $cartitems = Cart::where('user_id', Auth::id())->get();
-        $count = Cart::where('user_id',Auth::id())->get()->count();
-        return view('cart',compact('category', 'cartitems','count'));
-        return view('layouts.header',compact('cartitems','count'));
-    }
-
-    public function deleteProduct(Request $request)
-    {
-        if (Auth::check()) {
-            $prod_id = $request->input('prod_id');
-            if (Cart::where('prod_id',$prod_id)->where('user_id',Auth::id())->exists()) {
-                $cartItem = Cart::where('prod_id',$prod_id)->where('user_id',Auth::id())->first();
-                $cartItem->delete();
-                return response()->json(['status' => "Product deleted successfully"]);
-            }
-        }
-        else {
-            return view('auth.login');
-        }
-    }
 }

@@ -23,7 +23,7 @@
         <div class="row">
           <section class="col-lg-8">
             <!-- Steps-->
-            <div class="steps steps-light pt-2 pb-3 mb-5"><a class="step-item active" href="shop-cart.html">
+            <div class="steps steps-light pt-2 pb-3 mb-5"><a class="step-item active" href="">
                 <div class="step-progress"><span class="step-count">1</span></div>
                 <div class="step-label"><i class="ci-cart"></i>Panier</div></a><a class="step-item active current" href="#">
                 <div class="step-progress"><span class="step-count">2</span></div>
@@ -33,49 +33,36 @@
                 <div class="step-progress"><span class="step-count">4</span></div>
                 <div class="step-label"><i class="ci-check-circle"></i>Revoir</div></a></div>
             <!-- Shipping address-->
-            <form action="{{ url('place-order') }}" method="post">
+            <form action="{{ url('payment') }}" method="post">
               {{ csrf_field() }}
                 <h2 class="h6 pt-1 pb-3 mb-3 border-bottom">Shipping address</h2>
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="mb-3">
-                      <label class="form-label" for="checkout-fn">Nom</label>
-                      <input class="form-control" required name="fname" value="{{ Auth::user()->fname }}" type="text" id="checkout-fn">
+                      <label class="form-label" for="checkout-fn">Nom & Prénom</label>
+                      <input class="form-control" required name="userName" value="" type="text" id="checkout-fn">
                     </div>
                   </div>
                   <div class="col-sm-6">
-                    <div class="mb-3">
-                      <label class="form-label" for="checkout-ln">Prénom</label>
-                      <input class="form-control" required name="lname" value="{{ Auth::user()->lname }}" type="text" id="checkout-ln">
+                    <div class="col-sm-6">
+                      <div class="mb-3">
+                        <label class="form-label" for="checkout-phone">Numéro de téléphone</label>
+                        <input class="form-control" required name="phone" value="" type="text" id="checkout-phone">
+                      </div>
                     </div>
-                  </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-6">
-                    <div class="mb-3">
-                      <label class="form-label" for="checkout-email">Adresse e-mail</label>
-                      <input class="form-control" required name="email" value="{{ Auth::user()->email }}" type="email" id="checkout-email">
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="mb-3">
-                      <label class="form-label" for="checkout-phone">Numéro de téléphone</label>
-                      <input class="form-control" required name="phone" value="{{ Auth::user()->phone }}" type="text" id="checkout-phone">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="mb-3">
-                      <label class="form-label" for="checkout-city">Pays</label>
-                      <input class="form-control" required name="country" value="{{ Auth::user()->country }}" type="text" id="checkout-address-1">
-                    </div>
-                  </div>
                   <div class="col-sm-6">
                     <div class="mb-3">
                         <label class="form-label" for="checkout-address-1">Adresse</label>
-                        <input class="form-control" required name="address" value="{{ Auth::user()->address }}" type="text" id="checkout-address-1">
+                        <input class="form-control" required name="address" value="" type="text" id="checkout-address-1">
                       </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="mb-3">
+                      <label class="form-label" for="checkout-email">Adresse e-mail</label>
+                      <input class="form-control" required name="email" value="" type="email" id="checkout-email">
+                    </div>
                   </div>
                 </div>
                 <!-- Navigation (desktop)-->
@@ -103,19 +90,20 @@
                           @php
                             $total = 0;
                           @endphp
-                          @foreach ($cartitems as $item)
+                          @foreach ($cartItems as $item)
                             <tr>
-                              <td>{{ $item->product->product_name }}</td>
-                              <td>{{ $item->prod_qty }}</td>
-                              <td>{{ $item->product->price }} <small>MAD</small></td>
+                              <td>{{ $item->name }}</td>
+                              <td>{{ $item->quantity }}</td>
+                              <td>{{ $item->price }} <small>MAD</small></td>
                             </tr>
                             @php
-                              $total += $item->product->price * $item->prod_qty
+                              $total += $item->price * $item->quantity
                             @endphp
                           @endforeach
                           <tr>
                             <th>Total TTC</th>
                             <td>{{ $total }}</td>
+                            <input type="hidden" name="total" value="{{ $total }}">
                             <td>MAD</td>
                           </tr>
                         </tbody>

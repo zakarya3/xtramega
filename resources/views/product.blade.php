@@ -55,17 +55,22 @@
                       <div class="input-group-prepend decrement-btn" style="cursor: pointer">
                           <span class="input-group-text">-</span>
                       </div>
-                      <input type="text" class="qty-input form-control" maxlength="2" max="10" value="1">
+                      <input type="text" class="qty-input form-control" maxlength="2" max="10" value="0" required>
                       <div class="input-group-append increment-btn" style="cursor: pointer">
                           <span class="input-group-text">+</span>
                       </div>
                     </div>
                     <div class="col-md-9" style="width: 100% !important">
-                      @if (Auth::check())
-                        <button class="btn btn-primary btn-shadow addToCartBtn d-block w-100" type="submit"><i class="ci-cart fs-lg me-2"></i>Add to Cart</button>
-                      @else
-                        <a class="btn btn-primary btn-shadow " href="/login">Connexion</a>
-                      @endif
+                      <form action="{{ route('cart.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" value="{{ $product->id }}" name="id">
+                        <input type="hidden" value="{{ $product->product_name }}" name="name">
+                        <input type="hidden" value="{{ $product->price }}" name="price">
+                        <input type="hidden" value="{{ $product->image }}"  name="image">
+                        <input type="hidden" class="qty-input form-control" name="quantity">
+                        <input type="hidden" value="{{ $product->qty }}"  name="qty">
+                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit"><i class="ci-cart fs-lg me-2"></i>Add to Cart</button>
+                      </form>
                     </div>
                   </div>
                   @else

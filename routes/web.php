@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
+
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\TypeController;
+use App\Http\Controllers\Cart\CartPController;
 use App\Http\Controllers\Frontend\FrontController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
@@ -27,11 +29,18 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [FrontController::class,'index']);
 
+
 Route::get('/products/{name}', [FrontController::class,'products']);
 Route::get('/products/{name}/{typeName}', [FrontController::class,'type']);
 Route::get('/products/order-by-brand/{name}/{id_brand}', [FilterController::class,'brand_filter']);
 
 Route::get('/product/{type}/{name}', [FrontController::class,'product']);
+
+Route::get('cart', [CartPController::class, 'cartList'])->name('cart.list');
+Route::post('cart', [CartPController::class, 'addToCart'])->name('cart.store');
+Route::post('update-cart', [CartPController::class, 'updateCart'])->name('cart.update');
+Route::post('remove', [CartPController::class, 'removeCart'])->name('cart.remove');
+Route::post('clear', [CartPController::class, 'clearAllCart'])->name('cart.clear');
 
 Route::get('/brand', [FrontController::class, 'brand']);
 
@@ -39,19 +48,18 @@ Route::get('/contact', [FrontController::class, 'contact']);
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function () {
-    Route::post('add-to-cart', [CartController::class, 'addProduct']);
-    Route::get('cart', [CartController::class, 'viewcart']);
-    Route::post('delete-cart-item', [CartController::class, 'deleteProduct']);
-    Route::get('checkout', [CheckoutController::class, 'index']);
-    Route::post('place-order', [CheckoutController::class, 'placeorder']);
-    Route::get('checkout-payment', [CheckoutController::class, 'index_pay']);
-    Route::get('checkout-complete', [CheckoutController::class, 'index_comp']);
-    Route::get('myorders', [UserController::class, 'index']);
-    Route::get('view-order/{id}', [UserController::class, 'view']);
-    Route::get('send', [HomeController::class,"sendnotification"]);
-    Route::put('payment-method/{id}', [CheckoutController::class, 'paymentmethod']);
-});
+// Route::post('add-to-cart', [CartController::class, 'addProduct']);
+// Route::get('cart', [CartController::class, 'viewcart']);
+// Route::post('delete-cart-item', [CartController::class, 'deleteProduct']);
+Route::get('checkout', [CheckoutController::class, 'index'])->name('check.list');
+Route::post('payment', [CartPController::class, 'addUser']);
+Route::post('place-order', [CheckoutController::class, 'placeorder']);
+Route::get('checkout-payment', [CheckoutController::class, 'index_pay']);
+Route::get('checkout-complete', [CheckoutController::class, 'index_comp']);
+Route::get('myorders', [UserController::class, 'index']);
+Route::get('view-order/{id}', [UserController::class, 'view']);
+Route::get('send', [HomeController::class,"sendnotification"]);
+Route::put('payment-method', [CheckoutController::class, 'paymentmethod']);
 
 
 
