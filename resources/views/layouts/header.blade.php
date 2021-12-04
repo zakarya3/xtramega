@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   
-<!-- Mirrored from cartzilla.createx.studio/home-electronics-store.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Oct 2021 10:29:31 GMT -->
+<!-- Mirrored from Xtramega.createx.studio/home-electronics-store.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Oct 2021 10:29:31 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8">
     <title>Xtramega | Electronics Store</title>
     <!-- SEO Meta Tags-->
-    <meta name="description" content="Cartzilla - Bootstrap E-commerce Template">
+    <meta name="description" content="Xtramega - Bootstrap E-commerce Template">
     <meta name="keywords" content="bootstrap, shop, e-commerce, market, modern, responsive,  business, mobile, bootstrap, html5, css3, js, gallery, slider, touch, creative, clean">
     <meta name="author" content="Createx Studio">
     <!-- Viewport-->
@@ -55,7 +55,7 @@
         <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
         <div class="navbar-sticky bg-light">
           <div class="navbar navbar-expand-lg navbar-light">
-            <div class="container"><a class="navbar-brand d-none d-sm-block me-3 flex-shrink-0" href="/"><img class="logo-pic" src="/img/logoXtra.jpeg" width="250" alt="Cartzilla"></a><a class="navbar-brand d-sm-none me-2" href="/"><img src="/img/logoXtra.jpeg" width="74" alt="Cartzilla"></a>
+            <div class="container"><a class="navbar-brand d-none d-sm-block me-3 flex-shrink-0" href="/"><img class="logo-pic" src="/img/logoXtra.jpeg" width="250" alt="Xtramega"></a><a class="navbar-brand d-sm-none me-2" href="/"><img src="/img/logoXtra.jpeg" width="74" alt="Xtramega"></a>
               <!-- Search-->
               <div class="input-group d-none d-lg-flex flex-nowrap mx-4"><i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
                 <input class="form-control rounded-start w-100" type="text" placeholder="Rechercher des produits">
@@ -176,16 +176,16 @@
           <div class="container">
             <div class="row pb-2">
               <div class="col-md-6 text-center text-md-end mb-4">
-                <div class="mb-3 social"><a class="btn-social bs-light bs-twitter ms-2 mb-2" href="#"><i class="ci-twitter"></i></a><a class="btn-social bs-light bs-facebook ms-2 mb-2" href="#"><i class="ci-facebook"></i></a><a class="btn-social bs-light bs-instagram ms-2 mb-2" href="#"><i class="ci-instagram"></i></a><a class="btn-social bs-light bs-pinterest ms-2 mb-2" href="#"><i class="ci-pinterest"></i></a><a class="btn-social bs-light bs-youtube ms-2 mb-2" href="#"><i class="ci-youtube"></i></a></div>
+                <div class="mb-3 social"><a class="btn-social bs-light bs-twitter ms-2 mb-2" href="#"><i class="ci-twitter"></i></a><a class="btn-social bs-light bs-facebook ms-2 mb-2" href="https://m.facebook.com/xtramega.agadir/"><i class="ci-facebook"></i></a><a class="btn-social bs-light bs-instagram ms-2 mb-2" href="https://www.instagram.com/xtra.mega/?hl=en"><i class="ci-instagram"></i></a><a class="btn-social bs-light bs-pinterest ms-2 mb-2" href="#"><i class="ci-pinterest"></i></a><a class="btn-social bs-light bs-youtube ms-2 mb-2" href="tel: +212 66308877"><i class="ci-whatsapp"></i></a></div>
               </div>
             </div>
-            <div class="pb-4 fs-xs text-light opacity-50 text-center text-md-start">© All rights reserved. Made by <a class="text-light" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></div>
+            <div class="pb-4 fs-xs text-light opacity-50 text-center text-md-start">© All rights reserved. 2021 Xtramega Maroc</div>
           </div>
         </div>
       </footer>
       <!-- Toolbar for handheld devices (Default)-->
       <div class="handheld-toolbar">
-        <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="account-wishlist.html"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">Wishlist</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" href="{{ url('cart') }}"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">4</span></span><span class="handheld-toolbar-label">$265.00</span></a></div>
+        <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="#"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">Wishlist</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" href="{{ url('cart') }}"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">{{ Cart::getTotalQuantity()}}</span></span></a></div>
       </div>
       <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
       <!-- Vendor scrits: js libraries and plugins-->
@@ -207,5 +207,5 @@
       @endif
     </body>
 
-    <!-- Mirrored from cartzilla.createx.studio/home-electronics-store.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Oct 2021 10:30:42 GMT -->
+    <!-- Mirrored from Xtramega.createx.studio/home-electronics-store.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Oct 2021 10:30:42 GMT -->
     </html>

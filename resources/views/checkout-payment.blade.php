@@ -53,13 +53,16 @@
                           <tbody>
                             <tr>
                               <td>Bénéficiaire</td>
-                              <td>logicatel</td>
+                              <td>Xtramega</td>
+                            </tr>
+                            <tr>
+                              <td>RIB</td>
+                              <td>attijariwafa bank 007010000668500000024207</td>
                             </tr>
                             <tr>
                               <td>Envoyez votre chèque à cette adresse</td>
-                              <td>Logicatel Maroc
-                                Hay El Wafa, Rue 701 N°24
-                                80060 Agadir Maroc</td>
+                              <td>Xtramega Maroc
+                                RUE ILIGH N°58 CITE SALAM AGADIR- MAROC</td>
                             </tr>
                           </tbody>
                         </table>
