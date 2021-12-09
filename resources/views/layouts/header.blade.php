@@ -83,7 +83,13 @@
                         @foreach ($cartItems as $item)
                           <div class="widget-cart-item py-2 border-bottom product_data">
                             <input type="hidden" value="{{ $item->id }}" class="prod_id">
-                          <form action="{{ route('cart.remove') }}" method="post">@csrf <input type="hidden" value="{{ $item->id }}" name="id"> <button class="btn-close text-danger" type="submit" aria-label="Remove"><span aria-hidden="true">&times;</span></button></form>
+                          <form action="{{ route('cart.remove') }}" method="post">
+                            @csrf 
+                            <input type="hidden" value="{{ $item->id }}" name="id"> 
+                            <button class="btn-close text-danger" type="submit" aria-label="Remove">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </form>
                             <div class="d-flex align-items-center"><a class="d-block flex-shrink-0" href="{{ url('cart') }}"><img src="{{ asset('assets/uploads/products/images/'.$item->attributes->image) }}" width="64" alt="Product"></a>
                               <div class="ps-2">
                                 <h6 class="widget-product-title"><a href="{{ url('cart') }}">{{ $item->name }}</a></h6>
