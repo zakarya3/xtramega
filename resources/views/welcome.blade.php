@@ -123,6 +123,8 @@
           <div class="col-md-4 col-sm-6 mb-2 py-3">
             <div class="widget">
               <h3 class="widget-title">Aussi</h3>
+              @if ($random == null)
+              @else
               @foreach ($random as $item)
               <div class="d-flex align-items-center pb-2 border-bottom"><a class="d-block flex-shrink-0" href="{{ url('product/'.$item->type->name.'/'.$item->product_name) }}"><img src="{{ asset('assets/uploads/products/images/'.$item->image) }}" width="64" alt="Product"></a>
                 <div class="ps-2">
@@ -131,6 +133,7 @@
                 </div>
               </div>
               @endforeach
+              @endif
               <p class="mb-0">...</p><a class="fs-sm" href="l">View more<i class="ci-arrow-right fs-xs ms-1"></i></a>
             </div>
           </div>

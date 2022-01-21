@@ -21,6 +21,8 @@ class FrontendController extends Controller
         $prdQty = Product::where('qty','0')->count();
         $orderAll = Order::all()->count();
         $order = Order::where('status','0')->count();
-        return view('admin.index',compact('cat','type','prd','prdQty','orderAll','order'));
+        $order_get = Order::where('status','0')->get();
+        $users = User::where('role_as','0')->get();
+        return view('admin.index',compact('cat','type','prd','prdQty','orderAll','order','order_get','users'));
     }
 }
