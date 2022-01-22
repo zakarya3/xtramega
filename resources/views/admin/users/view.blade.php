@@ -18,11 +18,7 @@
                         </div>
                         <div class="col-md-4 mt-3">
                             <label for="">Nom</label>
-                            <div class="p-2 border">{{ $user->fname }}</div>
-                        </div>
-                        <div class="col-md-4 mt-3">
-                            <label for="">Prénom</label>
-                            <div class="p-2 border">{{ $user->lname }}</div>
+                            <div class="p-2 border">{{ $user->name }}</div>
                         </div>
                         <div class="col-md-4 mt-3">
                             <label for="">Email</label>
@@ -31,10 +27,6 @@
                         <div class="col-md-4 mt-3">
                             <label for="">Phone</label>
                             <div class="p-2 border">{{ $user->phone }}</div>
-                        </div>
-                        <div class="col-md-4 mt-3">
-                            <label for="">Pays</label>
-                            <div class="p-2 border">{{ $user->country }}</div>
                         </div>
                         <div class="col-md-4 mt-3">
                             <label for="">Adresse</label>
