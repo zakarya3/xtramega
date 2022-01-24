@@ -21,11 +21,15 @@ class CartPController extends Controller
 
     public function addToCart(Request $request)
     {
+        $qty = $request->input('quantity');
+        if ($qty==0) {
+            $qty++;
+        }
         \Cart::add([
             'id' => $request->id,
             'name' => $request->name,
             'price' => $request->price,
-            'quantity' => $request->input('quantity'),
+            'quantity' => $qty,
             'attributes' => array(
                 'image' => $request->image,
             )
