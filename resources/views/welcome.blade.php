@@ -9,14 +9,14 @@
             <div class="col-xl-9 pt-xl-4 order-xl-2">
               <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                  <div class="carousel-item active" data-bs-interval="2000">
-                    <img src="/img/impression.png" class="d-block w-100" alt="">
+                  <div class="carousel-item active" data-bs-interval="3000">
+                    <img src="/img/impression.png" style="height: 400px; object-fit: contain" class="d-block w-100" alt="">
                   </div>
-                  <div class="carousel-item" data-bs-interval="2000">
-                    <img src="/img/façon.png" class="d-block w-100" alt="">
+                  <div class="carousel-item" data-bs-interval="3000">
+                    <img src="/img/façon.png" style="height: 400px; object-fit: contain" class="d-block w-100" alt="">
                   </div>
-                  <div class="carousel-item">
-                    <img src="/img/experience.jpg" class="d-block w-100" alt="">
+                  <div class="carousel-item" data-bs-interval="3000">
+                    <img src="/img/experience.jpg" style="height: 400px; object-fit: contain" class="d-block w-100" alt="">
                   </div>
                 </div>
               </div>
@@ -38,7 +38,7 @@
         <!-- Heading-->
         <div class="d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-4 mb-4">
           <h2 class="h3 mb-0 pt-3 me-2">Produits tendance</h2>
-          <div class="pt-3"><a class="btn btn-outline-accent btn-sm" href="l">More products<i class="ci-arrow-right ms-1 me-n1"></i></a></div>
+          <div class="pt-3"><a class="btn btn-outline-accent btn-sm" href="">More products<i class="ci-arrow-right ms-1 me-n1"></i></a></div>
         </div>
         <!-- Grid-->
         <div class="row pt-2 mx-n2">
@@ -81,7 +81,7 @@
         <div class="tns-carousel border-end">
           <div class="tns-carousel-inner" data-carousel-options="{ &quot;nav&quot;: false, &quot;controls&quot;: false, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 4000, &quot;loop&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;360&quot;:{&quot;items&quot;:2},&quot;600&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
             @foreach ($brands as $brand)
-            <div><a class="d-block bg-white border py-4 py-sm-5 px-2" href="#" style="margin-right: -.0625rem;"><img class="d-block mx-auto" src="{{ asset('assets/uploads/products/brands/'.$brand->image) }}" style="width: 165px; height: 8vh;" alt="Brand"></a></div>
+            <div><a class="d-block bg-white border py-4 py-sm-5 px-2" href="#" style="margin-right: -.0625rem;"><img class="d-block mx-auto" src="{{ asset('assets/uploads/products/brands/'.$brand->image) }}" style="width: 165px; height: 8vh;; object-fit: contain" alt="Brand"></a></div>
             @endforeach
           </div>
         </div>
@@ -123,8 +123,6 @@
           <div class="col-md-4 col-sm-6 mb-2 py-3">
             <div class="widget">
               <h3 class="widget-title">Aussi</h3>
-              @if ($random == null)
-              @else
               @foreach ($random as $item)
               <div class="d-flex align-items-center pb-2 border-bottom"><a class="d-block flex-shrink-0" href="{{ url('product/'.$item->type->name.'/'.$item->product_name) }}"><img src="{{ asset('assets/uploads/products/images/'.$item->image) }}" width="64" alt="Product"></a>
                 <div class="ps-2">
@@ -133,7 +131,6 @@
                 </div>
               </div>
               @endforeach
-              @endif
               <p class="mb-0">...</p><a class="fs-sm" href="l">View more<i class="ci-arrow-right fs-xs ms-1"></i></a>
             </div>
           </div>

@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Image</label>
-                    <input type="file" class="form-control" name="image" id="">
+                    <input type="file" class="form-control" required name="image" id="">
                 </div>
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary">Ajouter</button>

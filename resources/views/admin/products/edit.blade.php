@@ -24,27 +24,27 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Nom de produit</label>
-                    <input type="text" class="form-control" value="{{ $products->product_fullname }}" name="name" id="">
+                    <input type="text" class="form-control" required value="{{ $products->product_fullname }}" name="name" id="">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Titre de produit</label>
-                    <input type="text" class="form-control" value="{{ $products->product_name }}" name="title" id="">
+                    <input type="text" class="form-control" required value="{{ $products->product_name }}" name="title" id="">
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="">Descriprion</label>
-                    <textarea name="description" rows="10" class="form-control">{{ $products->product_description }}</textarea>
+                    <textarea name="description" rows="10" class="form-control" required>{{ $products->product_description }}</textarea>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Quantité</label>
-                    <input type="number" class="form-control" value="{{ $products->qty }}" name="qty" id="">
+                    <input type="number" class="form-control" required value="{{ $products->qty }}" name="qty" id="">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Prix</label>
-                    <input type="number" class="form-control" value="{{ $products->tax }}" name="price" id="">
+                    <input type="number" class="form-control" required value="{{ $products->price}}" name="price" id="">
                 </div>
-                <div class="col-md-6 mb-3">
+                <div class="col-md-12 mb-3">
                     <label for="">Réference</label>
-                    <input type="text" class="form-control" value="{{ $products->product_reference }}" name="ref" id="">
+                    <input type="text" class="form-control" required value="{{ $products->product_reference }}" name="ref" id="">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">status</label>
@@ -58,7 +58,7 @@
                     <img src="{{ asset('assets/uploads/products/images/'.$products->image) }}" alt="">
                 @endif
                 <div class="col-md-12">
-                    <input type="file" class="form-control" name="image" id="">
+                    <input type="file" class="form-control" required name="image" id="">
                 </div>
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary">Modifier</button>

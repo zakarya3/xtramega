@@ -22,10 +22,13 @@ class FrontController extends Controller
         $brands = Brand::all();
         $new = Product::where('status','1')->take(4)->get();
         $qty = Product::where('qty','<=','10')->take(4)->get();
-        $random = NULL;
-        if (!Product::all()->isEmpty()) {
+        $count_prd = Product::all()->count();
+        if ($count_prd>4) {
             $random = Product::all()->random(4);
+        }else{
+            $random = Product::all()->random($count_prd);
         }
+        // dd($random);
         return view('welcome', compact('featured_products','brands','new','qty','random'));
     }
     public function products($name)

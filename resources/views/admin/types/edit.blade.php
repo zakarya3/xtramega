@@ -12,13 +12,13 @@
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <label for="">Categories</label>
-                    <select class="form-select">
+                    <select class="form-select" required>
                         <option value="">{{ $type->category->category_name }}</option>
                     </select>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Nom de type</label>
-                    <input type="text" class="form-control" value="{{ $type->name }}" name="name" id="">
+                    <input type="text" class="form-control" required value="{{ $type->name }}" name="name" id="">
                 </div>
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary">Modifier</button>
