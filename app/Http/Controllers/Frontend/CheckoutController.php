@@ -40,7 +40,7 @@ class CheckoutController extends Controller
                 'body6' => 'Détails du compte : 007010000668500000024207',
                 'body7' => 'Adresse de la banque : attijariwafa bank à Agadir',
                 'actiontext' => 'Back to home',
-                'actionurl' => 'http://127.0.0.1:8000/myorders',
+                'actionurl' => 'http://127.0.0.1:8000/view-order/'.$order->id,
                 'lastline' => 'Veuillez préciser votre numéro de commande dans la description du virement.',
             ];
         }
@@ -56,7 +56,7 @@ class CheckoutController extends Controller
                 'body6' => 'Détails du compte : 007010000668500000024207',
                 'body7' => 'Adresse de la banque : attijariwafa bank à Agadir',
                 'actiontext' => 'Back to home',
-                'actionurl' => 'http://127.0.0.1:8000/myorders',
+                'actionurl' => 'http://127.0.0.1:8000/view-order/'.$order->id,
                 'lastline' => 'Veuillez préciser votre numéro de commande dans la description du virement.',
             ];
         }
@@ -72,7 +72,7 @@ class CheckoutController extends Controller
                 'body6' => '',
                 'body7' => '',
                 'actiontext' => 'Back to home',
-                'actionurl' => 'http://127.0.0.1:8000/myorders',
+                'actionurl' => 'http://127.0.0.1:8000/view-order/'.$order->id,
                 'lastline' => 'Xtramega vous remercie!!',
             ];
         }
@@ -89,7 +89,7 @@ class CheckoutController extends Controller
                 'body6' => '',
                 'body7' => '',
                 'actiontext' => 'Plus de détails',
-                'actionurl' => 'http://127.0.0.1:8000/orders',
+                'actionurl' => 'http://127.0.0.1:8000/admin/view-order/'.$order->id,
                 'lastline' => '',
             ];
     
@@ -105,7 +105,7 @@ class CheckoutController extends Controller
                 'body6' => '',
                 'body7' => '',
                 'actiontext' => 'Plus de détails',
-                'actionurl' => 'http://127.0.0.1:8000/orders',
+                'actionurl' => 'http://127.0.0.1:8000/admin/view-order/'.$order->id,
                 'lastline' => '',
             ];
     
@@ -122,7 +122,7 @@ class CheckoutController extends Controller
                 'body6' => '',
                 'body7' => '',
                 'actiontext' => 'Plus de détails',
-                'actionurl' => 'http://127.0.0.1:8000/orders',
+                'actionurl' => 'http://127.0.0.1:8000/admin/view-order/'.$order->id,
                 'lastline' => '',
             ];
     
