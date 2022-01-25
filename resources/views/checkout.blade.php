@@ -40,14 +40,14 @@
                   <div class="col-sm-6">
                     <div class="mb-3">
                       <label class="form-label" for="checkout-fn">Nom & Prénom</label>
-                      <input class="form-control" required name="userName" value="" type="text" id="checkout-fn">
+                      <input class="form-control" required name="userName" value="@if ($user!=NULL){{ $user->name }}@endif" type="text" id="checkout-fn">
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="col-sm-6">
                       <div class="mb-3">
                         <label class="form-label" for="checkout-phone">Numéro de téléphone</label>
-                        <input class="form-control" required name="phone" value="" type="text" id="checkout-phone">
+                        <input class="form-control" required name="phone" value="@if ($user!=NULL){{ $user->phone }}@endif" type="text" id="checkout-phone">
                       </div>
                     </div>
                 </div>
@@ -55,13 +55,13 @@
                   <div class="col-sm-6">
                     <div class="mb-3">
                         <label class="form-label" for="checkout-address-1">Adresse</label>
-                        <input class="form-control" required name="address" value="" type="text" id="checkout-address-1">
+                        <input class="form-control" required name="address" value="@if ($user!=NULL){{ $user->address }}@endif" type="text" id="checkout-address-1">
                       </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="mb-3">
                       <label class="form-label" for="checkout-email">Adresse e-mail</label>
-                      <input class="form-control" required name="email" value="" type="email" id="checkout-email">
+                      <input class="form-control" required name="email" value="@if ($user!=NULL){{ $user->email }}@endif" type="email" id="checkout-email">
                     </div>
                   </div>
                 </div>

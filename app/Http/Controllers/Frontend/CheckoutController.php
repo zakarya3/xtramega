@@ -17,11 +17,16 @@ use App\Models\OrderItem;
 
 class CheckoutController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $cartItems = \Cart::getContent();
         // dd($cartItems);
-        return view('checkout', compact('cartItems'));
+        if (User::where('name',$request->session()->get('name'))->exists()) {
+            $user = User::where('name',$request->session()->get('name'))->first();
+        }else{
+            $user=NULL;
+        }
+        return view('checkout', compact('cartItems','user'));
         
     }
     public function paymentmethod(Request $request)
