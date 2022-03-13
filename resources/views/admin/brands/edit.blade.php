@@ -18,7 +18,7 @@
                     <img src="{{ asset('assets/uploads/products/brands/'.$brand->image) }}" alt="">
                 @endif
                 <div class="col-md-12">
-                    <input type="file" class="form-control" required name="image" id="">
+                    <input type="file" class="form-control"  name="image" id="">
                 </div>
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary">Modifier</button>

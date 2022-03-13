@@ -109,7 +109,7 @@
                                 @else
                                     href="{{ url('/') }}
                                 @endif">{{ $item->name }}</a></h6>
-                                <div class="widget-product-meta"><span class="text-accent me-2">{{ $item->price }}.<small>00 MAD</small></span><span class="text-muted">x {{ $item->quantity }}</span></div>
+                                <div class="widget-product-meta"><span class="text-accent me-2">{{ $item->price }}<small> MAD</small></span><span class="text-muted">x {{ $item->quantity }}</span></div>
                               </div>
                             </div>
                           </div>

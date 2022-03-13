@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Prix</label>
-                    <input type="number" class="form-control" name="price" id="">
+                    <input type="text" class="form-control" name="price" id="">
                 </div>               
                 <div class="col-md-12 mb-3">
                     <label for="">Réference</label>

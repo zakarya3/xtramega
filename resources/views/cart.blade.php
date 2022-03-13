@@ -40,7 +40,7 @@
               <div class="pt-2">
                 <input type="hidden" value="{{ $item->id }}" class="prod_id">
                 <h3 class="product-title fs-base mb-2"><a href="shop-single-v1.html">{{ $item->name }}</a></h3>
-                <div class="fs-lg text-accent pt-2">{{ $item->price }}.<small>00 MAD</small></div>
+                <div class="fs-lg text-accent pt-2">{{ $item->price }}<small> MAD</small></div>
               </div>
             </div>
             <div class="pt-2 pt-sm-0 ps-sm-3 mx-auto mx-sm-0 text-center text-sm-start" style="max-width: 9rem;">
@@ -76,7 +76,7 @@
           <div class="py-2 px-xl-2">
             <div class="text-center mb-4 pb-3 border-bottom">
               <h2 class="h6 mb-3 pb-1">{{ Cart::getTotalQuantity()}} articles</h2>
-              <h3 class="fw-normal">{{ $total }}.<small>00 MAD</small></h3>
+              <h3 class="fw-normal">{{ $total }}<small> MAD</small></h3>
             </div>
             <div class="accordion" id="order-options">
               <div class="accordion-item">

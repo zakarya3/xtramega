@@ -46,7 +46,7 @@
                       </div></a>
                     <button class="btn-wishlist me-0 me-lg-n3" type="button" data-bs-toggle="tooltip" title="Add to wishlist"><i class="ci-heart"></i></button>
                   </div>
-                  <div class="mb-3"><span class="h3 fw-normal text-accent me-1">{{ $product->price }}.<small>00 MAD</small></span></div>
+                  <div class="mb-3"><span class="h3 fw-normal text-accent me-1">{{ $product->price }}<small> MAD</small></span></div>
                   @if ($product->qty > 0)
                   <label for="" class="badge bg-success">In stock</label>
                   <input type="hidden" value="{{ $product->id }}" class="prod_id">
@@ -69,7 +69,11 @@
                         <input type="hidden" value="{{ $product->image }}"  name="image">
                         <input type="hidden" class="qty-input form-control" name="quantity">
                         <input type="hidden" value="{{ $product->qty }}"  name="qty">
+                        @if ($product->price != null)
                         <button class="btn btn-primary btn-shadow d-block w-100" type="submit"><i class="ci-cart fs-lg me-2"></i>Add to Cart</button>
+                        @else
+                        <a href="{{ url('contact') }}" class="btn btn-primary btn-shadow d-block w-100" type="submit">Contactez-nous!</a>
+                        @endif
                       </form>
                     </div>
                   </div>
@@ -140,7 +144,7 @@
                 <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="{{ url('product/'.$prd->type->name.'/'.$prd->product_name) }}">{{ $prd->type->name }}</a>
                   <h3 class="product-title fs-sm"><a href="{{ url('product/'.$prd->type->name.'/'.$prd->product_name) }}">{{ $prd->product_name }}</a></h3>
                   <div class="d-flex justify-content-between">
-                    <div class="product-price"><span class="text-accent">{{ $prd->price }}.<small>00 MAD</small></span></div>
+                    <div class="product-price"><span class="text-accent">{{ $prd->price }}<small> MAD</small></span></div>
                     <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
                     </div>
                   </div>

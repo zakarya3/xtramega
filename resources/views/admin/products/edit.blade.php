@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Prix</label>
-                    <input type="number" class="form-control" value="{{ $products->price}}" name="price" id="">
+                    <input type="text" class="form-control" value="{{ $products->price}}" name="price" id="">
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="">Réference</label>
@@ -58,7 +58,7 @@
                     <img src="{{ asset('assets/uploads/products/images/'.$products->image) }}" alt="">
                 @endif
                 <div class="col-md-12">
-                    <input type="file" class="form-control" required name="image" id="">
+                    <input type="file" class="form-control" name="image" id="">
                 </div>
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary">Modifier</button>

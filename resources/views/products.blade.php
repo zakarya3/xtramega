@@ -79,7 +79,7 @@
               <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">{{ $prd->type->name }}</a>
                 <h3 class="product-title fs-sm"><a href="{{ url('product/'.$prd->type->name.'/'.$prd->product_name) }}">{{ $prd->product_name }}</a></h3>
                 <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">{{ $prd->price }}.<small>00 DH</small></span></div>
+                  <div class="product-price"><span class="text-accent">{{ $prd->price }}<small> DH</small></span></div>
                   <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i>
                   </div>
                 </div>
@@ -92,7 +92,11 @@
                   <input type="hidden" value="{{ $prd->price }}" name="price">
                   <input type="hidden" value="{{ $prd->image }}"  name="image">
                   <input type="hidden" value="1" name="quantity">
+                  @if ($prd->price != null)
                   <button class="btn btn-primary btn-shadow d-block w-100" type="submit"><i class="ci-cart fs-lg me-2"></i>Add to Cart</button>
+                  @else
+                  <a href="{{ url('contact') }}" class="btn btn-primary btn-shadow d-block w-100" type="submit">Contactez-nous!</a>
+                  @endif
                 </form>
                 <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
               </div>
