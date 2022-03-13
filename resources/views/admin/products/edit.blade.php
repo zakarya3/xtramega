@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="">Prix</label>
-                    <input type="number" class="form-control" required value="{{ $products->price}}" name="price" id="">
+                    <input type="number" class="form-control" value="{{ $products->price}}" name="price" id="">
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="">Réference</label>

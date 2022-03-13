@@ -75,7 +75,15 @@
                   <a href="{{ url('/login') }}"><div class="navbar-tool-text ms-n3">
                     <small>{{ Session::get('name') }}</small></div></a>
                 </a>
-                <div class="navbar-tool dropdown ms-3"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{ url('cart') }}"><span class="navbar-tool-label">{{ Cart::getTotalQuantity()}}</span><i class="navbar-tool-icon ci-cart"></i></a><a class="navbar-tool-text" href="{{ url('cart') }}"></a>
+                <div class="navbar-tool dropdown ms-3"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" @if (Cart::getTotalQuantity() != 0)
+                    href="{{ url('cart') }}
+                @else
+                    href="{{ url('/') }}
+                @endif"><span class="navbar-tool-label">{{ Cart::getTotalQuantity()}}</span><i class="navbar-tool-icon ci-cart"></i></a><a class="navbar-tool-text" @if (Cart::getTotalQuantity() != 0)
+                    href="{{ url('cart') }}
+                @else
+                    href="{{ url('/') }}
+                @endif"></a>
                   <!-- Cart dropdown-->
                   <div class="dropdown-menu dropdown-menu-end">
                     <div class="widget widget-cart px-3 pt-2 pb-3" style="width: 20rem;">
@@ -90,9 +98,17 @@
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </form>
-                            <div class="d-flex align-items-center"><a class="d-block flex-shrink-0" href="{{ url('cart') }}"><img src="{{ asset('assets/uploads/products/images/'.$item->attributes->image) }}" width="64" alt="Product"></a>
+                            <div class="d-flex align-items-center"><a class="d-block flex-shrink-0" @if (Cart::getTotalQuantity() != 0)
+                                href="{{ url('cart') }}
+                            @else
+                                href="{{ url('/') }}
+                            @endif"><img src="{{ asset('assets/uploads/products/images/'.$item->attributes->image) }}" width="64" alt="Product"></a>
                               <div class="ps-2">
-                                <h6 class="widget-product-title"><a href="{{ url('cart') }}">{{ $item->name }}</a></h6>
+                                <h6 class="widget-product-title"><a @if (Cart::getTotalQuantity() != 0)
+                                    href="{{ url('cart') }}
+                                @else
+                                    href="{{ url('/') }}
+                                @endif">{{ $item->name }}</a></h6>
                                 <div class="widget-product-meta"><span class="text-accent me-2">{{ $item->price }}.<small>00 MAD</small></span><span class="text-muted">x {{ $item->quantity }}</span></div>
                               </div>
                             </div>
@@ -100,7 +116,11 @@
                         @endforeach
                       </div>
                       <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
-                      </div><a class="btn btn-primary btn-sm d-block w-100" href="{{ url('cart') }}"><i class="ci-card me-2 fs-base align-middle"></i>Checkout</a>
+                      </div><a class="btn btn-primary btn-sm d-block w-100" @if (Cart::getTotalQuantity() != 0)
+                          href="{{ url('cart') }}
+                      @else
+                          href="{{ url('/') }}
+                      @endif"><i class="ci-card me-2 fs-base align-middle"></i>Checkout</a>
                     </div>
                   </div>
                 </div>
@@ -191,7 +211,11 @@
       </footer>
       <!-- Toolbar for handheld devices (Default)-->
       <div class="handheld-toolbar">
-        <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="#"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">Wishlist</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" href="{{ url('cart') }}"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">{{ Cart::getTotalQuantity()}}</span></span></a></div>
+        <div class="d-table table-layout-fixed w-100"><a class="d-table-cell handheld-toolbar-item" href="#"><span class="handheld-toolbar-icon"><i class="ci-heart"></i></span><span class="handheld-toolbar-label">Wishlist</span></a><a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)"><span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span></a><a class="d-table-cell handheld-toolbar-item" @if (Cart::getTotalQuantity() != 0)
+            href="{{ url('cart') }}
+        @else
+            href="{{ url('/') }}
+        @endif"><span class="handheld-toolbar-icon"><i class="ci-cart"></i><span class="badge bg-primary rounded-pill ms-1">{{ Cart::getTotalQuantity()}}</span></span></a></div>
       </div>
       <!-- Back To Top Button--><a class="btn-scroll-top" href="#top" data-scroll><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ci-arrow-up">   </i></a>
       <!-- Vendor scrits: js libraries and plugins-->

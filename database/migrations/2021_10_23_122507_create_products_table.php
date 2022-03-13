@@ -25,7 +25,7 @@ class CreateProductsTable extends Migration
             $table->tinyInteger('trending');
             $table->tinyInteger('status');
             $table->string('product_reference');
-            $table->float('price');
+            $table->float('price')->nullable();
             $table->timestamps();
         });
     }

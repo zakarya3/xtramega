@@ -1,5 +1,5 @@
 
-@extends('layouts.header')
+@extends('layouts.header') 
       <!-- Hero (Banners + Slider)-->
       @section('content')
       <section class="bg-secondary py-4 pt-md-5">
