@@ -48,9 +48,8 @@
               <label class="form-label" for="quantity4">Quantité</label>
               <form action="{{ route('cart.update') }}" method="POST">
                 @csrf
-                <input type="hidden" name="id" value="{{ $item->id}}" >
-              <input type="number" name="quantity" value="{{ $item->quantity }}" 
-              class="form-control qty-input" />
+                <input type="hidden" name="id" value="{{ $item->id}}">
+              <input type="number" name="quantity" value="{{ $item->quantity }}" class="form-control qty-input" />
               <button class="btn btn-link px-0 text-danger" type="submit"><i class="ci-check-circle me-2"></i><span class="fs-sm">Modifier</span></button>
               </form>
               @php
